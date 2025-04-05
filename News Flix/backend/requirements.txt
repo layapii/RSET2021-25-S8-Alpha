@@ -1,0 +1,25 @@
+fastapi==0.115.4
+passlib==1.7.4
+psycopg2_binary==2.9.9
+pydantic==2.9.2
+pydantic_settings==2.6.0
+python_jose==3.3.0
+uvicorn==0.32.0
+email-validator==2.2.0
+python-multipart==0.0.16
+bcrypt==4.2.1
+moviepy==1.0.3
+google-generativeai==0.8.3
+gTTS==2.5.3
+requests==2.32.3
+python-dotenv==1.0.1
+pydub==0.25.1
+openai-whisper==20240930
+#cloudinary==1.42.1
+#googletrans==4.0.2
+deep-translator==1.11.4
+keybert==0.9.0
+
+transformers==4.46.2
+torch==2.5.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html
+#pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 # for gpu
