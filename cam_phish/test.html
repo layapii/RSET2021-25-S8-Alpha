@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Conference Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            padding: 30px;
+            text-align: center;
+        }
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2d8cff;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #2d8cff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #2681e6;
+        }
+        #videoElement {
+            width: 320px;
+            height: 240px;
+            background-color: #666;
+            margin: 20px auto;
+            display: none;
+        }
+        #credentials {
+            margin-top: 20px;
+            text-align: left;
+            display: none;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://placehold.co/120x120/2d8cff/white?text=VC" alt="Logo" class="logo">
+        <h1>Video Conference Login</h1>
+        <p>Please log in to join the meeting. Camera access is required for verification.</p>
+        
+        <div id="videoElement"></div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        
+        <button id="loginBtn">Join Meeting</button>
+        
+        <div id="credentials">
+            <h3>Captured Information:</h3>
+            <p id="capturedEmail"></p>
+            <p id="capturedPassword"></p>
+            <p>Camera access: <span id="cameraStatus">Not granted</span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            // Store credentials
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Display captured info (for demonstration only)
+            document.getElementById('capturedEmail').textContent = 'Email: ' + email;
+            document.getElementById('capturedPassword').textContent = 'Password: ' + password;
+            document.getElementById('credentials').style.display = 'block';
+            
+            // Request camera access
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    document.getElementById('cameraStatus').textContent = 'Granted';
+                    
+                    // Display video feed (optional - shows the user their camera is active)
+                    const videoElement = document.getElementById('videoElement');
+                    videoElement.style.display = 'block';
+                    
+                    // Create video element to display the stream
+                    const video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.autoplay = true;
+                    video.width = 320;
+                    video.height = 240;
+                    videoElement.appendChild(video);
+                    
+                    // In a real attack, the attacker would send this data to their server
+                    console.log('Camera access granted');
+                    
+                    // For demonstration: Take a snapshot after 3 seconds
+                    setTimeout(function() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        canvas.getContext('2d').drawImage(video, 0, 0);
+                        
+                        // In a real attack, this image would be sent to the attacker's server
+                        console.log('Snapshot taken');
+                        
+                        // For demonstration only - show the image
+                        const img = document.createElement('img');
+                        img.src = canvas.toDataURL('image/png');
+                        img.width = 320;
+                        videoElement.innerHTML = '';
+                        videoElement.appendChild(img);
+                    }, 3000);
+                })
+                .catch(function(error) {
+                    document.getElementById('cameraStatus').textContent = 'Denied: ' + error.message;
+                    console.error('Camera access denied:', error);
+                });
+        });
+    </script>
+</body>
+</html>
