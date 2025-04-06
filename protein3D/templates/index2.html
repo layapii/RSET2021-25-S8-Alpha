@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protein Accuracy Evaluation</title>
+    <style>
+        body {
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Protein Accuracy Evaluation</h2>
+    <h4>Accuracy:</h4>
+    <p id="accuracy">Loading...</p>
+
+    <button onclick="fetchAccuracy()">Check Accuracy</button>
+
+    <script>
+        function fetchAccuracy() {
+            fetch('/evaluate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    predicted_pdb: "path/to/predicted.pdb",
+                    reference_pdb: "path/to/reference.pdb"
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("accuracy").innerHTML = 
+                    `Avg pLDDT: ${data.average_plddt}, RMSD: ${data.rmsd}, TM-score: ${data.tm_score}`;
+            })
+            .catch(error => {
+                document.getElementById("accuracy").innerHTML = "Error fetching accuracy";
+                console.error(error);
+            });
+        }
+    </script>
+
+</body>
+</html>
