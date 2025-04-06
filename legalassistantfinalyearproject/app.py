@@ -31,9 +31,7 @@ app = Flask(__name__)
 
 CORS(app, supports_credentials=True)  # Fixes CORS
 from flask import Flask, render_template, request, redirect, session, url_for
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import Flow
-from googleapiclient.discovery import build
+
 
 from pdf2image import convert_from_bytes, convert_from_path
 import io
