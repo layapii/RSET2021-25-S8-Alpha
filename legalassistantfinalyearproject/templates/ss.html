@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Lease Agreement</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+body {
+    font-family: 'Times New Roman', serif; /* Classic document font */
+    margin: 60px; /* Increased margin for a more spacious layout */
+    background-color: #ffffff; /* Pure white background */
+    color: #000000; /* True black text for contrast */
+    line-height: 2; /* Increased for better readability */
+    font-size: 20px; /* Larger default text size */
+}
+
+/* Document-style headings */
+h1 {
+    font-size: 36px; /* Larger, bold heading */
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Paragraph text */
+p {
+    font-size: 20px; /* Bigger text for readability */
+    text-align: justify; /* Justified text for a professional layout */
+    margin-bottom: 20px;
+}
+   .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        .edit-button {
+    float: right; /* Moves the button to the right */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Styling for the editor container */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modern textarea */
+.styled-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+    resize: none;
+}
+
+.styled-textarea:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/* Modern Save button */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #4A90E2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #357ABD;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button-container button:active {
+    transform: translateY(1px); /* Click effect */
+}
+
+.button-container button:nth-child(5) { background-color: #25D366; } /* WhatsApp Green */
+.button-container button:nth-child(6) { background-color: #FF5722; } /* Email Orange */
+.button-container button:nth-child(7) { background-color: #6c757d; } /* Gray for TXT Download */
+
+.button-container button:nth-child(5):hover { background-color: #1EBE5D; } /* WhatsApp */
+.button-container button:nth-child(6):hover { background-color: #E64A19; } /* Email */
+.button-container button:nth-child(7):hover { background-color: #5a6268; } /* TXT Download */
+
+    </style>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+ 
+     <!-- jsPDF Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <h1>Lease Agreement</h1>
+    <button class="edit-button" onclick="makeEditable('lease-agreement')">திருத்தவும்</button>
+    <div class="section" id="lease-agreement">
+        <div class="editable-content">
+        <h2>This Commercial Lease Agreement was made at {{ data["Effective_Date"] }}</h2>
+    </div>
+    
+
+</div>
+
+<div class="section" id="terms-of-lease">
+    <h2 >BY AND BETWEEN </h2><button class="edit-button" onclick="makeEditable('terms-of-lease')">Edit</button>
+    
+    <p class="editable-content">
+        {{ data["Lessor_Information"]["Name"] }}, son of {{ data["Lessor_Information"]["Parents_Name"] }}, 
+        aged {{ data["Lessor_Information"]["Age"] }}, residing at {{ data["Lessor_Information"]["Address"] }} 
+        (hereinafter referred to as the "Lessor," which term shall, unless inconsistent with the context, 
+        include his legal heirs, executors, successors, administrators, legal representatives, and assigns) 
+        of the FIRST PART.
+    </p>
+</div>
+
+
+
+<div class="section" id="lessee-info">
+    <h2>AND</h2>
+    <button class="edit-button" onclick="makeEditable('lessee-info')">Edit</button>
+    <div class="editable-content">
+        <p>
+            {{ data["Lessee_Information"]["Name"] }}, son of {{ data["Lessee_Information"]["Parents_Name"] }}, aged {{ data["Lessee_Information"]["Age"] }}, residing at {{ data["Lessee_Information"]["Address"] }} (hereinafter referred to as the "Lessee," which term shall, unless repugnant to the context, include his legal heirs, executors, successors, administrators, legal representatives, and assigns), of the SECOND PART.
+        </p>
+
+        <p>
+            WHEREAS, the Lessor is the lawful owner of the premises bearing No. {{ data['Property_Details']["Property_Number"] }}, situated at {{ data['Property_Details']["Country"] }}, {{ data['Property_Details']["Property_Location"] }}, {{ data['Property_Details']["Property_Location"]["City"] }}, having the postal code {{ data['Property_Details']["Pin_Code"] }} (hereinafter referred to as the "Demised Premises").
+        </p>
+
+        <p>
+            AND WHEREAS, the Lessor has agreed to lease the Demised Premises to the Lessee under the terms and conditions set forth in this Lease Deed, including all fittings, fixtures, and furniture installed therein, as fully described in Annexure-I, which is annexed hereto and forms an integral part of this Deed.
+        </p>
+
+        <p>
+            The Lessee has agreed to take the Demised Premises on lease, subject to the covenants, conditions, and stipulations set forth in this Lease Deed.
+        </p>
+    </div>
+</div>
+
+    
+    
+<div class="section" id="lessee-infor">
+    <h2>Terms of Lease</h2>
+    <button class="edit-button" onclick="makeEditable('lessee-infor')">Edit</button>
+    <p>NOW IT IS HEREBY MUTUALLY AGREED BY AND BETWEEN THE PARTIES HERETO AS FOLLOWS:</p>
+    <div class="editable-content">
+        <ol>
+            <li>The Term of Lease shall be for a fixed period of {{ data["Lease_Terms"]["Term_Duration"] }} which shall commence from the {{ data["Effective_Date"] }}.</li>
+            <li>This Lease agreement shall be according to the English calendar month, and the Tenant shall pay the above said Lease amount {{ data["Lease_Terms"]["Monthly_Lease_Amount"] }} for every month in advance on or before {{ data["Lease_Terms"]["Payment_Due_Date"] }} the of every month through CASH/CHEQUE/ECS/BANK TRANSFER to the Owner.</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="section" id="lease-section">
+    <h2>Security Deposit</h2>
+    <button class="edit-button" onclick="makeEditable('lease-section')">Edit</button>
+    <div class="editable-content">
+        <p>Upon the execution of this Agreement, the Lessee shall pay the Lessor a security deposit of Rs. 
+            <span data-key="Lease_Terms.Security_Deposit">{{ data["Lease_Terms"]["Security_Deposit"] }}</span>/- 
+            (Rupees <span data-key="Lease_Terms.Security_Deposit_in_words">{{ data["Lease_Terms"]["Security_Deposit_in_words"] }}</span> only) 
+            to be held as security for the payment of the lease amount and due compliance by the Lessee with all of its obligations in this Agreement.
+        </p>
+
+        <p>The total of the security deposits, in observance of the terms and conditions of this agreement, shall be refunded to the Lessee within {{ data["Other_Clauses"]["Conditions_for_Security_Deposit"] }} after the premises have been completely vacated. The Lessor may deduct any necessary amount from the security deposit and require further payment from the Lessee if the amount exceeds the security deposit value, to cover the Lessee’s default in any or all of the following:</p>
+
+        <ul>
+            <li>Any unpaid lease amount</li>
+            <li>Cleaning costs</li>
+            <li>Key replacement costs</li>
+            <li>Cost for repair of damages to premises and/or common areas, exclusive of expected ordinary wear and tear</li>
+            <li>Any other amount legally allowable under the terms of this agreement</li>
+        </ul>
+
+        <p>A written accounting of said charges shall be presented to the Lessee within 10 days of move-out. If the costs exceed the deposit, the Lessee shall immediately pay the additional costs for damages to the Lessor.</p>
+
+        <h2>Possession of the Premises</h2>
+        <p>If the Lessor is unable to deliver possession of the premises for any reason beyond the Lessor’s control, the Lessor shall not be held liable. The agreement shall not be considered void or voidable, and the Lessee shall not be required to pay any lease amount until actual possession of the premises is delivered.</p>
+
+        <p>If the Lessor is unable to deliver possession within 5 days after the agreed commencement date, the Lessee may terminate this Agreement by giving written notice to the Lessor. In such a case, the Lessor must refund all money and security deposits paid. However, failure of the Lessee to take possession of the premises on the said date shall not relieve them of their obligation to pay the lease amount on the agreed date.</p>
+    </div>
+</div>
+
+
+<div class="section" id="duties-obligations">
+    <h2>Duties and Obligations</h2>
+    <button class="edit-button" onclick="makeEditable('duties-obligations')">Edit</button>
+    <ol class="editable-content">
+        <li>The Lessee hereby undertakes not to sublet, assign, or transfer the leased premises, in whole or in part, to any other person or entity in any manner whatsoever, without obtaining prior written consent from the Lessor.</li>
+        <li>The leased premises shall be used as the registered office of the Company.</li>
+        <li>The Lessee shall not make any material additions or alterations to the leased premises without the prior written consent of the Lessor.</li>
+        <li>The Lessee shall not engage in or permit any activities within the premises that may cause nuisance or annoyance to the Lessor.</li>
+        <li>The Lessee agrees to indemnify and hold harmless the Lessor for all its business activities, including but not limited to statutory dues, municipal taxes, and other applicable charges.</li>
+        <li>The Lessee shall not bring, store, or cause to be stored any hazardous goods, combustible or inflammable materials, except in small quantities as permitted by law.</li>
+        <li>The Lessee shall maintain the leased premises in good condition and shall bear the cost of all minor repairs.</li>
+    </ol>
+</div>
+
+<div class="section" id="miscellaneous">
+    <h2>MISCELLANEOUS</h2>
+    <button class="edit-button" onclick="makeEditable('miscellaneous')">Edit</button>
+    <ol class="editable-content">
+        <li>Notwithstanding any other provision of this agreement, the Lessor shall have the right to terminate this agreement at any point in time during the period of the lease.</li>
+        <li>The provisions of this Agreement shall be governed by the Laws in force in the Union of India.</li>
+        <li>The Courts in Location shall have sole jurisdiction to entertain disputes arising from this Agreement.</li>
+        <li>The Parties agree that this Agreement shall be Registered in [Location].</li>
+        <li>The Lessee will pay property taxes in respect of the demised premises due to the government and corporation.</li>
+    </ol>
+    
+</div>
+
+<div class="section" id="termination">
+    <h2>TERMINATION</h2>
+    <button class="edit-button" onclick="makeEditable('termination')">Edit</button>
+    <div class="editable-content">
+        <p>The agreement may be terminated by either party by issuing a notice {{ data["Other_Clauses"]["Termination_Notice_Period"] }} prior to the agreed expiry of the Lease period.</p>
+        <p>The Premises will be deemed vacated only after all areas including storage are vacated by the Lessee and the property provided by the Lessor for the Lessee and the keys returned to the Lessor.</p>
+    </div>
+    
+</div>
+
+<div class="section" id="extension">
+    <h2>EXTENSION OF LEASE</h2>
+    <button class="edit-button" onclick="makeEditable('extension')">Edit</button>
+    <div class="editable-content">
+        <p>At the end of the period as stated in the agreement, the lease will automatically convert to month to month.</p>
+        <p>In the event of termination, a written notice must be served by the Lessee or the Lessor to the other at least {{ data["Other_Clauses"]["Termination_Notice_Period"] }} prior to the end of the agreement.</p>
+    </div>
+    
+</div>
+
+<div class="signatures">
+    <h2>Signatures</h2>
+    <p>LESSOR</p>
+    <canvas id="lessor-signature-pad" class="signature-pad"></canvas>
+    <button onclick="clearSignature('lessor')">Clear</button>
+    <p>___________________________</p>
+    <p>Name: {{ data["Lessor_Information"]["Name"] }}</p>
+
+    <p>LESSEE</p>
+    <canvas id="lessee-signature-pad" class="signature-pad"></canvas>
+    <button onclick="clearSignature('lessee')">Clear</button>
+    <p>___________________________</p>
+    <p>Name: {{ data["Lessee_Information"]["Name"] }}</p>
+
+    <p>In the presence of Witnesses:</p>
+    <p>1) __________________________</p>
+    <p>2) _____________________________</p>
+</div>
+<div class="button-container">
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="window.print()">Print</button>
+    <button onclick="generatePDF()">Download PDF</button>
+    <button onclick="sendToWhatsApp()">Send to WhatsApp</button>
+    <button onclick="sendToEmail()">Send to Email</button>
+    <button onclick="downloadTextFile()">Download TXT</button>
+</div>
+
+
+<script>
+    // Firebase initialization
+
+</script>
+<script>
+     function setupSignaturePad(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext("2d");
+        let drawing = false;
+
+        canvas.addEventListener("mousedown", () => drawing = true);
+        canvas.addEventListener("mouseup", () => drawing = false);
+        canvas.addEventListener("mousemove", draw);
+
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "black";
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+
+        return {
+            clear: function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            },
+            getImage: function() {
+                return canvas.toDataURL("image/png");
+            }
+        };
+    }
+
+    // Initialize signature pads
+    const lessorPad = setupSignaturePad("lessor-signature-pad");
+    const lesseePad = setupSignaturePad("lessee-signature-pad");
+
+    function clearSignature(role) {
+        if (role === "lessor") lessorPad.clear();
+        if (role === "lessee") lesseePad.clear();
+    }
+    // Function to save data to localStorage
+    // Function to download the content as a PDF
+    function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    const content = document.body.innerHTML;  // Capture the full content
+    doc.html(content, {
+        callback: function (doc) {
+            doc.save('Lease_Agreement.pdf');
+        },
+        margin: [10, 10, 10, 10],  // You can adjust the margins
+    });
+}
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 2, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+function makeEditable(sectionId) {
+    let section = document.getElementById(sectionId);
+    let contentElement = section.querySelector(".editable-content");
+
+    if (!contentElement) return; // Ensure the element exists
+
+    let content = contentElement.innerText.trim(); // Preserve original text
+
+    // Apply modern styling to textarea and button
+    contentElement.innerHTML = `
+        <div class="editor-container">
+            <textarea class="styled-textarea">${content}</textarea>
+            <button class="save-button" onclick="saveEdit('${sectionId}')">✔ Save</button>
+        </div>
+    `;
+
+    // Auto-focus on the textarea
+    contentElement.querySelector("textarea").focus();
+}
+
+
+function saveEdit(sectionId) {
+    let section = document.getElementById(sectionId);
+    let textarea = section.querySelector(".editable-content textarea");
+
+    if (textarea) {
+        let contentElement = section.querySelector(".editable-content");
+        let text = textarea.value.trim();
+
+        // Clear content before reapplying the typing effect
+        contentElement.innerHTML = ""; 
+
+        // Restart typing effect with the updated text
+        setTimeout(() => {
+            typeEffect(contentElement, text, 10);
+        }, 100);
+    }
+}
+
+function typeEffect(element, text, speed = 20, callback) { // Reduced default speed
+    element.innerHTML = ""; // Clear existing content
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < text.length) {
+            element.innerHTML = text.substring(0, index + 1); // Add next character
+            
+            // Highlight occurrences of "Not provided"
+            element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                '<span style="color: red; font-weight: bold;">Not provided</span>'
+            );
+
+            index++;
+            setTimeout(typeCharacter, speed); // Faster animation
+        } else if (callback) {
+            callback(); // Execute callback when typing is done
+        }
+    }
+
+    typeCharacter();
+}
+
+function sendToWhatsApp() {
+    let text = getContentText(); // Get the document content
+    let encodedText = encodeURIComponent(text);
+    let whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, '_blank'); // Opens WhatsApp in a new tab
+}
+
+function sendToEmail() {
+    let text = getContentText(); // Get the document content
+    let subject = encodeURIComponent("Important Document");
+    let body = encodeURIComponent(text);
+    let mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL; // Opens default email client
+}
+
+function downloadTextFile() {
+    let text = getContentText(); // Get the document content
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "document.txt";
+    link.click();
+}
+
+function getContentText() {
+    // Modify this function to extract the correct text from your document
+    let content = document.querySelector(".editable-content");
+    return content ? content.innerText.trim() : "No content available.";
+}
+
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Assistant Chatbot</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+         
+        /* Basic styling */
+        
+/* Basic styling */
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* General styles */
+/* Import Poppins font */
+
+
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0D0D0D; /* Dark background */
+    color: #E6E6E6; /* Light gray text */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background-color: #111; /* Dark sidebar */
+    color: #E6E6E6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar h2 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1DB954; /* Spotify-like green */
+}
+
+.sidebar button {
+    background-color: transparent;
+    color: #E6E6E6;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    text-align: left;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+.sidebar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Content */
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbar {
+    background-color: #0D0D0D;
+    padding: 15px 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+}
+.topbar h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        /* Logout Button */
+        .topbar button {
+            background-color: #1db954;
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .topbar button:hover {
+            background-color: #17a74a;
+            transform: scale(1.05);
+        }
+
+        /* Persona Dropdown */
+        #persona {
+            background-color: #222;
+            color: #1db954;
+            border: 2px solid #1db954;
+            padding: 8px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #persona:hover {
+            background-color: #1db954;
+            color: #000;
+        }
+
+        /* Flex container to align items */
+        .topbar div {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+/* Chat Container */
+.chat-container {
+    background-color: #1A1A1A;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1250px;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+}
+
+/* Messages */
+.message {
+    margin: 12px 0;
+    padding: 14px;
+    font-size: 1em;
+    border-radius: 8px;
+    max-width: 80%;
+    transition: all 0.3s;
+}
+
+.user {
+    background-color: #1DB954;
+    color: #000;
+    margin-left: auto;
+    align-self: flex-end;
+    border-radius: 18px 18px 4px 18px;
+}
+
+.bot {
+    background-color: #222;
+    color: #E6E6E6;
+    border-radius: 18px 18px 18px 4px;
+}
+
+/* Input Area */
+#input-area {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 750px;
+    margin-top: 15px;
+    padding: 10px;
+    background: #111;
+    border-radius: 10px;
+}
+
+#user-input {
+    width: 85%;
+    padding: 14px;
+    background-color: transparent;
+    color: #E6E6E6;
+    border: none;
+    font-size: 1em;
+    border-radius: 8px;
+    outline: none;
+}
+
+#send-button {
+    background-color: #1DB954;
+    color: #000;
+    border: none;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#send-button:hover {
+    background-color: #1ED760;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #222;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    color: #E6E6E6;
+}
+a {
+    color: white !important;  /* Set to white or any preferred color */
+    text-decoration: none;    /* Remove underline */
+    font-weight: bold;        /* Optional: Make it bold */
+}
+
+a:hover {
+    color: #ddd; /* Optional: Slightly lighter color on hover */
+}
+
+    </style>
+</head>
+<body>
+ <div class="sidebar">
+        <h2>Legal Assistant</h2>
+        <button id="history-btn">History</button>
+
+<!-- Settings Button -->
+<button id="settings-btn">Settings</button>
+
+<!-- Settings Modal -->
+<div id="settings-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Settings</h2>
+
+        <label for="response-length">Response Length:</label>
+        <select id="response-length">
+            <option value="short">Short</option>
+            <option value="detailed">Detailed</option>
+        </select>
+
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+        </select>
+
+        <button id="save-settings">Save</button>
+    </div>
+</div>
+        <button id="agreement-summary-btn">Get Agreement Summary</button>
+    </div>
+
+    <div class="content">
+        <div class="topbar">
+            <h1>AI Legal Chat Bot</h1>
+            <label for="persona" style="padding-left: 38% ;">Choose AI Persona:</label>
+            <select id="persona">
+                <option value="professional">Professional</option>
+                <option value="friendly">Friendly</option>
+                <option value="motivational">Motivational</option>
+                <option value="humorous">Humorous</option>
+              </select>
+            <div>
+                <button id="homeBtn">Home</button>
+            </div>
+        </div>
+        <div class="chat-container" id="chat-container">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div id="input-area">
+            <input type="text" id="user-input" placeholder="Ask a legal question..." autocomplete="off" />
+            <button id="send-button">Send</button>
+            <button id="clear-button">Clear All Messages</button>
+        </div>
+        <div id="upload-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Upload Agreement PDF</h2>
+                <input type="file" id="pdf-upload" accept="application/pdf">
+                <button id="upload-button">Upload</button>
+            </div>
+        </div>
+    </div>
+    <!-- Firebase App SDK -->
+
+
+    <script type="module">
+          document.getElementById("homeBtn").addEventListener("click", function() {
+    window.location.href = "/main"; // You can change this to "/home" or another route
+  });
+        // Your web app's Firebase configuration
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, push, set,remove } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { query, orderByChild, equalTo, get } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+  // Firebase config object
+  const firebaseConfig = {
+  apiKey: "AIzaSyBULz-BapoL3C00_EX4iCQCuaLRPwN7Rd4",
+  authDomain: "chatadvice-71fd2.firebaseapp.com",
+  databaseURL: "https://chatadvice-71fd2-default-rtdb.firebaseio.com",
+  projectId: "chatadvice-71fd2",
+  storageBucket: "chatadvice-71fd2.firebasestorage.app",
+  messagingSenderId: "463042737109",
+  appId: "1:463042737109:web:7acc4277b765866630835c",
+  measurementId: "G-J5RHM6MK5S"
+};
+  // Initialize Firebase
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth(app);
+    let user_id=" "
+    let userName=" "
+    window.onload = function() {
+    // Fetch the user ID and username when the page loads
+    console.log("dkgndfn")
+    fetch('/get_user_id')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('User not logged in');
+            }
+            return response.json();
+        })
+        .then(data => {
+            user_id = data.user_id;  // Get user_id from the response
+            userName = data.username;  // Get username or fallback to 'User'
+            console.log("User ID:", user_id);  // Use the user_id as needed
+            console.log("User Name:", userName); // Log the username
+
+            // Display a welcome message
+            const chatContainer = document.getElementById('chat-container');
+            const welcomeMessage = document.createElement('div');
+            welcomeMessage.classList.add('message', 'bot');
+            welcomeMessage.textContent = `Welcome ${userName}! How can I assist you today?`;
+            chatContainer.appendChild(welcomeMessage);
+
+            // Scroll to the bottom of the chat container after adding the welcome message
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle the case when user is not logged in or other errors
+        });
+};
+function typeMessageEffect(element, message, speed = 20) {
+    let i = 0;
+    element.innerHTML = ""; // Clear the element before typing
+
+    function type() {
+        if (i < message.length) {
+            element.innerHTML += message.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        } else {
+            element.innerHTML = `<p><strong>🤖 AI:</strong> ${message}</p>`; // Ensure full message is displayed after typing
+        }
+    }
+
+    type();
+}
+
+function fetchMessagesByUserId(user_id) {
+    console.log("🔍 [fetchMessagesByUserId] Called with user_id:", user_id);
+
+    const messagesRef = ref(database, 'conversation');
+    console.log("📌 [fetchMessagesByUserId] Created reference to 'conversation'");
+
+    const messagesQuery = query(messagesRef, orderByChild('user_id'), equalTo(user_id));
+    console.log("🔄 [fetchMessagesByUserId] Query created to filter by user_id");
+
+    get(messagesQuery)
+        .then(snapshot => {
+            console.log("📦 [fetchMessagesByUserId] Firebase query completed");
+
+            if (snapshot.exists()) {
+                const messages = snapshot.val();
+                console.log("✅ [fetchMessagesByUserId] Messages found:", messages);
+
+                // Check if displayBotMessages function exists
+                if (typeof displayMessages === 'function') {
+                    console.log("💬 [fetchMessagesByUserId] Calling displayBotMessages");
+                    displayMessages(messages);
+                } else {
+                    console.warn("⚠️ [fetchMessagesByUserId] displayBotMessages function is not defined");
+                }
+            } else {
+                console.log("❌ [fetchMessagesByUserId] No messages found for user_id:", user_id);
+            }
+        })
+        .catch(error => {
+            console.error("🚨 [fetchMessagesByUserId] Error fetching messages:", error);
+        });
+}
+
+
+// Display messages function
+function displayBotMessage(message) {
+    var chatContainer = document.getElementById('chat-container');
+    
+    // Create bot message container
+    var botMessageElement = document.createElement('div');
+    botMessageElement.classList.add('message', 'bot');
+    chatContainer.appendChild(botMessageElement);
+    
+    // Apply typing effect
+    typeEffect(botMessageElement, message, 20);
+    
+    chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to latest message
+}
+
+// Typing effect function
+function typeEffect(element, message, speed = 20) {
+    element.innerHTML = ""; // Clear previous content
+
+    let tempDiv = document.createElement("div");
+    tempDiv.innerHTML = message;
+    let nodes = Array.from(tempDiv.childNodes); // Get all nodes, including <strong>, <br>, etc.
+
+    function typeNode(node, parent, callback) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            let text = node.textContent;
+            let span = document.createElement("span");
+            parent.appendChild(span);
+
+            let words = text.split(/(\*\*.*?\*\*|⚖️|🛠️)/); // Capture special words and emojis
+            let wordIndex = 0;
+
+            function typeWords() {
+                if (wordIndex < words.length) {
+                    let word = words[wordIndex];
+                    let wordSpan = document.createElement("span");
+
+                    if (word.startsWith("**") && word.endsWith("**")) {
+                        wordSpan.style.color = "#FFD700"; // Gold for bold text
+                        wordSpan.style.fontWeight = "bold";
+                        word = word.replace(/\*\*/g, ""); // Remove ** while displaying
+                    } else if (word === "⚖️" || word === "🛠️") {
+                        wordSpan.style.color = "#FF4500"; // Orange-Red highlight
+                        wordSpan.style.fontWeight = "bold";
+                    }
+
+                    span.appendChild(wordSpan);
+                    let charIndex = 0;
+
+                    function typeCharacters() {
+                        if (charIndex < word.length) {
+                            wordSpan.textContent += word.charAt(charIndex);
+                            charIndex++;
+                            setTimeout(typeCharacters, speed);
+                        } else {
+                            wordIndex++;
+                            setTimeout(typeWords, speed); // Small delay between words
+                        }
+                    }
+                    typeCharacters();
+                } else {
+                    if (callback) callback();
+                }
+            }
+            typeWords();
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            let newElement = document.createElement(node.tagName);
+            Array.from(node.attributes).forEach(attr => newElement.setAttribute(attr.name, attr.value));
+            parent.appendChild(newElement);
+
+            let childNodes = Array.from(node.childNodes);
+            let childIndex = 0;
+
+            function typeChildren() {
+                if (childIndex < childNodes.length) {
+                    typeNode(childNodes[childIndex], newElement, () => {
+                        childIndex++;
+                        setTimeout(typeChildren, speed);
+                    });
+                } else if (callback) {
+                    callback();
+                }
+            }
+            typeChildren();
+        }
+    }
+
+    function typeNextNode(index) {
+        if (index < nodes.length) {
+            typeNode(nodes[index], element, () => setTimeout(() => typeNextNode(index + 1), speed));
+        }
+    }
+
+    typeNextNode(0);
+}
+
+
+    function clearMessagesForUser(user_id) {
+    const messagesRef = ref(database, 'conversation');
+    const messagesQuery = query(messagesRef, orderByChild('user_id'), equalTo(user_id));
+
+    get(messagesQuery).then(snapshot => {
+        if (snapshot.exists()) {
+            const messages = snapshot.val();
+            for (const messageId in messages) {
+                const messageRef = ref(database, 'conversation/' + messageId);
+                // Remove each message from the database
+                remove(messageRef)
+                    .then(() => {
+                        console.log("Message successfully deleted:", messageId);
+                    })
+                    .catch((error) => {
+                        console.error("Error deleting message:", error);
+                    });
+            }
+            location.reload();
+        } else {
+            console.log("No messages found for this user.");
+        }
+    }).catch((error) => {
+        console.error("Error fetching messages:", error);
+    });
+}
+    // Display messages in chat container
+   
+    // Event listener for the History button
+    let behaviour = "some behavior";  // or dynamically assigned value
+
+    // Example of other functions (sending message etc.)
+    document.getElementById('send-button').addEventListener('click', sendMessage);
+
+    function sendMessage() {
+    var userInput = document.getElementById('user-input').value.trim();
+    var behaviour = document.getElementById('persona').value.trim();
+
+    if (userInput === '') return;
+
+    var chatContainer = document.getElementById('chat-container');
+
+    // Display User Message
+    var userMessageElement = document.createElement('div');
+    userMessageElement.classList.add('message', 'user');
+    userMessageElement.textContent = userInput;
+    chatContainer.appendChild(userMessageElement);
+    document.getElementById('user-input').value = ''; // Clear input field
+        // Show typing indicator
+        var typingIndicator = document.createElement('div');
+        typingIndicator.classList.add('message', 'bot', 'typing');
+        typingIndicator.innerHTML = '<em>🤖 Typing...</em>';
+        chatContainer.appendChild(typingIndicator);
+
+        // Send message to the backend
+        fetch('/process_chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userMessage: userInput, beh: behaviour })
+        })
+        .then(response => response.json())
+        .then(data => {
+            chatContainer.removeChild(typingIndicator); // Remove typing indicator
+            displayBotMessage(data.reply);
+
+            // Save to Firebase
+            const messagesRef = ref(database, 'conversation');
+            const newMessageRef = push(messagesRef);
+            set(newMessageRef, {
+                message: userInput,
+                response: data.reply,
+                user_id: data.user_id
+            }).then(() => console.log("Message saved successfully"))
+            .catch(error => console.error("Firebase Error:", error));
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            chatContainer.removeChild(typingIndicator);
+            displayBotMessage("Sorry, I couldn't understand your message.");
+        });
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+
+function displayMessages(messages) {
+    const chatContainer = document.getElementById('chat-container');
+    chatContainer.innerHTML = ""; // Optional: clear existing messages
+
+    // Sort messages by Firebase keys or timestamp if available
+    const sortedMessages = Object.entries(messages).sort((a, b) => {
+        return a[0].localeCompare(b[0]); // Replace with timestamp comparison if needed
+    });
+
+    sortedMessages.forEach(([id, messageObj]) => {
+        // Display user message
+        const userMessageElement = document.createElement('div');
+        userMessageElement.classList.add('message', 'user');
+        userMessageElement.textContent = messageObj.message;
+        chatContainer.appendChild(userMessageElement);
+
+        // Display bot response using type effect
+        displayBotMessage(messageObj.response);
+    });
+
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+// Function to display bot messages with formatting
+document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 10, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+
+// Expand long responses
+function expandMessage(element, fullMessage) {
+    element.parentElement.innerHTML = `<p>${fullMessage}</p>`;
+}
+
+
+    document.getElementById('history-btn').addEventListener('click', function() {
+        // Example user_id, should be dynamic (fetch based on logged-in user)
+        console.log(user_id)
+        fetchMessagesByUserId(user_id);
+        console.log("sdnbv")
+        alert("button clicked")
+    });
+    document.getElementById('clear-button').addEventListener('click', function() {
+            if (confirm("Are you sure you want to clear all your chat history?")) {
+                clearMessagesForUser(user_id);
+                alert("Chat history cleared!");
+            }
+        });
+
+        const modal = document.getElementById("upload-modal");
+        const openModalBtn = document.getElementById("agreement-summary-btn");
+        const closeModalBtn = document.querySelector(".close-modal");
+        const uploadButton = document.getElementById("upload-button");
+
+        openModalBtn.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        closeModalBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+        
+        // Upload and process the PDF
+        uploadButton.addEventListener("click", () => {
+            const fileInput = document.getElementById("pdf-upload");
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select a PDF file.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("pdf", file);
+            for (let pair of formData.entries()) {
+    console.log(pair[0], pair[1]); // Logs key and value
+}
+            // Send file to backend for processing
+            fetch("/upload_pdf", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+    .then(data => {
+        displayChatMessage("AI Summary: " + data.summary, "bot", data.summary);
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Failed to process PDF.");
+            });
+        });
+
+        function displayChatMessage(message, sender, summaryText = "") {
+    const chatContainer = document.getElementById("chat-container"); 
+    const messageDiv = document.createElement("div");
+
+    messageDiv.classList.add("chat-message");
+    messageDiv.classList.add(sender === "bot" ? "bot-message" : "user-message");
+    messageDiv.textContent = message;
+
+    if (summaryText) {
+        messageDiv.style.cursor = "pointer";
+        messageDiv.addEventListener("click", () => {
+            displaySummary(summaryText);
+        });
+    }
+
+    chatContainer.appendChild(messageDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight; 
+}
+
+// Function to display summary in the right container
+function displaySummary(summary) {
+    const summaryContainer = document.getElementById("summary-container");
+    summaryContainer.innerHTML = `<h3>Summary</h3><p>${summary}</p>`;
+}
+
+document.getElementById("settings-btn").addEventListener("click", function() {
+    document.getElementById("settings-modal").style.display = "flex";
+});
+
+// Close modal when clicking the close button
+document.querySelector(".close").addEventListener("click", function() {
+    document.getElementById("settings-modal").style.display = "none";
+});
+
+// Save user settings
+document.getElementById("save-settings").addEventListener("click", function() {
+    const selectedPersona = document.getElementById("persona").value;
+    const responseLength = document.getElementById("response-length").value;
+    const theme = document.getElementById("theme").value;
+
+    // Store settings in local storage
+    localStorage.setItem("persona", selectedPersona);
+    localStorage.setItem("responseLength", responseLength);
+    localStorage.setItem("theme", theme);
+
+    alert("Settings Saved!");
+    document.getElementById("settings-modal").style.display = "none";
+
+    // Apply theme change
+    if (theme === "dark") {
+        document.body.style.backgroundColor = "#222";
+        document.body.style.color = "#fff";
+    } else {
+        document.body.style.backgroundColor = "#fff";
+        document.body.style.color = "#000";
+    }
+});
+
+    </script>
+</body>
+</html>

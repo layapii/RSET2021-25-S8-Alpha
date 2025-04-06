@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ailegalassistant-f48f5",
+  "private_key_id": "5b0b9d65ac6fde60c60fd1ad91c1e81b44c9281a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDElL/WtOgSV4Bc\neFKul1wh2sZKvW4Pi+jOeAXYy+vna5/AJ/fj82fSueUcWZKquP1an4AUpAhUrh7D\nmaXJmtH4JEtRVaLt7R1OZtjUzCN3/h6UFhDpwQvavlQWCuNT19kb48g9QXSV49F1\nYhPlCYw6kZZWZqlOSFpnv2c8qgutH+P+ZdQTgCwJVqVq5l6GLdfaElCRqqNdrION\n+akEggPdjxMkmRo09UVuS2U+JkhVDalJGZmOom/N5LUaigmoYVDU56KCgbAfB6+D\nsrzot6V5kaSSQwKa6pc95ipcOWGDAunxjgAAxsAG8UzWnw+OMkCzLZiPa19vDK/3\nyUI5ZxSTAgMBAAECggEAWo08ix39Esnctnu0dnkBdxTMJ4x3wNCNVmJCKznP+mOA\njGa80POD3TVFPNhj76FUDyUOvjNLJRqp0CccD7BxzPCHAznD2f5R9BX7BpbcNb9I\nfaVmeA61M7ddi2PLkIkKmMbFq7XViuAM0ZnymRvbTPVYP4d9sLIydrzbxL19sGqD\nazZLKuZQRJoPvlUjp8st+MJk4OJatmC1U10svY9EzVYAyHdL5crjAnEUnmi4WP2N\nSbvCiU/XcXNUCM+8SYkjYVOGLJ36MQESlrMcP/KE/1gH09mk5rZLyhVgG+Bh1h8F\nIuctVPvmxQzW3QstFePuI/Bk8AfNjAf+4x/NT7b3wQKBgQDy6MGYJeYjvjWC+Pq+\nqAI2xN1Ko4yMltc15Eb+3+vS7a0T3L53eDB3FyfzF6dFxnJXjGLmFyPQDjcneA4j\nD0pekFLLeE54yMkWUlSlcJLTZxz7R5vdjwP+Na3lJDeOlItBzIFxMLQ1RcmyvgiS\n02uSnsTAY7amuYldJc23MUyHwQKBgQDPLNZAHZppnqag+gsNORCz6/pu7pg9MY8/\neaMg1yapp2a2lNtBgjQAmmSaExUZt/GOBySGHWdSqraETRzvo8IXaStdeQ74RVqx\nKM4krBlL8tMrhVBblTmb5j468FaKxlUh4XgIMvgS2NWVaFaQQjK4RhtJc73vN0l9\ngf9FR2NRUwKBgB6ruv4OEwACXVlbPLXkGtt1ggeRnQaHaUcZuskl1u38KrVuUvJc\nz6nJ17Z/DxTlWLyrMjWhSFlV4iruosJUhOxpxrqAR1BC8fkKjjuRekiNJYCo6wpP\nq45mkr1zFDzBjs/RFasIHkj3td8G1ahMX7HUsD0mmgJ1PN3xDweJhwNBAoGAageT\ne2rrLSUSOI7f+xt6jeq21/Fqnt7vZlgVgeg7FFblfYo/kI5XmPtrg2NCyE/Y44yK\nR81ipO9Ty/A/X/Iakqqzk/oyDCRKnyK4JhKiO7mCE+L91nFP85bpwHZihFGvHlDr\ngp67UcIBxZ6Jtvj6Rk8zBeujiHtuNDrE76ryjJsCgYALKUy5ChPJeKQ9xYnIgRIE\nOUF9GWghFwi0hE714CblFhgH4ai6wXxaZT46mCrUlMWkhpGdVbkTZKb0lpNJ9gky\n1B0S51PFysL5yx6EpSL1Qw9YS93LfuE9wdqGoL5Uq9b77VTLo0upX4KQ1GQbFkto\n2p0UIHWSbnAaIBsP9rzkZg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@ailegalassistant-f48f5.iam.gserviceaccount.com",
+  "client_id": "106396059276426432422",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40ailegalassistant-f48f5.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

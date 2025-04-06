@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyright License Agreement</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+body {
+    font-family: 'Times New Roman', serif; /* Classic document font */
+    margin: 60px; /* Increased margin for a more spacious layout */
+    background-color: #ffffff; /* Pure white background */
+    color: #000000; /* True black text for contrast */
+    line-height: 2; /* Increased for better readability */
+    font-size: 20px; /* Larger default text size */
+}
+
+/* Document-style headings */
+h1 {
+    font-size: 36px; /* Larger, bold heading */
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Paragraph text */
+p {
+    font-size: 20px; /* Bigger text for readability */
+    text-align: justify; /* Justified text for a professional layout */
+    margin-bottom: 20px;
+}
+   .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        .edit-button {
+    float: right; /* Moves the button to the right */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Styling for the editor container */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modern textarea */
+.styled-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+    resize: none;
+}
+
+.styled-textarea:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/* Modern Save button */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #4A90E2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #357ABD;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button-container button:active {
+    transform: translateY(1px); /* Click effect */
+}
+
+.button-container button:nth-child(5) { background-color: #25D366; } /* WhatsApp Green */
+.button-container button:nth-child(6) { background-color: #FF5722; } /* Email Orange */
+.button-container button:nth-child(7) { background-color: #6c757d; } /* Gray for TXT Download */
+
+.button-container button:nth-child(5):hover { background-color: #1EBE5D; } /* WhatsApp */
+.button-container button:nth-child(6):hover { background-color: #E64A19; } /* Email */
+.button-container button:nth-child(7):hover { background-color: #5a6268; } /* TXT Download */
+
+    </style>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+ 
+     <!-- jsPDF Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<h1>Contract Agreement</h1>
+
+<div class="section" id="agreementSection">
+    <button class="edit-button" onclick="makeEditable('agreementSection')">Edit</button>
+    <p class="editable-content" contenteditable="false">
+        This Agreement made this {{ data.get("Effective Date", "No effective date available") }} day is entered into by {{ data["Parties Involved"]["First Party"]["Name"] }} and between {{ data["Parties Involved"]["Second Party"]["Name"] }}, 
+        a Company incorporated and existing in accordance with the Companies Act and having its Registered Office at 
+        through Mr. {{ data["Parties Involved"]["First Party"]["Name"] }} of the Company (hereinafter referred to as “FIRST PARTY”) 
+        which expression shall unless be repugnant to the context include its successors and assigns of ONE PART.
+        AND a Company incorporated and existing in accordance with the Companies Act and having its registered office at  through Mr of the Company (hereinafter referred to as “SECOND PARTY”) which expression shall unless be repugnant to the context include its successors and assigns of OTHER PART.  
+       WHEREAS  
+       At the very outset be it clearly understood and agreed that the following principles shall apply unless the context requires otherwise: 
+       <ul>
+        <li>The singular includes the plural and conversely.</li>
+        <li>A gender includes all genders.</li>
+        <li>Where a word or phrase is given a particular meaning, other grammatical forms of that word or phrase have corresponding meanings.</li>
+        <li>If any day is appointed or specified by this agreement for the payment of any money on Sunday or other official bank holiday, the day so appointed or specified shall be deemed to be the next day which is not in turn a weekly off day or a day so appointed as a holiday.</li>
+    </ul>
+    </p>
+</div>
+<div class="section" id="rightsObligations">
+    <h2>RIGHTS & OBLIGATIONS OF BOTH PARTIES</h2>
+    <button class="edit-button" onclick="makeEditable('rightsObligations')">Edit</button>
+    <ol class="editable-content" contenteditable="false">
+        <li>That {{ data["Parties Involved"]["Second Party"]["Name"] }} agrees to execute, fulfill, and discharge the work assigned by {{ data["Parties Involved"]["Second Party"]["Name"] }} to its satisfaction during this agreement.</li>
+        <li>The estimated personnel requirement may be increased or decreased with seven days' notice, and {{ data["Parties Involved"]["Second Party"]["Name"] }} must provide the adjusted manpower accordingly.</li>
+        <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} shall maintain a proper register at First Party’s premises, including personnel details, photos, names, and addresses.</li>
+        <li>First Party may request services of {{ data["Parties Involved"]["Second Party"]["Name"] }} at any other location within India with prior notice.</li>
+        <li>If any information about {{ data["Parties Involved"]["Second Party"]["Name"] }} workforce is found false or misleading, Second Party shall be solely responsible for any resulting consequences or damages.</li>
+        <li>All staff deployed by Second Party shall be subject to security checks by First Party’s authorized personnel.</li>
+        <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} is responsible for the transportation of its personnel to First Party’s premises.</li>
+        <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} shall inform First Party in writing of any change in its name, address, business, ownership, or status.</li>
+        <li>The relationship between the parties is on a Principal-to-Principal basis and does not constitute an employer-employee relationship.</li>
+        <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} shall be liable for any losses incurred by First Party due to negligence or misconduct by its personnel.</li>
+        <li>Both parties confirm their authority to enter into this agreement, and their signatories are duly authorized.</li>
+        <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} shall maintain confidentiality of any information received from First Party during and after the agreement period unless required by law.</li>
+    </ol>
+</div>
+
+<div class="section" id="supervision">
+    <h2>SUPERVISION</h2>
+    <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+    <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+    <div class="editable-content" contenteditable="false">
+        <ul>
+            <li>Second Party shall arrange for the supervision of its personnel to ensure proper control and smooth execution of the job.</li>
+            <li>Second Party shall inform First Party of the names, addresses, and contact numbers of one or more responsible supervisors/representatives authorized to act on its behalf for daily operations.</li>
+            <li>Second Party shall ensure that at least one of its representatives meets First Party’s officials daily, maintains regular communication, obtains/furnishes information, and receives instructions for the work under this agreement.</li>
+        </ul>
+    </div>
+</div>
+
+    <div class="section" id="supervision">
+        <h2>EMPLOYER- EMPLOYEE</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> That Second Party being the employer of the personnel engaged by it and/or on Second Party’srolls, shall alone be entitled to hire or fire them. First Party shall, under no circumstances be deemed or treated as the employer in respect of any person(s) employed by or through Second Party for any purpose whatsoever nor would First Party be liable for any claim(s) whatsoever of any such person(s). 
+            </p>
+            <p>
+                <strong>ii.</strong> That Second Party alone shall have the right to take disciplinary action against any person(s) engaged by it, while no right whatsoever shall vest in any such person(s) to raise any dispute and / or claim whatsoever against First Party.    
+            </p>
+            <p>
+                <strong>iii.</strong> Any dispute, demand, claim or compensation if raised by the personnel employed by Second Party for fulfilment of its obligation under this agreement or any relevant statute or statutory body/bodies, will be against Second Party only and First Party will have no responsibility and/or liability in respect of any such dispute, demand, claim or compensation. The First Party will not be in any manner be responsible for any act, omission or commission of the personnel engaged by the Second Party and no claim in this regard will lie against the First Party. If any such claim is made against the First Party by any personnel or his legal heirs engaged/employed by the Second Party, which the First Party is obliged to discharge by virtue of any statute or any provision of law and rules due to mere fact that the personnel of the Second Party working at the Premises of the First Party or otherwise, the Second Party will be liable to indemnify/reimburse the First Party of all the money paid in addition to the expenses incurred by it. It is clearly understood and agreed to by Second Party that in case First Party is dragged into any kind of litigation, dispute or any claim, directly or indirectly, by the personnel engaged by Second Party, Second Party shall appear before the concerned statutory authority or court and defend the case at Second Party’s cost and risk
+        </div>
+    </div>
+    <div class="section" id="supervision">
+        <h2>ACCIDENT OR UNTOWARD INCIDENT  </h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> That in the event of unfortunate accident resulting into temporary, partial or total disablement or death or other natural calamities of any of Second Party’s personnel, Second Party shall ensure that immediate and adequate medical aid viz. First aid and subsequent treatment facilities are provided to the concerned personnel free of cost and without fail. In case any such expenses including hospitalization expenses are incurred by First Party of its own, then it reserves all right to recover the same from Second Party including interest thereon, if any.  
+            </p>
+            <p>
+                <strong>ii.</strong> That in case of any untoward incident which can prejudice the interest of First Party, First Party shall have full right to make suitable inquiry / inquiries from the Staff of Second Party either in writing or verbally for official purposes including for any witness in Court or before concerned authorities    
+            </p>
+            <p>
+                <strong>iii.</strong>That if it is found that any person/Staff of Second Party  is involved or abetted, directly or indirectly, in any such theft, sabotage, pilferage, fire, physical violence and/or any untoward incident which can prejudice the interest of First Party at inside/outside the Premises of First Party, then First Party shall be at full liberty to take suitable legal or otherwise action against the erring staff as well as against Second Party  for damages, costs of consequences whether during the tenure of this agreement or thereafter. 
+        </div>
+    </div>
+    <div class="section" id="supervision">
+        <h2>PERFORMANCE   </h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong>  That Second Party shall perform the work assignments to the best satisfaction of First Party in case of unsatisfactory performance First Party reserves the right to terminate the contract forthwith and Second Party shall not raise any claim/demur/protest for such termination of contract. In that case the legal payments, if any, made to the workforce of the Second Party shall be fully recoverable from Second Party.  
+            </p>
+           
+        </div>
+    </div>
+    <div class="section" id="licensesCompliance">
+        <h2>LICENCES AND STATUTORY COMPLIANCE </h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> That Second Party shall alone be responsible for Compliance of all labour legislation’s (as may be amended from time to time) in respect of persons employed by or through him and deputed for the above services being provided to First Party.  However, it may be noted that Minimum rates of wages shall be as per the notifications of concerned State Government only.                  
+            </p>
+            <p>
+                <strong>ii.</strong> That Second Party shall prepare, maintain and submit all records, documents, returns, registers, notice, etc. as required under various Labour Legislation’s in the prescribed manner as applicable from time to time and within prescribed time to the concerned statutory authorities and produce the same on demand of First Party or any statutory authority inspecting the records of First Party. Second Party shall keep update knowledge of the various labour laws as are and which become applicable from time to time and shall take effective and speedy steps to comply with the same. In the event of breach of any law applicable to the Personnel engaged by Second Party, Second Party alone shall be responsible and liable for penal action that may arise as a result of such breach or violation and consequences thereof, if any.                
+            </p>
+            <p>
+                <strong>iii.</strong>.That Second Party ensures to pay the entire wages payable by it under Minimum Wages Act as applicable from time to time, as gross wages to the workforce deployed / to be deployed and Second Party further ensures to deposit the PF and ESI contribution on such gross wages with the appropriate authorities within due dates and shall submit the copy of challan for the PF & ESI contribution deposited by it along with its details to First Party. In case, Second Party fails to provide the requisite returns/certificates as aforesaid, the payments of its bill shall be stopped by First Party and First Party shall terminate this agreement forthwith without any notice with Second Party.   
+            </p>        
+            <p>
+                <strong>iV.</strong>That Second Party shall obtain and maintain at all times during continuance of this agreement all necessary permissions, approvals and required licenses and pay necessary taxes in relation to or in connection with the job assigned under this agreement.                    
+            </p>   
+            <p>
+                <strong>V.</strong>The Second Party will regulate recruitment, terms & conditions of employment, welfare amenities, disciplinary action, grievance handling, transfer, promotion, wages, allowances, leaves/holidays & benefits, provision for lunch, etc. of personnel of the Second Party. The personnel (medically fit) supplied by Second Party will follow the safety norms, rules, regulations and instructions strictly including prohibiting smoking inside the Premises. The First Party will neither interfere with the above issues of the Second Party under any circumstances whatsoever nor will be concerned with such issues, legal or otherwise.                 
+            </p>  
+            <p>
+                <strong>Vi.</strong>That the Second Party shall prepare and disburse wages/salaries of its personnel latest by 7th of every month and shall not delay the same for any reasons whatsoever. Second Party will provide First Party a copy of salary/wage payment register duly certified by Second Party. A representative of First Party will be deputed to oversee the disbursement of wages/salaries. The Second Party will be liable to pay retrenchment compensation, notice pay, gratuity or bonus as payable and the First Party will not be held liable for any obligation of the Second Party.  
+            </p>          
+        </div>
+        <div class="section" id="submissionDocuments">
+            <h2>SUBMISSION OF DOCUMENTS   </h2>
+            <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+            <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+            <div class="editable-content" contenteditable="false">
+                <p>
+                    <strong>i.</strong>  Second Party shall submit certified copies of ……………………….  
+                </p>
+               
+            </div>
+        </div>
+    </div>
+    <div class="section" id="performance">
+        <h2>PERFORMANCE   </h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong>Second Party alone shall be responsible and First Party shall not be held responsible/liable under any circumstances for any accident or injury and/or any third Party claim arising out of such accident and any  temporary/permanent/partial/total bodily disablement/injury/infirmity and/or death arising out of any such accident of Second Party’s personnel engaged for the assigned services for First Party in terms of costs, claim, compensation, damages or any other consequences legal or otherwise
+            </p>
+            <p>
+                <strong>i.</strong>During the continuance of this agreement or its renewal thereof Second Party shall observe and comply with all Rules and Regulations of the Central/State Government or the provision of any applicable law including rules and regulations of any local authority in force from time to time which may be applicable.  In the event of Second Party committing breach of any such provision of law or if due to any other reason, First Party is sought to be made liable for the same, Second Party shall indemnify and keep First Party indemnified against all costs, charges and expenses, damages or amounts which First Party may be required to incur and sustain by reason of any action, claims or demand brought/made against the First Party. 
+            </p>
+            <p>
+                <strong>ii.</strong>Second Party hereby indemnifies and keep First Party indemnified and its directors, officers and employees and save them harmless against any action, proceedings claims or demands of any person, Government or local authority made against First Party, its directors, officers and employees in respect of or as a result of the business operations carried on by Second Party or Second Party committing any breach of the provisions of any statutory regulations and/or this agreement or in consequence of any act or commission or omission or default of Second Party, their servants, agents or workmen and against all costs, losses, damages, hardship, injuries, charges and expenses which First Party may have to pay, incur or sustain by other wise, in relation thereto.  
+            </p>
+            <p>
+                <strong>iii.</strong>Second Party alone shall be responsible and First Party shall not be held responsible/liable under any circumstances for any accident or injury and/or any third Party claim arising out of such accident and any  temporary/permanent/partial/total bodily disablement/injury/infirmity and/or death arising out of any such accident of Second Party’s personnel engaged for the assigned services for First Party in terms of costs, claim, compensation, damages or any other consequences legal or otherwise
+            </p>
+            <p>
+                    <strong>iv.</strong>If any, damage is caused to any property or any injury is caused to or the death occurs of any person inside/outside of the Premises of First Party due to the act or default or any person employed by Second Party, Second Party alone will be liable in damage or for compensation in respect thereof and Second Party agrees to indemnify First Party and to keep First Party indemnified against all losses, damages, costs, charges, expenses, suits, proceedings and all liability of whatsoever nature and kind which First Party may incur, sustain, suffer or put to in consequence or by reason of such damage, injury or loss of life.  
+                </p>
+            </p>
+            <p>
+                <strong>iii.</strong>.         Second Party shall indemnify and keep First Party indemnified against any loss or damage or cost, charges, suits, proceedings and expenses and all liability of whatsoever nature or kind that may be caused by non-performance of the term(s) of this Agreement or any wrongful act and /or default on the part of Second Party or their agents or servants and/or any of Second  Party’s undertaking being false, incomplete or incorrect
+            </p>
+        </div>
+        <div class="section" id="supervision">
+            <h2>LIABILITIES  </h2>
+            <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+            <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+            <div class="editable-content" contenteditable="false">
+                <p>
+                    <strong>i.</strong> That Second Party shall be responsible and liable for the loss 
+                    that First Party may incur on account of any act, omission, commission and / or negligence of workforce of Second Party. The decision of First Party shall be final and binding in all such cases and  Second Party shall make good the loss sustained by First Party either by replacement of the material / equipment or by payment of compensation
+                    
+                </p>
+                <p>
+                    <strong>ii.</strong>That the Second Party alone will be responsible to any Third Party for any damage or injury caused due to the misfeasance, non-feasance or mal-feasance of the Second Party. 
+                </p>
+                <p>
+                    <strong>iii.</strong>That the Second Party will indemnify the First Party for any loss, liability or damage, financial or otherwise, which may be foisted on First Party in respect of the personnel engaged by Second Party whether such a liability is determined before or after the termination of this agreement. First Party will also have full right to adjust the amount of such liability or damage from the bills that may be payable to Second Party. Should the above sums not sufficient to cover the full amount of the claims, the Second Party will pay to the First Party on demand the balance amount due
+                </p>                 
+            </div>
+    </div>
+    <div class="section" id="supervision">
+        <h2>VALIDITY  </h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">Edit</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">Save</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong>  That this agreement is initially valid from …………….., to ………………. which may further be renewed for such period on such  terms and conditions as may be mutually agreed upon by both the parties
+                
+            </p>                
+        </div>
+</div>
+            <div class="section">
+        <h2>  REPLACEMENT  
+        </h2>
+        <p>
+            That Second Party ensures proper performance, conduct/ discipline, character and behaviour of the personnel engaged by or 
+            through him and shall replace any personnel at any point of time, at the sole discretion of First Party within a period of 24 hours whenever such a wish is expressed to him in explicit terms. 
+                receive instructions about the work to be done under this agreement and to post them with all relevant information. </li>
+            </p>
+        </div>
+<div class="section">
+
+    <p>The following signatures make this Agreement effective as of the date first
+        written above.</p>
+</div>
+
+
+<div class="signatures">
+    <h2>Signatures</h2>
+
+
+    <p>In the presence of Witnesses:</p>
+    <p>1) __________________________</p>
+    <p>2) _____________________________</p>
+</div>
+<div class="button-container">
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="window.print()">Print</button>
+    <button onclick="generatePDF()">Download PDF</button>
+</div>
+
+<script>
+    // Firebase initialization
+
+</script>
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 2, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+function makeEditable(sectionId) {
+    let section = document.getElementById(sectionId);
+    let contentElement = section.querySelector(".editable-content");
+
+    if (!contentElement) return; // Ensure the element exists
+
+    let content = contentElement.innerText.trim(); // Preserve original text
+
+    // Apply modern styling to textarea and button
+    contentElement.innerHTML = `
+        <div class="editor-container">
+            <textarea class="styled-textarea">${content}</textarea>
+            <button class="save-button" onclick="saveEdit('${sectionId}')">✔ Save</button>
+        </div>
+    `;
+
+    // Auto-focus on the textarea
+    contentElement.querySelector("textarea").focus();
+}
+
+
+function saveEdit(sectionId) {
+    let section = document.getElementById(sectionId);
+    let textarea = section.querySelector(".editable-content textarea");
+
+    if (textarea) {
+        let contentElement = section.querySelector(".editable-content");
+        let text = textarea.value.trim();
+
+        // Clear content before reapplying the typing effect
+        contentElement.innerHTML = ""; 
+
+        // Restart typing effect with the updated text
+        setTimeout(() => {
+            typeEffect(contentElement, text, 10);
+        }, 100);
+    }
+}
+
+function typeEffect(element, text, speed = 20, callback) { // Reduced default speed
+    element.innerHTML = ""; // Clear existing content
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < text.length) {
+            element.innerHTML = text.substring(0, index + 1); // Add next character
+            
+            // Highlight occurrences of "Not provided"
+            element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                '<span style="color: red; font-weight: bold;">Not provided</span>'
+            );
+
+            index++;
+            setTimeout(typeCharacter, speed); // Faster animation
+        } else if (callback) {
+            callback(); // Execute callback when typing is done
+        }
+    }
+
+    typeCharacter();
+}
+
+function sendToWhatsApp() {
+    let text = getContentText(); // Get the document content
+    let encodedText = encodeURIComponent(text);
+    let whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, '_blank'); // Opens WhatsApp in a new tab
+}
+
+function sendToEmail() {
+    let text = getContentText(); // Get the document content
+    let subject = encodeURIComponent("Important Document");
+    let body = encodeURIComponent(text);
+    let mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL; // Opens default email client
+}
+
+function downloadTextFile() {
+    let text = getContentText(); // Get the document content
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "document.txt";
+    link.click();
+}
+
+function getContentText() {
+    // Modify this function to extract the correct text from your document
+    let content = document.querySelector(".editable-content");
+    return content ? content.innerText.trim() : "No content available.";
+}
+
+
+</script>
+</body>
+</html>

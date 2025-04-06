@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Lease Agreement</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+body {
+    font-family: "Times New Roman", Times, serif; /* Official document font */
+    margin: 80px; /* Wider margin for a clean, structured layout */
+    background-color: #ffffff; /* Official white paper look */
+    color: #000000; /* True black text */
+    line-height: 2; /* Proper line spacing for readability */
+    font-size: 22px; /* Slightly larger for professional clarity */
+    text-align: justify; /* Ensures justified text alignment */
+}
+
+/* Document-style headings */
+h1 {
+    font-size: 40px; /* Large, bold title */
+    font-weight: bold;
+    text-align: center; /* Official document titles are centered */
+    text-transform: uppercase; /* Capitalized for legal documents */
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase; /* Most subheadings in legal documents are uppercase */
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+/* Paragraph text */
+p {
+    font-size: 22px; /* Standard size for official documents */
+    text-align: justify; /* Justified text for a clean, professional look */
+    margin-bottom: 25px;
+    letter-spacing: 0.5px; /* Adds a slight spacing for clarity */
+    word-spacing: 1px;
+}
+
+/* Ordered and unordered lists */
+ol, ul {
+    font-size: 22px;
+    text-align: justify;
+    margin-left: 50px; /* Indented for structured presentation */
+}
+
+li {
+    margin-bottom: 10px; /* Space between list items */
+}
+   .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        .edit-button {
+    float: right; /* Moves the button to the right */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Styling for the editor container */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modern textarea */
+.styled-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+    resize: none;
+}
+
+.styled-textarea:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/* Modern Save button */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #4A90E2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #357ABD;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button-container button:active {
+    transform: translateY(1px); /* Click effect */
+}
+
+.button-container button:nth-child(5) { background-color: #25D366; } /* WhatsApp Green */
+.button-container button:nth-child(6) { background-color: #FF5722; } /* Email Orange */
+.button-container button:nth-child(7) { background-color: #6c757d; } /* Gray for TXT Download */
+
+.button-container button:nth-child(5):hover { background-color: #1EBE5D; } /* WhatsApp */
+.button-container button:nth-child(6):hover { background-color: #E64A19; } /* Email */
+.button-container button:nth-child(7):hover { background-color: #5a6268; } /* TXT Download */
+
+    </style>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+ 
+     <!-- jsPDF Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <h1>ഭാടകക്കരാർ</h1>
+    <button class="edit-button" onclick="makeEditable('lease-agreement')">തിരുത്തുക</button>
+    <div class="section" id="lease-agreement">
+        <div class="editable-content">
+            <h2>ഈ വാണിജ്യ ഭാടകക്കരാർ {{ data["Effective_Date"] }} ന് ഉണ്ടാക്കപ്പെട്ടതാണ്.</h2>
+        </div>
+    </div>
+    
+    <div class="section" id="terms-of-lease">
+        <h2>ഇരുപാർട്ടികളും തമ്മിൽ</h2>
+        <button class="edit-button" onclick="makeEditable('terms-of-lease')">തിരുത്തുക</button>
+    
+        <p class="editable-content">
+            {{ data["Lessor_Information"]["Name"] }}, ({{ data["Lessor_Information"]["Parents_Name"] }} മകൻ), 
+            വയസ്സ് {{ data["Lessor_Information"]["Age"] }}, വിലാസം {{ data["Lessor_Information"]["Address"] }} 
+            (ഇതിനുശേഷം "ഭോക്താവ്" എന്ന് വിളിക്കും, ഇതിനർത്ഥം അവരുടെ നിയമാനുസൃത വാരിസുകൾ, പുനരധികൃതർ, പൂർവ്വകരാർക്കാരൻ, 
+            നിയമപരമായ പ്രതിനിധികൾ, അവകാശികൾ എന്നിവരും ഉൾപ്പെടുന്നു) ആദ്യ കക്ഷിയായി.
+        </p>
+    </div>
+    
+    <div class="section" id="lessee-info">
+        <h2>കക്ഷി രണ്ടാമൻ</h2>
+        <button class="edit-button" onclick="makeEditable('lessee-info')">തിരുത്തുക</button>
+        <div class="editable-content">
+            <p>
+                {{ data["Lessee_Information"]["Name"] }}, ({{ data["Lessee_Information"]["Parents_Name"] }} മകൻ), 
+                വയസ്സ് {{ data["Lessee_Information"]["Age"] }}, വിലാസം {{ data["Lessee_Information"]["Address"] }} 
+                (ഇതിനുശേഷം "ഭടകൻ" എന്ന് വിളിക്കും, ഇതിനർത്ഥം അവരുടെ നിയമാനുസൃത വാരിസുകൾ, പുനരധികൃതർ, പൂർവ്വകരാർക്കാരൻ, 
+                നിയമപരമായ പ്രതിനിധികൾ, അവകാശികൾ എന്നിവയും ഉൾപ്പെടുന്നു) രണ്ടാമത്തെ കക്ഷിയായി.
+            </p>
+    
+            <p>
+                അതേ സമയം, ഭോക്താവ് {{ data['Property_Details']["Property_Number"] }}, 
+                {{ data['Property_Details']["Country"] }}, {{ data['Property_Details']["Property_Location"] }},
+                {{ data['Property_Details']["Property_Location"]["City"] }}, പോസ്റ്റൽ കോഡ് {{ data['Property_Details']["Pin_Code"] }} 
+                (ഇതിനുശേഷം "ലീസ് ചെയ്ത സ്ഥാപനങ്ങൾ" എന്ന് പരാമർശിക്കും) എന്നതിന്റേയും നിയമപരമായ ഉടമയാണ്.
+            </p>
+    
+            <p>
+                ഭടകൻ ഉദ്ധിഷ്ട നിബന്ധനകളും വ്യവസ്ഥകളും പാലിച്ചു കൊണ്ടാണ് ഈ ഭാടകക്കരാർ അംഗീകരിക്കുന്നത്.  
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="lessee-infor">
+        <h2>അന്താരാഷ്ട്ര കരാർ നിബന്ധനകൾ</h2>
+        <button class="edit-button" onclick="makeEditable('lessee-infor')">തിരുത്തുക</button>
+        <p>ഇപ്പോൾ ഇത് എപ്പോഴും താങ്കളുടെ ഇടപെടലുകൾക്ക് തമ്മിൽ പൂർണ്ണമായും സമ്മതിച്ചതായി അടുത്ത ഘടകങ്ങളായിരിക്കും:</p>
+        <div class="editable-content">
+            <ol>
+                <li>കുറിപ്പിന്റെ കാലയളവ് {{ data["Lease_Terms"]["Term_Duration"] }} ആയിരിക്കും, ഇത് {{ data["Effective_Date"] }} മുതൽ ആരംഭിക്കും.</li>
+                <li>ഈ ഭാവനയുടെ കരാർ ഇംഗ്ലീഷ് കലണ്ടർ മാസത്തിന് അനുസൃതമായി ആയിരിക്കും, കൂടാതെ വാടകക്കാരൻ / വാടകക്കാരി മുകളിൽ നൽകിയ വാടക തുക {{ data["Lease_Terms"]["Monthly_Lease_Amount"] }} ഓരോ മാസവും മുൻകൂട്ടി പണമടയ്ക്കണം {{ data["Lease_Terms"]["Payment_Due_Date"] }} ന് മുമ്പ്, പണം പണ, ചെക്ക്, ECS, ബാങ്ക് ട്രാൻസ്ഫർ എന്നിവ വഴി ഉടമക്ക് അടയ്ക്കണം.</li>
+            </ol>
+        </div>
+    </div>
+    
+    
+    <div class="section" id="lease-section">
+        <h2>സുരക്ഷാ നിക്ഷേപം</h2>
+        <button class="edit-button" onclick="makeEditable('lease-section')">തിരുത്തുക</button>
+        <div class="editable-content">
+            <p>ഈ കരാർ നടപ്പിലാക്കിയ ഉടൻ, ലീസുകാരൻ, ലീസിനടക്കാവശ്യമായ തുകയും ഈ കരാറിലധികരിച്ചിരിക്കുന്ന എല്ലാ ചുമതലകളും പാലിക്കാനായി 
+                <span data-key="Lease_Terms.Security_Deposit">{{ data["Lease_Terms"]["Security_Deposit"] }}</span>/- രൂപ  
+                (രൂപ 
+                <span data-key="Lease_Terms.Security_Deposit_in_words">{{ data["Lease_Terms"]["Security_Deposit_in_words"] }}</span> മാത്രം)  
+                ലീസർമാര്ക്ക് സുരക്ഷാ നിക്ഷേപമായി അടയ്ക്കേണ്ടതാണ്.
+            </p>
+    
+            <p>ഈ കരാറിന്റെ വ്യവസ്ഥകളും നിബന്ധനകളും പാലിക്കുന്നതിനായുള്ള മൊത്തം സുരക്ഷാ നിക്ഷേപം, ലീസിലിരിക്കുന്ന സ്ഥലം പൂർണ്ണമായും ഒഴിഞ്ഞതിന് ശേഷം {{ data["Other_Clauses"]["Conditions_for_Security_Deposit"] }} ദിവസത്തിനുള്ളിൽ ലീസുകാരന് തിരികെ നൽകേണ്ടതായിരിക്കും. എന്നാൽ, ലീസർമാർക്ക് സുരക്ഷാ നിക്ഷേപത്തിൽ നിന്ന് ആവശ്യമായ തുക കുറയ്ക്കുന്നതിനും, ലീസുകാരന്റെ ബാധ്യതകൾ കണക്കിലെടുത്ത് ആവശ്യമായ കൂടിയ തുക അനുവദിക്കാൻ ആവശ്യപ്പെടുന്നതിനും അവകാശമുണ്ടാകും, ഈ തുക താഴെ പറയുന്ന കാരണങ്ങളിൽ ഒന്നെങ്കിലും ഉൾക്കൊള്ളുന്നില്ലെങ്കിൽ:</p>
+    
+            <ul>
+                <li>അടയ്ക്കാത്ത ലീസ് തുക</li>
+                <li>വൃത്തിയാക്കുന്നതിനുള്ള ചെലവ്</li>
+                <li>താക്കോൽ പകരം വയ്ക്കുന്നതിനുള്ള ചെലവ്</li>
+                <li>സ്ഥലത്തിനും/അഥവാ പൊതുസ്ഥലങ്ങൾക്കും ഉണ്ടായ കേടുപാടുകൾ പരിഹരിക്കുന്നതിനുള്ള ചെലവ് (സാധാരണമായ പഴകലുകൾ ഒഴികെ)</li>
+                <li>ഈ കരാറിലെ വ്യവസ്ഥകൾ പ്രകാരം നിയമപരമായി ആവശ്യപ്പെടാൻ കഴിയുന്ന മറ്റു തുകകൾ</li>
+            </ul>
+    
+            <p>മുകളിലെ കുറവുകളുടെ ഒരു എഴുത്തുപരമായ കണക്കാക്കൽ, ലീസ് അവസാനിച്ച 10 ദിവസത്തിനുള്ളിൽ ലീസുകാരന് സമർപ്പിക്കേണ്ടതായിരിക്കും. ചെലവ് സുരക്ഷാ നിക്ഷേപ തുകയേക്കാൾ കൂടുതലാണെങ്കിൽ, ലീസുകാരൻ കൂടിയ ചെലവ് ഉടൻ ലീസർമാർക്ക് അടയ്ക്കേണ്ടതായിരിക്കും.</p>
+    
+            <h2>സ്ഥലത്തിന്റെ കൈവശപ്പെടൽ</h2>
+            <p>ലീസർമാരുടെ നിയന്ത്രണത്തിന് അതീതമായ ഏതെങ്കിലും കാരണങ്ങളാൽ ലീസർമാർക്ക് ലീസ് സ്ഥലത്തിന്റെ കൈവശം നൽകാൻ കഴിയാതെ വന്നാൽ, ലീസർമാരെ ഉത്തരവാദികളാക്കാനാകില്ല. ഈ കരാർ അപ്രഭാവിയായോ റദ്ദായോ കണക്കാക്കേണ്ടതില്ല, കൂടാതെ ലീസുകാരൻ കൈവശം ലഭിക്കുംവരെ ലീസ് തുക അടയ്ക്കേണ്ടതില്ല.</p>
+    
+            <p>കരാറിൽ പറയുന്ന ആരംഭ തീയതി കഴിഞ്ഞ് 5 ദിവസത്തിനുള്ളിൽ ലീസർമാർക്ക് കൈവശം നൽകാൻ കഴിയാതെ വന്നാൽ, ലീസുകാർ എഴുത്തുപരമായ അറിയിപ്പ് നൽകി ഈ കരാർ റദ്ദാക്കാൻ കഴിയുന്നതാണ്. അത്തരമൊരു സാഹചര്യത്തിൽ, ലീസർമാർ മുഴുവൻ തുകയും സുരക്ഷാ നിക്ഷേപ തുകയും ലീസുകാർക്ക് തിരികെ നൽകേണ്ടതായിരിക്കും. എന്നാൽ, നിർദ്ദിഷ്ട തീയതിയിൽ ലീസുകാർ സ്ഥലം കൈവശമാക്കാൻ പരാജയപ്പെട്ടാൽ, അവർക്കു ലീസ് തുക അടയ്ക്കാനുള്ള ബാധ്യത ഒഴിവാകില്ല.</p>
+        </div>
+    </div>
+    
+    
+    <div class="section" id="duties-obligations">
+        <h2>ചുമതലകളും ബാധ്യതകളും</h2>
+        <button class="edit-button" onclick="makeEditable('duties-obligations')">തിരുത്തുക</button>
+        <ol class="editable-content">
+            <li>ലീസുകാർ, ലീസർമാരുടെ മുൻകൂർ എഴുത്തുപരമായ സമ്മതം ലഭിക്കാതെ, ലീസിലിരിക്കുന്ന സ്ഥലം ഭാഗികമായോ മുഴുവനായോ ഉപലീസ്, കൈമാറ്റം, അല്ലെങ്കിൽ മറ്റാരെങ്കിലുമൊടെ കൈമാറുകയോ ചെയ്യരുത്.</li>
+            <li>ലീസിലിരിക്കുന്ന സ്ഥലം കമ്പനിയുടെയും രജിസ്റ്റർഡ് ഓഫിസായായിരിക്കും ഉപയോഗിക്കേണ്ടത്.</li>
+            <li>ലീസർമാരുടെ മുൻകൂർ എഴുത്തുപരമായ സമ്മതമില്ലാതെ, ലീസിലിരിക്കുന്ന സ്ഥലത്ത് ആലോചനാപരമായ മാറ്റങ്ങൾ അല്ലെങ്കിൽ ഭൗതിക മാറ്റങ്ങൾ വരുത്തരുത്.</li>
+            <li>ലീസുകാരൻ, ലീസർമാരുടെ പ്രശ്‌നങ്ങളോ അസ്വസ്ഥതകളോ ഉണ്ടാകുന്ന പ്രവർത്തനങ്ങളിൽ ഏർപ്പെടരുത് അല്ലെങ്കിൽ അനുമതി നൽകരുത്.</li>
+            <li>ലീസുകാരൻ തന്റെ എല്ലാ വ്യാപാര പ്രവർത്തനങ്ങളുടെയും ഉത്തരവാദിത്വം ഏറ്റെടുക്കുകയും, സ്റ്റാറ്റ്യൂട്ടറി ഡ്യൂട്ടികൾ, നഗരസഭാ നികുതികൾ, മറ്റ് ബാധകമായ ചെലവുകൾ എന്നിവയുടെ ബാധ്യതയിൽ നിന്ന് ലീസർമാരെ സംരക്ഷിക്കുകയും വേണം.</li>
+            <li>ലീസിലിരിക്കുന്ന സ്ഥലത്ത് അപകടകരമായ വസ്തുക്കളോ, തീപിടിക്കാവുന്ന അല്ലെങ്കിൽ ജ്വലനശീലമുള്ള വസ്തുക്കളോ സൂക്ഷിക്കരുത്, നിയമാനുസൃതമായി അനുവദിച്ച ചെറിയ അളവിൽ മാത്രമേ സൂക്ഷിക്കാവൂ.</li>
+            <li>ലീസിലിരിക്കുന്ന സ്ഥലം നല്ല നിലയിൽ പരിപാലിക്കേണ്ടത് ലീസുകാരന്റെ ഉത്തരവാദിത്വമാണ്, കൂടാതെ ചെറിയ അറ്റകുറ്റപ്പണികളുടെ ചെലവ് ലീസുകാർ തന്നെ വഹിക്കണം.</li>
+        </ol>
+    </div>
+    
+    
+    <div class="section" id="miscellaneous">
+        <h2>വിവിധവിവരങ്ങൾ</h2>
+        <button class="edit-button" onclick="makeEditable('miscellaneous')">തിരുത്തുക</button>
+        <ol class="editable-content">
+            <li>ഈ കരാറിന്റെ മറ്റു ഏതെങ്കിലും വ്യവസ്ഥകൾക്ക് പാരാജയമായിരുന്നാലും, വാടകദാതാവ് കരാറിന്റെ കാലയളവിൽ ഏതെങ്കിലും സമയത്ത് ഈ കരാർ അവസാനിപ്പിക്കാനുള്ള അവകാശം വഹിക്കും.</li>
+            <li>ഈ കരാറിന്റെ വ്യവസ്ഥകൾ ഇന്ത്യയുടെ സംയുക്ത സഭയിലെ നിലവിലുള്ള നിയമങ്ങൾ അനുസരിച്ച് നിയന്ത്രിക്കപ്പെടും.</li>
+            <li>ഈ കരാറിൽ നിന്നുള്ള ഏത് തർക്കവും പരിഹരിക്കാൻ, ലൊക്കേഷനിലെ കോടതികൾക്ക് മാത്രം അധികാരമുണ്ടാകും.</li>
+            <li>പക്ഷങ്ങൾ ഈ കരാർ [ലൊക്കേഷൻ]ൽ രജിസ്റ്റർ ചെയ്യുമെന്ന് സമ്മതിക്കുന്നു.</li>
+            <li>വാടകക്കാരൻ/വാടകക്കാരി, സർക്കാരിനും കോർപ്പറേഷനിനും ബാധകമായ എസ്റ്റേറ്റ് നികുതികൾ വാടകദാതാവിന് നൽകും.</li>
+        </ol>
+    </div>
+    
+    
+    <div class="section" id="termination">
+        <h2>കരാർ റദ്ദാക്കൽ</h2>
+        <button class="edit-button" onclick="makeEditable('termination')">തിരുത്തുക</button>
+        <div class="editable-content">
+            <p>കരാർ ഏതെങ്കിലും പാർട്ടികൾക്ക്, വാടകകാലാവധി അവസാനിക്കുന്നതിനു മുമ്പ് {{ data["Other_Clauses"]["Termination_Notice_Period"] }} നോട്ടീസ് നൽകിച്ചൊതുക്കാം.</p>
+            <p>സ്ഥലം വാടകക്കാരൻ‌ ഒഴിപ്പിച്ചശേഷം മാത്രമേ അത് ഒഴിഞ്ഞതായി കണക്കാക്കപ്പെടൂ, സ്റ്റോറേജ് ഉൾപ്പെടെ എല്ലാ ഭാഗങ്ങളും വാടകക്കാരൻ‌ ഒഴിപ്പിക്കുകയും വാടകദാതാവ് വാടകക്കാരനോട് നൽകിയ പ്രോപ്പർട്ടി തിരികെ നൽകുകയും കീലുകൾ വാടകദാതാവിന് തിരിച്ചു നൽകുകയും വേണം.</p>
+        </div>
+    </div>
+    
+    
+    
+    <div class="section" id="extension">
+        <h2>വാടക കാലാവധി വിപുലീകരണം</h2>
+        <button class="edit-button" onclick="makeEditable('extension')">തിരുത്തുക</button>
+        <div class="editable-content">
+            <p>കരാർ പ്രകാരം പറഞ്ഞിരിക്കുന്ന കാലാവധിയുടെ അവസാനം, വാടക ഓട്ടോമാറ്റികമായി മാസാന്തരം അടിസ്ഥാനമാക്കി മാറും.</p>
+            <p>കരാർ റദ്ദാക്കിയാൽ, വാടകക്കാരൻ അല്ലെങ്കിൽ വാടകദാതാവ് മറ്റൊന്നിനെ കുറിച്ച് എഴുത്ത് അറിയിപ്പ് നൽകണം, കരാർ അവസാനിക്കുന്നതിന് കുറഞ്ഞത് {{ data["Other_Clauses"]["Termination_Notice_Period"] }} മുമ്പായി.</p>
+        </div>
+    </div>
+    
+
+<div class="signatures">
+    <h2>Signatures</h2>
+    <p>LESSOR</p>
+    <canvas id="lessor-signature-pad" class="signature-pad"></canvas>
+    <button onclick="clearSignature('lessor')">Clear</button>
+    <p>___________________________</p>
+    <p>Name: {{ data["Lessor_Information"]["Name"] }}</p>
+
+    <p>LESSEE</p>
+    <canvas id="lessee-signature-pad" class="signature-pad"></canvas>
+    <button onclick="clearSignature('lessee')">Clear</button>
+    <p>___________________________</p>
+    <p>Name: {{ data["Lessee_Information"]["Name"] }}</p>
+
+    <p>In the presence of Witnesses:</p>
+    <p>1) __________________________</p>
+    <p>2) _____________________________</p>
+</div>
+<div class="button-container">
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="window.print()">Print</button>
+    <button onclick="generatePDF()">Download PDF</button>
+    <button onclick="sendToWhatsApp()">Send to WhatsApp</button>
+    <button onclick="sendToEmail()">Send to Email</button>
+    <button onclick="downloadTextFile()">Download TXT</button>
+</div>
+
+
+<script>
+    // Firebase initialization
+
+</script>
+<script>
+     function setupSignaturePad(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext("2d");
+        let drawing = false;
+
+        canvas.addEventListener("mousedown", () => drawing = true);
+        canvas.addEventListener("mouseup", () => drawing = false);
+        canvas.addEventListener("mousemove", draw);
+
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "black";
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+
+        return {
+            clear: function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            },
+            getImage: function() {
+                return canvas.toDataURL("image/png");
+            }
+        };
+    }
+
+    // Initialize signature pads
+    const lessorPad = setupSignaturePad("lessor-signature-pad");
+    const lesseePad = setupSignaturePad("lessee-signature-pad");
+
+    function clearSignature(role) {
+        if (role === "lessor") lessorPad.clear();
+        if (role === "lessee") lesseePad.clear();
+    }
+    // Function to save data to localStorage
+    // Function to download the content as a PDF
+    function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    const content = document.body.innerHTML;  // Capture the full content
+    doc.html(content, {
+        callback: function (doc) {
+            doc.save('Lease_Agreement.pdf');
+        },
+        margin: [10, 10, 10, 10],  // You can adjust the margins
+    });
+}
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 2, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+function makeEditable(sectionId) {
+    let section = document.getElementById(sectionId);
+    let contentElement = section.querySelector(".editable-content");
+
+    if (!contentElement) return; // Ensure the element exists
+
+    let content = contentElement.innerText.trim(); // Preserve original text
+
+    // Apply modern styling to textarea and button
+    contentElement.innerHTML = `
+        <div class="editor-container">
+            <textarea class="styled-textarea">${content}</textarea>
+            <button class="save-button" onclick="saveEdit('${sectionId}')">✔ Save</button>
+        </div>
+    `;
+
+    // Auto-focus on the textarea
+    contentElement.querySelector("textarea").focus();
+}
+
+
+function saveEdit(sectionId) {
+    let section = document.getElementById(sectionId);
+    let textarea = section.querySelector(".editable-content textarea");
+
+    if (textarea) {
+        let contentElement = section.querySelector(".editable-content");
+        let text = textarea.value.trim();
+
+        // Clear content before reapplying the typing effect
+        contentElement.innerHTML = ""; 
+
+        // Restart typing effect with the updated text
+        setTimeout(() => {
+            typeEffect(contentElement, text, 10);
+        }, 100);
+    }
+}
+
+function typeEffect(element, text, speed = 20, callback) { // Reduced default speed
+    element.innerHTML = ""; // Clear existing content
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < text.length) {
+            element.innerHTML = text.substring(0, index + 1); // Add next character
+            
+            // Highlight occurrences of "Not provided"
+            element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                '<span style="color: red; font-weight: bold;">Not provided</span>'
+            );
+
+            index++;
+            setTimeout(typeCharacter, speed); // Faster animation
+        } else if (callback) {
+            callback(); // Execute callback when typing is done
+        }
+    }
+
+    typeCharacter();
+}
+
+function sendToWhatsApp() {
+    let text = getContentText(); // Get the document content
+    let encodedText = encodeURIComponent(text);
+    let whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, '_blank'); // Opens WhatsApp in a new tab
+}
+
+function sendToEmail() {
+    let text = getContentText(); // Get the document content
+    let subject = encodeURIComponent("Important Document");
+    let body = encodeURIComponent(text);
+    let mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL; // Opens default email client
+}
+
+function downloadTextFile() {
+    let text = getContentText(); // Get the document content
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "document.txt";
+    link.click();
+}
+
+function getContentText() {
+    // Modify this function to extract the correct text from your document
+    let content = document.querySelector(".editable-content");
+    return content ? content.innerText.trim() : "No content available.";
+}
+
+
+
+
+    </script>
+    
+</body>
+</html>

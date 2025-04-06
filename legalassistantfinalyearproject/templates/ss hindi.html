@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Lease Agreement</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+body {
+    font-family: 'Times New Roman', serif; /* Classic document font */
+    margin: 60px; /* Increased margin for a more spacious layout */
+    background-color: #ffffff; /* Pure white background */
+    color: #000000; /* True black text for contrast */
+    line-height: 2; /* Increased for better readability */
+    font-size: 20px; /* Larger default text size */
+}
+
+/* Document-style headings */
+h1 {
+    font-size: 36px; /* Larger, bold heading */
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Paragraph text */
+p {
+    font-size: 20px; /* Bigger text for readability */
+    text-align: justify; /* Justified text for a professional layout */
+    margin-bottom: 20px;
+}
+   .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        .edit-button {
+    float: right; /* Moves the button to the right */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Styling for the editor container */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modern textarea */
+.styled-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+    resize: none;
+}
+
+.styled-textarea:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/* Modern Save button */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #4A90E2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #357ABD;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button-container button:active {
+    transform: translateY(1px); /* Click effect */
+}
+
+.button-container button:nth-child(5) { background-color: #25D366; } /* WhatsApp Green */
+.button-container button:nth-child(6) { background-color: #FF5722; } /* Email Orange */
+.button-container button:nth-child(7) { background-color: #6c757d; } /* Gray for TXT Download */
+
+.button-container button:nth-child(5):hover { background-color: #1EBE5D; } /* WhatsApp */
+.button-container button:nth-child(6):hover { background-color: #E64A19; } /* Email */
+.button-container button:nth-child(7):hover { background-color: #5a6268; } /* TXT Download */
+
+    </style>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+ 
+     <!-- jsPDF Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>पट्टा समझौता</h1>
+    <button class="edit-button" onclick="makeEditable('lease-agreement')">திருத்தவும்</button>
+    <div class="section" id="lease-agreement">
+        <div class="editable-content">
+            <h2>यह वाणिज्यिक पट्टा समझौता {{ data["Effective_Date"] }} को संपन्न हुआ</h2>
+        </div>
+    </div>
+    
+    <div class="section" id="terms-of-lease">
+        <h2>पक्षकार</h2>
+        <button class="edit-button" onclick="makeEditable('terms-of-lease')">संपादित करें</button>
+        <p class="editable-content">
+            {{ data["Lessor_Information"]["Name"] }}, {{ data["Lessor_Information"]["Parents_Name"] }} के पुत्र, 
+            आयु {{ data["Lessor_Information"]["Age"] }} वर्ष, निवासी {{ data["Lessor_Information"]["Address"] }} 
+            (इसके बाद "पट्टेदार" कहा जाएगा, जो संदर्भ के अनुसार उसके वैध उत्तराधिकारी, निष्पादक, उत्तरवर्ती, प्रशासक, 
+            विधिक प्रतिनिधि और नियुक्त लोगों को शामिल करेगा) — प्रथम पक्ष।
+        </p>
+    </div>
+    
+    <div class="section" id="lessee-info">
+        <h2>तथा</h2>
+        <button class="edit-button" onclick="makeEditable('lessee-info')">संपादित करें</button>
+        <div class="editable-content">
+            <p>
+                {{ data["Lessee_Information"]["Name"] }}, {{ data["Lessee_Information"]["Parents_Name"] }} के पुत्र, 
+                आयु {{ data["Lessee_Information"]["Age"] }} वर्ष, निवासी {{ data["Lessee_Information"]["Address"] }} 
+                (इसके बाद "पट्टेदार" कहा जाएगा, जो संदर्भ के अनुसार उसके वैध उत्तराधिकारी, निष्पादक, उत्तरवर्ती, 
+                प्रशासक, विधिक प्रतिनिधि और नियुक्त लोगों को शामिल करेगा) — द्वितीय पक्ष।
+            </p>
+    
+            <p>
+                चूंकि, पट्टेदार {{ data['Property_Details']["Property_Number"] }} संख्या की संपत्ति का वैध स्वामी है, 
+                जो कि {{ data['Property_Details']["Country"] }}, {{ data['Property_Details']["Property_Location"] }}, 
+                {{ data['Property_Details']["Property_Location"]["City"] }} में स्थित है और उसका पिन कोड 
+                {{ data['Property_Details']["Pin_Code"] }} है (इसके बाद "पट्टाकृत परिसर" कहा जाएगा)।
+            </p>
+    
+            <p>
+                तथा चूंकि, पट्टेदार ने पट्टाकृत परिसर को किरायेदार को इस पट्टा विलेख में निर्धारित शर्तों और नियमों के अधीन 
+                किराये पर देने पर सहमति दी है, जिसमें सभी फिटिंग्स, फिक्सचर और फर्नीचर शामिल हैं, जैसा कि परिशिष्ट-I में 
+                पूर्ण रूप से वर्णित है, जो इस विलेख का अभिन्न अंग है।
+            </p>
+    
+            <p>
+                किरायेदार ने उपरोक्त पट्टाकृत परिसर को पट्टे पर लेने के लिए इस पट्टा विलेख में उल्लिखित शर्तों, नियमों 
+                और प्रावधानों के अधीन सहमति दी है।
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="lessee-infor">
+        <h2>पट्टे की शर्तें</h2>
+        <button class="edit-button" onclick="makeEditable('lessee-infor')">संपादित करें</button>
+        <p>अब यह दोनों पक्षों के बीच परस्पर सहमति से निम्नलिखित रूप में तय किया गया है:</p>
+        <div class="editable-content">
+            <ol>
+                <li>पट्टे की अवधि {{ data["Lease_Terms"]["Term_Duration"] }} की निश्चित अवधि के लिए होगी, जिसकी शुरुआत {{ data["Effective_Date"] }} से होगी।</li>
+                <li>यह पट्टा समझौता अंग्रेजी कैलेंडर माह के अनुसार होगा, और किरायेदार प्रत्येक माह की {{ data["Lease_Terms"]["Payment_Due_Date"] }} तारीख तक या उससे पहले उपरोक्त उल्लेखित मासिक पट्टा राशि ₹{{ data["Lease_Terms"]["Monthly_Lease_Amount"] }} नकद/चेक/ECS/बैंक ट्रांसफर के माध्यम से मालिक को अग्रिम में भुगतान करेगा।</li>
+            </ol>
+        </div>
+    </div>
+    
+
+    <div class="section" id="lease-section">
+        <h2>सुरक्षा जमा</h2>
+        <button class="edit-button" onclick="makeEditable('lease-section')">संपादित करें</button>
+        <div class="editable-content">
+            <p>इस समझौते के निष्पादन पर, किरायेदार पट्टेदार को ₹ 
+                <span data-key="Lease_Terms.Security_Deposit">{{ data["Lease_Terms"]["Security_Deposit"] }}</span>/- 
+                (रुपये <span data-key="Lease_Terms.Security_Deposit_in_words">{{ data["Lease_Terms"]["Security_Deposit_in_words"] }}</span> मात्र) 
+                की सुरक्षा राशि प्रदान करेगा, जो पट्टे की राशि के भुगतान और इस समझौते में उल्लिखित सभी दायित्वों के पालन के लिए गारंटी के रूप में रखी जाएगी।
+            </p>
+    
+            <p>यह सुरक्षा राशि, इस समझौते की शर्तों के पालन के उपरांत, परिसर के पूर्ण रूप से खाली होने के बाद {{ data["Other_Clauses"]["Conditions_for_Security_Deposit"] }} के भीतर किरायेदार को वापस कर दी जाएगी। यदि आवश्यक हो, तो पट्टेदार इस राशि से कोई भी वैध कटौती कर सकता है और यदि कटौती की गई राशि सुरक्षा राशि से अधिक हो, तो किरायेदार से शेष राशि वसूल सकता है, जो निम्नलिखित स्थितियों में हो सकती है:</p>
+    
+            <ul>
+                <li>कोई बकाया पट्टा राशि</li>
+                <li>सफाई का खर्च</li>
+                <li>चाबी बदलवाने का खर्च</li>
+                <li>परिसर या साझा क्षेत्रों को हुई क्षति की मरम्मत का खर्च (सामान्य घिसावट को छोड़कर)</li>
+                <li>इस समझौते की शर्तों के अंतर्गत वैध रूप से अनुमत कोई भी अन्य राशि</li>
+            </ul>
+    
+            <p>इन सभी कटौतियों का एक लिखित विवरण परिसर खाली करने की तारीख से 10 दिनों के भीतर किरायेदार को प्रदान किया जाएगा। यदि खर्च सुरक्षा राशि से अधिक हुआ तो किरायेदार को तत्काल शेष राशि पट्टेदार को भुगतान करनी होगी।</p>
+    
+            <h2>परिसर का अधिकार प्राप्त करना</h2>
+            <p>यदि किसी अपरिहार्य कारणवश पट्टेदार परिसर का कब्जा सौंपने में असमर्थ रहता है, तो पट्टेदार किसी भी रूप में उत्तरदायी नहीं होगा। इस स्थिति में यह समझौता अमान्य नहीं माना जाएगा और किरायेदार को परिसर के वास्तविक कब्जे से पहले कोई पट्टा राशि नहीं देनी होगी।</p>
+    
+            <p>यदि पट्टेदार, निर्धारित तिथि से 5 दिन के भीतर कब्जा देने में असमर्थ रहता है, तो किरायेदार एक लिखित सूचना देकर यह समझौता रद्द कर सकता है। ऐसी स्थिति में पट्टेदार को सभी राशि व सुरक्षा जमा को वापस करना होगा। हालांकि, यदि किरायेदार उक्त तिथि को परिसर का कब्जा नहीं लेता है, तो भी उसे तय तिथि पर पट्टा राशि चुकानी होगी।</p>
+        </div>
+    </div>
+    
+    <div class="section" id="duties-obligations">
+        <h2>कर्तव्य और दायित्व</h2>
+        <button class="edit-button" onclick="makeEditable('duties-obligations')">संपादित करें</button>
+        <ol class="editable-content">
+            <li>किरायेदार सहमत होता है कि वह पट्टे पर ली गई संपत्ति को बिना पट्टेदार की पूर्व लिखित अनुमति के किसी भी रूप में किसी अन्य व्यक्ति या संस्था को हस्तांतरित, उपपट्टे पर या सौंपेगा नहीं।</li>
+            <li>पट्टे पर ली गई संपत्ति कंपनी के पंजीकृत कार्यालय के रूप में उपयोग की जाएगी।</li>
+            <li>किरायेदार पट्टेदार की पूर्व लिखित सहमति के बिना संपत्ति में कोई भी भौतिक परिवर्तन या निर्माण नहीं करेगा।</li>
+            <li>किरायेदार परिसर में ऐसा कोई कार्य नहीं करेगा और न ही करने देगा जिससे पट्टेदार को असुविधा या परेशानी हो।</li>
+            <li>किरायेदार पट्टेदार को अपने सभी व्यापारिक कार्यों के लिए उत्तरदायी ठहराने से सहमत है, जिसमें कानूनी देयताएं, नगर पालिका कर, और अन्य प्रभार शामिल हैं।</li>
+            <li>किरायेदार परिसर में कोई भी खतरनाक, ज्वलनशील या विस्फोटक सामग्री नहीं लाएगा, सिवाय उन न्यूनतम मात्राओं के जिन्हें कानून द्वारा अनुमति दी गई है।</li>
+            <li>किरायेदार परिसर को अच्छी स्थिति में रखेगा और सभी सामान्य मरम्मत का खर्च स्वयं वहन करेगा।</li>
+        </ol>
+    </div>
+    
+    <div class="section" id="miscellaneous">
+        <h2>विविध</h2>
+        <button class="edit-button" onclick="makeEditable('miscellaneous')">संपादित करें</button>
+        <ol class="editable-content">
+            <li>इस समझौते की अन्य किसी भी शर्त के बावजूद, पट्टेदार को पट्टा अवधि के दौरान किसी भी समय इस समझौते को समाप्त करने का अधिकार होगा।</li>
+            <li>इस समझौते के प्रावधान भारत संघ में लागू कानूनों द्वारा नियंत्रित होंगे।</li>
+            <li>इस समझौते से उत्पन्न होने वाले विवादों का समाधान केवल [स्थान] के न्यायालयों के क्षेत्राधिकार में किया जाएगा।</li>
+            <li>पक्षकार सहमत हैं कि यह समझौता [स्थान] में पंजीकृत किया जाएगा।</li>
+            <li>पट्टेदार द्वारा पट्टाकृत परिसर पर देय संपत्ति कर सरकार और नगर निगम को किरायेदार द्वारा भुगतान किया जाएगा।</li>
+        </ol>
+    </div>
+    
+    <div class="section" id="termination">
+        <h2>समाप्ति</h2>
+        <button class="edit-button" onclick="makeEditable('termination')">संपादित करें</button>
+        <div class="editable-content">
+            <p>यह समझौता किसी भी पक्ष द्वारा, पट्टा अवधि की सहमत समाप्ति से पूर्व {{ data["Other_Clauses"]["Termination_Notice_Period"] }} पहले लिखित सूचना देकर समाप्त किया जा सकता है।</p>
+            <p>परिसर को खाली माना जाएगा जब किरायेदार द्वारा सभी क्षेत्र, जिसमें भंडारण भी शामिल है, पूरी तरह से खाली कर दिए जाएं और पट्टेदार द्वारा प्रदान की गई सभी संपत्तियाँ और चाबियाँ वापस कर दी जाएं।</p>
+        </div>
+    </div>
+    <div class="section" id="extension">
+        <h2>पट्टे का विस्तार</h2>
+        <button class="edit-button" onclick="makeEditable('extension')">संपादित करें</button>
+        <div class="editable-content">
+            <p>समझौते में उल्लिखित अवधि की समाप्ति पर, यह पट्टा स्वचालित रूप से माह-दर-माह आधार पर परिवर्तित हो जाएगा।</p>
+            <p>समाप्ति की स्थिति में, किरायेदार या पट्टेदार द्वारा दूसरे पक्ष को कम से कम {{ data["Other_Clauses"]["Termination_Notice_Period"] }} पहले एक लिखित सूचना देना अनिवार्य होगा।</p>
+        </div>
+    </div>
+    
+    <div class="signatures">
+        <h2>हस्ताक्षर</h2>
+        <p>पट्टेदार (LESSOR)</p>
+        <canvas id="lessor-signature-pad" class="signature-pad"></canvas>
+        <button onclick="clearSignature('lessor')">साफ करें</button>
+        <p>___________________________</p>
+        <p>नाम: {{ data["Lessor_Information"]["Name"] }}</p>
+    
+        <p>किरायेदार (LESSEE)</p>
+        <canvas id="lessee-signature-pad" class="signature-pad"></canvas>
+        <button onclick="clearSignature('lessee')">साफ करें</button>
+        <p>___________________________</p>
+        <p>नाम: {{ data["Lessee_Information"]["Name"] }}</p>
+    
+        <p>गवाहों की उपस्थिति में:</p>
+        <p>1) __________________________</p>
+        <p>2) _____________________________</p>
+    </div>
+    
+</div>
+<div class="button-container">
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="window.print()">Print</button>
+    <button onclick="generatePDF()">Download PDF</button>
+    <button onclick="sendToWhatsApp()">Send to WhatsApp</button>
+    <button onclick="sendToEmail()">Send to Email</button>
+    <button onclick="downloadTextFile()">Download TXT</button>
+</div>
+
+
+<script>
+    // Firebase initialization
+
+</script>
+<script>
+     function setupSignaturePad(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext("2d");
+        let drawing = false;
+
+        canvas.addEventListener("mousedown", () => drawing = true);
+        canvas.addEventListener("mouseup", () => drawing = false);
+        canvas.addEventListener("mousemove", draw);
+
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "black";
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+
+        return {
+            clear: function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            },
+            getImage: function() {
+                return canvas.toDataURL("image/png");
+            }
+        };
+    }
+
+    // Initialize signature pads
+    const lessorPad = setupSignaturePad("lessor-signature-pad");
+    const lesseePad = setupSignaturePad("lessee-signature-pad");
+
+    function clearSignature(role) {
+        if (role === "lessor") lessorPad.clear();
+        if (role === "lessee") lesseePad.clear();
+    }
+    // Function to save data to localStorage
+    // Function to download the content as a PDF
+    function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    const content = document.body.innerHTML;  // Capture the full content
+    doc.html(content, {
+        callback: function (doc) {
+            doc.save('Lease_Agreement.pdf');
+        },
+        margin: [10, 10, 10, 10],  // You can adjust the margins
+    });
+}
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 2, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+function makeEditable(sectionId) {
+    let section = document.getElementById(sectionId);
+    let contentElement = section.querySelector(".editable-content");
+
+    if (!contentElement) return; // Ensure the element exists
+
+    let content = contentElement.innerText.trim(); // Preserve original text
+
+    // Apply modern styling to textarea and button
+    contentElement.innerHTML = `
+        <div class="editor-container">
+            <textarea class="styled-textarea">${content}</textarea>
+            <button class="save-button" onclick="saveEdit('${sectionId}')">✔ Save</button>
+        </div>
+    `;
+
+    // Auto-focus on the textarea
+    contentElement.querySelector("textarea").focus();
+}
+
+
+function saveEdit(sectionId) {
+    let section = document.getElementById(sectionId);
+    let textarea = section.querySelector(".editable-content textarea");
+
+    if (textarea) {
+        let contentElement = section.querySelector(".editable-content");
+        let text = textarea.value.trim();
+
+        // Clear content before reapplying the typing effect
+        contentElement.innerHTML = ""; 
+
+        // Restart typing effect with the updated text
+        setTimeout(() => {
+            typeEffect(contentElement, text, 10);
+        }, 100);
+    }
+}
+
+function typeEffect(element, text, speed = 20, callback) { // Reduced default speed
+    element.innerHTML = ""; // Clear existing content
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < text.length) {
+            element.innerHTML = text.substring(0, index + 1); // Add next character
+            
+            // Highlight occurrences of "Not provided"
+            element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                '<span style="color: red; font-weight: bold;">Not provided</span>'
+            );
+
+            index++;
+            setTimeout(typeCharacter, speed); // Faster animation
+        } else if (callback) {
+            callback(); // Execute callback when typing is done
+        }
+    }
+
+    typeCharacter();
+}
+
+function sendToWhatsApp() {
+    let text = getContentText(); // Get the document content
+    let encodedText = encodeURIComponent(text);
+    let whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, '_blank'); // Opens WhatsApp in a new tab
+}
+
+function sendToEmail() {
+    let text = getContentText(); // Get the document content
+    let subject = encodeURIComponent("Important Document");
+    let body = encodeURIComponent(text);
+    let mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL; // Opens default email client
+}
+
+function downloadTextFile() {
+    let text = getContentText(); // Get the document content
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "document.txt";
+    link.click();
+}
+
+function getContentText() {
+    // Modify this function to extract the correct text from your document
+    let content = document.querySelector(".editable-content");
+    return content ? content.innerText.trim() : "No content available.";
+}
+
+
+
+
+    </script>
+    
+</body>
+</html>

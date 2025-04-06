@@ -1,0 +1,34 @@
+{
+    "Effective_Date": "வழங்கப்படவில்லை",
+    "Lessor_Information": {
+        "Name": "வழங்கப்படவில்லை",
+        "Parent's_Name": "வழங்கப்படவில்லை",
+        "Age": "வழங்கப்படவில்லை",
+        "Address": "வழங்கப்படவில்லை"
+    },
+    "Lessee_Information": {
+        "Name": "வழங்கப்படவில்லை",
+        "Parent's_Name": "வழங்கப்படவில்லை",
+        "Age": "வழங்கப்படவில்லை",
+        "Address": "வழங்கப்படவில்லை"
+    },
+    "Property_Details": {
+        "Property_Number": "வழங்கப்படவில்லை",
+        "Total_Area": "வழங்கப்படவில்லை",
+        "Property_Location": "வழங்கப்படவில்லை",
+        "Pin_Code": "வழங்கப்படவில்லை",
+        "Country": "வழங்கப்படவில்லை"
+    },
+    "Lease_Terms": {
+        "Term_Duration": "வழங்கப்படவில்லை",
+        "Monthly_Lease_Amount": "வழங்கப்படவில்லை",
+        "Security_Deposit": "வழங்கப்படவில்லை",
+        "Security_Deposit_in_words": "வழங்கப்படவில்லை",
+        "Payment_Due_Date": "வழங்கப்படவில்லை"
+    },
+    "Other_Clauses": {
+        "Late_Charges": "வழங்கப்படவில்லை",
+        "Conditions_for_Security_Deposit": "வழங்கப்படவில்லை",
+        "Termination_Notice_Period": "வழங்கப்படவில்லை"
+    }
+}

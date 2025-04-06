@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lease Agreement Generator</title>
+    <style>
+        /* Reset styling for full screen layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(135deg, #1c1c1c, #121212);
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            max-width: 100vw;
+            max-height: 100vh;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        /* Form section */
+        form {
+            flex: 1;
+            background: linear-gradient(135deg, #282828, #1f1f1f);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 2px solid #333;
+        }
+        form h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1db954;
+        }
+        textarea {
+            width: 100%;
+            height: 70%;
+            padding: 15px;
+            font-size: 14px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #2c2c2c;
+            color: #e0e0e0;
+            resize: none;
+            transition: all 0.3s ease-in-out;
+        }
+        textarea:focus {
+            border-color: #1db954;
+            background: #333;
+        }
+        input[type="submit"] {
+            background: #1db954;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        input[type="submit"]:hover {
+            background: #148c3a;
+            transform: scale(1.05);
+        }
+        .error {
+            color: #ff4d4d;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        /* Dashboard section */
+        .dashboard {
+            flex: 2;
+            background: linear-gradient(135deg, #1f1f1f, #282828);
+            padding: 20px;
+            overflow-y: auto;
+            border-left: 2px solid #333;
+        }
+        .dashboard h3 {
+            margin-bottom: 20px;
+            color: #1db954;
+            font-size: 20px;
+        }
+        .dashboard ul {
+            list-style: none;
+            padding: 0;
+        }
+        .dashboard li {
+            background: #282828;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+            transition: all 0.3s;
+        }
+        .dashboard li:hover {
+            background: #3a3a3a;
+            transform: translateX(5px);
+        }
+        .dashboard .delete-btn {
+            background: #870007;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .dashboard .delete-btn:hover {
+            background: #f65959;
+            transform: scale(1.1);
+        }
+        .dashboard .view-btn {
+            background: #1db954;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            margin-left: 80%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .dashboard .view-btn:hover {
+            background: #148c3a;
+            transform: scale(1.1);
+        }
+        /* Add glow effect to headings */
+        /* Dots animation like Gemini */
+/* Dots animation like Gemini */
+/* Apply shimmer only to text, not the whole box */
+.text-glitter {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-align: center;
+    animation: glitter 1.5s infinite alternate;
+}
+
+@keyframes glitter {
+    0% { opacity: 0.5; text-shadow: 0px 0px 5px #fff4c2, 0px 0px 10px #ffcc00; }
+    50% { opacity: 1; text-shadow: 0px 0px 10px #948c67, 0px 0px 20px #b7aa78; }
+    100% { opacity: 0.5; text-shadow: 0px 0px 5px #fff4c2, 0px 0px 10px #ffcc00; }
+}
+
+#loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        #loadingBox {
+            background: #1c1c1c;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    display: none; /* Initially hidden */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.upload-btn {
+            display: inline-block;
+            background-color: #03dac6;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Full-screen loading overlay -->
+
+    
+
+    <div class="container">
+        <!-- Input Form Section -->
+        <form id="leaseForm" action="/generate_pdf" method="POST">
+            <h2>Document Generator</h2>
+            <label class="upload-btn" for="pdfUpload">Upload PDF</label>
+        <input type="file" id="pdfUpload" accept="application/pdf">
+            <div id="shimmerEffectContainer"></div>
+            <textarea id="lease_details" name="lease_details" placeholder="Enter lease details here..." required></textarea>
+            
+            <div id="ai_suggestions" style="display:none; margin-top: 10px;">
+                <h4>AI Suggestions:</h4>
+                <p id="suggestedText"></p>
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+                <input type="submit" value="Generate PDF" id="generateBtn" style="margin-right: 10px;">
+                
+                <select id="languageSelect" name="language" style="padding: 8px; border-radius: 5px; background: #2c2c2c; color: #e0e0e0; border: 1px solid #444;">
+                    <option value="ta">Tamil</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ml">Malayalam</option>
+                    
+                    <option value="en" selected>English</option>
+                </select>
+                
+            </div>
+            <!-- Error message container -->
+            <div id="error-message" class="error" style="display: none; color: red; margin-top: 10px;">
+                Please enter lease details before submitting.
+            </div>
+        </form>
+        
+        
+        <div id="loadingOverlay">
+            <div id="loadingBox">
+                Generating PDF... <br>
+                <span id="loadingPercentage">1%</span>
+            </div>
+        </div>
+        <!-- Dashboard Section for previously generated documents -->
+        <div class="dashboard">
+            <h3>Previously Generated Documents</h3>
+            <div id="loader" class="loader"></div>
+            <ul id="documents-list">
+                <!-- This list will be populated dynamically -->
+            </ul>
+        </div>
+        <button id="suggestAiEdits" style="
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    background-color: #4CAF50; 
+    color: white; 
+    font-size: 14px; 
+    font-weight: bold; 
+    padding: 8px 12px; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    transition: all 0.3s ease-in-out; 
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+"
+onmouseover="this.style.backgroundColor='#45a049'; this.style.transform='scale(1.1)';"
+onmouseout="this.style.backgroundColor='#4CAF50'; this.style.transform='scale(1)';"
+onmousedown="this.style.backgroundColor='#3e8e41'; this.style.transform='scale(0.95)';"
+onmouseup="this.style.backgroundColor='#45a049'; this.style.transform='scale(1.1)';">
+    💡 AI Suggest
+</button>
+<button id="toggleGuidance" style="
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+    background-color: #007BFF; 
+    color: white; 
+    font-size: 14px; 
+    font-weight: bold; 
+    padding: 8px 12px; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    transition: all 0.3s ease-in-out; 
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+">
+    📜 Guidance
+</button>
+
+<!-- Guidance Section -->
+<div id="guidanceSection" style="
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 350px;
+    background: #222;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+    line-height: 1.5;
+    max-height: 300px; /* Set max height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+">
+
+    <!-- Close Button -->
+    <button id="closeGuidance" style="
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        background: transparent;
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    ">❌</button>
+
+    <h4 style="color: #1db954;">🔹 Lease Agreement Guide:</h4>
+    <ul>
+        <li><strong>1. Parties Involved:</strong> Mention the landlord & tenant.</li>
+        <li><strong>2. Property Details:</strong> Address & description.</li>
+        <li><strong>3. Lease Duration:</strong> Start & end dates.</li>
+        <li><strong>4. Rent Details:</strong> Amount, due date, late fees.</li>
+        <li><strong>5. Security Deposit:</strong> Amount & refund terms.</li>
+        <li><strong>6. Usage Rules:</strong> Allowed activities.</li>
+        <li><strong>7. Termination Clause:</strong> Notice period & penalties.</li>
+    </ul>
+
+    <h4 style="color: #1db954;">🔹 Contract Agreement Guide:</h4>
+    <ul>
+        <li><strong>1. Parties:</strong> Clearly define all parties involved.</li>
+        <li><strong>2. Agreement Purpose:</strong> What the contract is about.</li>
+        <li><strong>3. Terms & Conditions:</strong> Payment, deadlines, deliverables.</li>
+        <li><strong>4. Dispute Resolution:</strong> How conflicts are handled.</li>
+        <li><strong>5. Termination Clause:</strong> When the contract ends.</li>
+        <li><strong>6. Signatures:</strong> Ensure all parties sign.</li>
+    </ul>
+
+    <h4 style="color: #1db954;">🔹 Copyright Guide:</h4>
+    <ul>
+        <li><strong>1. What is Copyright?</strong> Legal protection for original work (e.g., writing, music, art, software).</li>
+        <li><strong>2. Copyright Ownership:</strong> The creator owns rights unless transferred by contract.</li>
+        <li><strong>3. Fair Use:</strong> Limited use allowed for criticism, education, research, etc.</li>
+        <li><strong>4. Infringement:</strong> Unauthorized use can result in legal action.</li>
+        <li><strong>5. Licensing Agreements:</strong> Grants permission to use copyrighted material under specified terms.</li>
+        <li><strong>6. Work for Hire:</strong> In employer-employee relationships, the employer may own the copyright.</li>
+        <li><strong>7. How to Register Copyright:</strong> Register through national copyright offices (e.g., U.S. Copyright Office).</li>
+        <li><strong>8. Copyright Duration:</strong> Usually lasts for the creator’s lifetime + 70 years.</li>
+    </ul>
+</div>
+
+        <script>
+            // Fetch documents on page load
+            document.addEventListener('DOMContentLoaded', function () {
+    const loader = document.getElementById('loader');
+    const documentsList = document.getElementById('documents-list');
+
+    loader.style.display = 'block'; // Show loader
+
+    fetch('/fetch_documents', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        loader.style.display = 'none'; // Hide loader after fetching
+        documentsList.innerHTML = ''; // Clear the list
+
+        if (data.documents) {
+            data.documents.forEach(doc => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <span>${doc.name}</span>
+                    <button class="view-btn" onclick="viewDocument('${doc.id}')">View</button>
+                    <button class="delete-btn" onclick="deleteDocument('${doc.id}', this)">Delete</button>
+                `;
+                documentsList.appendChild(listItem);
+            });
+        } else {
+            console.error('No documents found:', data);
+        }
+    })
+    .catch(error => {
+        loader.style.display = 'none'; // Hide loader on error
+        console.error('Error fetching documents:', error);
+    });
+});
+
+
+            function viewDocument(docId) {
+                window.location.href = `/view_document/${docId}`;
+            }
+            function deleteDocument(docId, button) {
+        if (confirm("Are you sure you want to delete this document?")) {
+            fetch(`/delete_document/${docId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Remove the deleted document from the UI
+                    button.parentElement.remove();
+                } else {
+                    alert("Failed to delete document.");
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting document:', error);
+            });
+        }
+    }
+    function applyLanguage() {
+        const selectedLanguage = document.getElementById("languageSelect").value;
+        localStorage.setItem("selectedLanguage", selectedLanguage);
+        alert("Language changed to: " + selectedLanguage);
+    }
+
+    // Load saved language on page load
+    document.addEventListener("DOMContentLoaded", function () {
+        const languageSelect = document.getElementById("languageSelect");
+
+// Load saved language or fallback to English
+const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+languageSelect.value = savedLanguage;
+
+// Update localStorage when user changes language
+languageSelect.addEventListener("change", function () {
+    localStorage.setItem("selectedLanguage", languageSelect.value);
+});
+    });
+
+  document.getElementById("suggestAiEdits").addEventListener("click", function () {
+    var leaseText = document.getElementById("lease_details").value.trim();
+    var button = document.getElementById("suggestAiEdits");
+    var leaseDetails = document.getElementById("lease_details");
+    var shimmerContainer = document.getElementById("shimmerEffectContainer");
+
+    if (!leaseText) {
+        alert("Please enter lease details first.");
+        return;
+    }
+
+    // Disable button & show loading text effect
+    button.disabled = true;
+    button.innerHTML = "Generating <span class='dots'></span>";
+
+    // Clear previous shimmer effect
+    shimmerContainer.innerHTML = "";
+
+    // Create shimmer effect
+    let shimmerSpan = document.createElement("div");
+    shimmerSpan.classList.add("text-glitter");
+    shimmerSpan.innerHTML = "✨ Generating AI Suggestions... ✨";
+    shimmerContainer.appendChild(shimmerSpan);
+
+    // Simulate AI processing delay (5 seconds)
+    setTimeout(() => {
+        fetch("/get_ai_suggestions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ lease_text: leaseText })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("KBDD")
+            if (data.corrected_text) {
+                // Remove shimmer effect and update textarea
+                console.log(data.corrected_text)
+                shimmerContainer.innerHTML = "";
+                leaseDetails.value = data.corrected_text;
+            } else {
+                alert("AI could not generate suggestions.");
+                shimmerContainer.innerHTML = ""; // Remove shimmer effect
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching AI suggestions:", error);
+            alert("Failed to get AI suggestions. Try again later.");
+        })
+        .finally(() => {
+            // Re-enable button & reset text
+            button.disabled = false;
+            button.innerHTML = "💡 AI Suggest";
+        });
+    }, 5000); // 5 seconds delay before AI response
+});
+
+
+document.getElementById("toggleGuidance").addEventListener("click", function () {
+        var guidanceSection = document.getElementById("guidanceSection");
+        guidanceSection.style.display = (guidanceSection.style.display === "none") ? "block" : "none";
+    });
+
+    document.getElementById("closeGuidance").addEventListener("click", function () {
+        document.getElementById("guidanceSection").style.display = "none";
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+    let form = document.getElementById("leaseForm");
+    let leaseDetails = document.getElementById("lease_details");
+    let errorMessage = document.getElementById("error-message");
+    let loadingOverlay = document.getElementById("loadingOverlay");
+    let percentageText = document.getElementById("loadingPercentage");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent immediate submission
+
+        // Check if lease details are entered
+        if (leaseDetails.value.trim() === "") {
+            errorMessage.style.display = "block";
+            return;
+        }
+
+        errorMessage.style.display = "none"; // Hide error message
+        loadingOverlay.style.display = "flex"; // Show loading screen
+
+        let percent = 1;
+        let totalTime = 5000; // 15 seconds
+        let intervalTime = totalTime / 100; // Time per percent update
+
+        let interval = setInterval(() => {
+            percentageText.innerText = percent + "%";
+            if (percent >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    loadingOverlay.style.display = "none"; // Hide overlay
+                    form.submit(); // Submit the form after animation
+                }, 500);
+            }
+            percent++;
+        }, intervalTime);
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('pdfUpload').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Log the contents of formData to the console
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
+            fetch('/extract_text', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Display extracted text in textarea
+                if (data && data.extracted_text) {
+                    document.getElementById('lease_details').value = data.extracted_text;
+                }
+            })
+            .catch(error => console.error('Error extracting text:', error));
+        }
+    });
+});
+
+        </script>
+
+    </div>
+</body>
+</html>

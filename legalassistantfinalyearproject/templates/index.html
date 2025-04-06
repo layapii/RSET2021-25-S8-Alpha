@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find an Advocate | Legal Directory</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        .advocate-container.dim-others .advocate-card {
+    filter: blur(2px) brightness(0.5);
+    transition: filter 0.3s ease;
+}
+
+.advocate-container.dim-others .advocate-card.hovered {
+    filter: none;
+}
+
+        :root {
+            --primary-color: #ff7a00; /* Bold Orange Accent */
+            --secondary-color: #f8c000; /* Gold Accent */
+            --background-color: #121212; /* Deep Black Background */
+            --card-bg: #1e1e1e; /* Dark Grey for Cards */
+            --text-color: #e6e6e6; /* Light Grey Text */
+            --input-bg: #333333; /* Dark Input Background */
+            --shadow-color: rgba(0, 0, 0, 0.2); /* Soft Shadow */
+            --button-hover-bg: #e16d00; /* Slightly Darker Hover */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns the content to the top */
+    height: auto; /* Removes the fixed height */
+    text-align: center;
+    width: 100%; /* Takes full width */
+}
+
+.container {
+    max-width: 100%; /* Ensures the container takes full width */
+    width: 100%;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px var(--shadow-color);
+    margin-top: 20px;
+}
+
+        h1 {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px var(--shadow-color);
+            margin-bottom: 30px;
+        }
+
+        input {
+            padding: 12px 20px;
+            background: var(--input-bg);
+            color: var(--text-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            width: 350px;
+        }
+
+        input::placeholder {
+            color: #888;
+        }
+
+        button {
+            padding: 14px 25px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--button-hover-bg);
+        }
+
+        .advocate-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .advocate-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            width: 350px;
+            box-shadow: 0px 10px 30px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .advocate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .advocate-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .advocate-card p {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .advocate-card p strong {
+            color: var(--secondary-color);
+        }
+
+        .no-results {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .reset-btn {
+            background-color: #6e6e6e;
+        }
+
+        .reset-btn:hover {
+            background-color: #505050;
+        }
+        .home-button {
+    display: inline-block;
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #666;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="/main" class="home-button">🏠 Home</a>
+
+        <h1>Find a Trusted Advocate</h1>
+        <p class="subtitle">Search for legal professionals based on location</p>
+
+        <form id="searchForm" action="/showadv" method="GET">
+            <div class="search-box">
+                <input type="text" id="locationInput" name="location" list="locationSuggestions" placeholder="Enter Location" value="{{ location }}">
+
+                <datalist id="locationSuggestions">
+                    {% for loc in location_list %}
+                      <option value="{{ loc }}">
+                    {% endfor %}
+                  </datalist>
+                  
+                <button type="submit">Search</button>
+                <button type="button" class="reset-btn" onclick="clearSearch()">Reset</button>
+            </div>
+        </form>
+
+        {% if advocates %}
+            <h3>Showing {{ advocates|length }} Advocates</h3>
+            <div class="advocate-container">
+                {% for adv in advocates %}
+                <div class="advocate-card">
+                    <h3>{{ adv[0] }}</h3>
+                    <p><strong>Location:</strong> {{ adv[1] }}</p>
+                    <p><strong>Contact:</strong> {{ adv[2] }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-results">No advocates found.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        function clearSearch() {
+            document.getElementById("locationInput").value = "";
+            window.location.href = "/showadv";
+        }
+    </script>
+<script>
+    const container = document.querySelector('.advocate-container');
+
+    container?.addEventListener('mouseover', (e) => {
+        if (e.target.closest('.advocate-card')) {
+            const cards = container.querySelectorAll('.advocate-card');
+            cards.forEach(card => card.classList.remove('hovered'));
+            e.target.closest('.advocate-card').classList.add('hovered');
+            container.classList.add('dim-others');
+        }
+    });
+
+    container?.addEventListener('mouseout', (e) => {
+        if (e.target.closest('.advocate-card')) {
+            container.classList.remove('dim-others');
+            const cards = container.querySelectorAll('.advocate-card');
+            cards.forEach(card => card.classList.remove('hovered'));
+        }
+    });
+</script>
+
+</body>
+</html>
