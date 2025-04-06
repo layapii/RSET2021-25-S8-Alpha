@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProteinMPNN Web Interface</title>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; margin: 0; }
+        body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    background: rgb(10, 10, 10); /* Change this to any color */
+}
+        nav {
+            background-color: #58595a;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        input, button { margin: 10px; padding: 10px; font-size: 16px; }
+        pre { background: #969595; padding: 10px; max-width: 1100px; margin: auto; text-align: left; border-radius: 5px; }
+        #viewer {
+            width: 600px;
+            height: 400px;
+            margin: auto;
+            border: 1px solid #fbfcf8;
+            position: relative;
+        }
+        #proteinVideo {
+        display: block;
+        margin: auto;
+        position: relative; /* Keeps it in place */
+        border-radius: 10px; /* Optional: Adds rounded corners */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow */
+    }
+    body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        h1, h2, p,h3 { 
+    color: white; /* Example for headings and paragraphs */
+}
+        h1 {
+            font-size: 80px;
+            font-weight: bold;
+        }
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        .alpha {
+            color: rgb(14, 129, 75);
+            display: inline-block;
+            transition: transform 1s, opacity 0.5s, text-shadow 0.5s;
+            animation: wave 3s infinite ease-in-out;
+        }
+        .alpha.glow {
+            text-shadow: 0 0 10px rgba(3, 126, 63, 0.8);
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .description {
+            font-size: 20px;
+            text-align: left;
+            max-width: 50%;
+            margin-left: 0;
+        }
+        
+        #proteinVideo {
+    display: block;
+    margin: auto;
+    width: 600px;
+    height: auto; /* Maintain aspect ratio */
+    border: none;
+    background: transparent;
+    box-shadow: none; /* Remove shadow if not needed */
+    border-radius: 0; /* Ensure no rounded corners if not desired */
+}
+#proteinViewer {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            width: 350px;
+            height: 400px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        #proteinViewer canvas {
+            background: none !important;
+            pointer-events: none;
+        }
+        h4 {
+        color: white;
+    }
+    </style>
+</head>
+<body>
+   
+
+  
+    <h1>Nip<span id="alpha" class="alpha">a</span>hFold</h1>
+    <div id="proteinViewer"></div>
+
+
+    <h2>Explore Protein Structure Like Never Before!</h2>
+    <div class="container">
+        <p class="description">Welcome to our Protein structure prediction website! This tool allows you to upload a PDB file, process it through ProteinMPNN, and generate optimized amino acid sequences. You can also visualize the 3D structure of your protein right here and see the accuracy .</p>
+    
+        <video id="proteinVideo" muted loop>
+            <source src="{{ url_for('static', filename='protein.mp4') }}" type="video/mp4">
+            
+        </video>
+    </div>
+   
+    <h2 id="upload">Upload PDB File for ProteinMPNN</h2>
+    <input type="file" id="fileInput" accept=".pdb">
+    
+    <button onclick="uploadFile()" style="background-color: rgb(14,129,75); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Run ProteinMPNN</button>
+
+    <p id="status"></p>
+    
+    <h3>Generated Amino Acid Sequence:</h3>
+    <pre id="sequenceOutput">No sequence yet</pre>
+    <br>
+   
+    <br>
+    <a id="structureLink" href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb/#scrollTo=33g5IIegij5R" target="_blank">
+        <button style="background-color: rgb(14,129,75); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        predict 3D Structure</button>
+    </a>
+    <br>
+    
+    <br>
+    
+    <input type="file" id="pdbUpload" accept=".pdb">
+    
+    <button onclick="loadStructure()" style="background-color: rgb(14,129,75); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">View 3D Structure</button>
+    
+    <h3>3D Protein Structure:</h3>
+    <div id="viewer"></div>
+    <br>
+    <h2>Protein Accuracy Evaluation</h2>
+    
+   
+    
+
+    <h4>Average pLDDT Score:</h4>
+    <p id="plddt">Loading...</p>
+
+    <h4>Confidence Level:</h4>
+    <p id="confidence">Loading...</p>
+
+    <button onclick="fetchAccuracy()">Check Accuracy</button>
+
+    
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const status = document.getElementById('status');
+            const sequenceOutput = document.getElementById('sequenceOutput');
+
+            if (!fileInput.files.length) {
+                alert("Please select a PDB file first.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append("file", file);
+
+            status.textContent = "Uploading and processing...";
+
+            fetch("/upload", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    status.textContent = "Error: " + data.error;
+                } else {
+                    status.textContent = "Processing complete!";
+                    sequenceOutput.textContent = data.sequence;
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                status.textContent = "Failed to process file.";
+            });
+        }
+
+        function loadStructure() {
+            const pdbUpload = document.getElementById('pdbUpload');
+            if (!pdbUpload.files.length) {
+                alert("Please upload a PDB file first.");
+                return;
+            }
+
+            const file = pdbUpload.files[0];
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const pdbData = event.target.result;
+                const viewerContainer = document.getElementById("viewer");
+                viewerContainer.innerHTML = ""; // Clear previous viewer
+                const viewer = $3Dmol.createViewer(viewerContainer, { backgroundColor: "black" });
+                viewer.addModel(pdbData, "pdb");
+                viewer.setStyle({}, { cartoon: { color: 'spectrum' } });
+                viewer.zoomTo();
+                viewer.render();
+            };
+            reader.readAsText(file);
+        }
+        const video = document.getElementById("proteinVideo");
+
+    video.addEventListener("mouseenter", () => {
+        video.play(); // Play when hovered
+    });
+
+    video.addEventListener("mouseleave", () => {
+        video.pause(); // Pause when mouse leaves
+        video.currentTime = 0; // Reset to the beginning
+    });
+    let toggle = true;
+        setInterval(() => {
+            const alphaElement = document.getElementById("alpha");
+            alphaElement.classList.add("glow");
+            alphaElement.style.opacity = "0";
+            alphaElement.style.transform = "scale(1.5)";  // Enlarges briefly
+            
+            setTimeout(() => {
+                alphaElement.textContent = toggle ? "α" : "a";
+                alphaElement.style.opacity = "1";
+                alphaElement.style.transform = "scale(1)"; // Back to normal
+                alphaElement.classList.remove("glow");
+                toggle = !toggle;
+            }, 300);
+        }, 3000);
+        document.addEventListener("DOMContentLoaded", function() {
+            let viewer = $3Dmol.createViewer("proteinViewer", { backgroundColor: "transparent"});
+            
+            // Load insulin PDB structure
+            let pdbUrl = "https://files.rcsb.org/download/4INS.pdb";
+            fetch(pdbUrl)
+                .then(response => response.text())
+                .then(pdbData => {
+                    viewer.addModel(pdbData, "pdb"); // Load the model
+                    viewer.setStyle({}, { cartoon: { color: 'spectrum' } });
+                    viewer.zoomTo();
+                    viewer.spin("y", 1); // Ensure it rotates along the Y-axis
+                    viewer.spin("x", 1); 
+                    
+                    viewer.render();
+                })
+                .catch(error => console.error("Failed to load PDB file:", error));
+        });
+        function fetchAccuracy() {
+            fetch('/evaluate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    predicted_pdb: "uploads/mpnn5.pdb"
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+               
+                
+                
+                document.getElementById("plddt").innerHTML = data.average_plddt;
+                document.getElementById("confidence").innerHTML = data.confidence;
+            })
+            .catch(error => {
+               
+
+                console.error(error);
+            });
+        }
+    </script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+</body>
+</html>
