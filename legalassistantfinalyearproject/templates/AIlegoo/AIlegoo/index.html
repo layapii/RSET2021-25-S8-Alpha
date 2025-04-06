@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Assistant Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e2e2e;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #FF6347;
+            margin-bottom: 20px;
+        }
+
+        .chat-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .user {
+            background-color: #FF6347;
+            margin-left: auto;
+            color: white;
+        }
+
+        .bot {
+            background-color: #1e1e1e;
+            color: white;
+        }
+
+        #input-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            width: 80%;  /* Reduced width of input area */
+        }
+
+        #user-input {
+            width: 85%;  /* Slightly smaller width for the input field */
+            padding: 10px;
+            background-color: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #send-button {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background-color: #FF4500;
+        }
+    </style>
+</head>
+<body>
+    <h1>Legal Assistant Chatbot</h1>
+    <div class="chat-container" id="chat-container">
+        <!-- Chat messages will appear here -->
+    </div>
+
+    <div id="input-area">
+        <input type="text" id="user-input" placeholder="Ask a legal question..." autocomplete="off" />
+        <button id="send-button">Send</button>
+    </div>
+
+    <script>
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+
+        function sendMessage() {
+            var userInput = document.getElementById('user-input').value;
+            if (userInput.trim() === '') return;
+
+            // Add user message to chat container
+            var chatContainer = document.getElementById('chat-container');
+            var userMessageElement = document.createElement('div');
+            userMessageElement.classList.add('message', 'user');
+            userMessageElement.textContent = userInput;
+            chatContainer.appendChild(userMessageElement);
+
+            // Clear input field
+            document.getElementById('user-input').value = '';
+
+            // Check for greetings
+            const greetings = ['hi', 'hey', 'hello', 'greetings', 'good morning', 'good evening', 'howdy'];
+            let reply = '';
+
+            // Simple greeting check
+            if (greetings.some(greeting => userInput.toLowerCase().includes(greeting))) {
+                reply = "Hello! How can I assist you with your legal scenario today? Please provide details about your case.";
+            } else {
+                // Send user message to backend (Flask) if not a greeting
+                fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ userMessage: userInput })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    var botReplyElement = document.createElement('div');
+                    botReplyElement.classList.add('message', 'bot');
+                    botReplyElement.innerHTML = data.reply;  // Use innerHTML to handle formatted HTML
+                    chatContainer.appendChild(botReplyElement);
+
+                    // Scroll to the latest message
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    var botReplyElement = document.createElement('div');
+                    botReplyElement.classList.add('message', 'bot');
+                    botReplyElement.textContent = "Sorry, I couldn't understand your message.";
+                    chatContainer.appendChild(botReplyElement);
+                });
+                return;  // End the function here if message is not a greeting
+            }
+
+            // Add bot reply for greetings
+            var botReplyElement = document.createElement('div');
+            botReplyElement.classList.add('message', 'bot');
+            botReplyElement.textContent = reply;
+            chatContainer.appendChild(botReplyElement);
+
+            // Scroll to the latest message
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Allow sending message via "Enter" key as well
+        document.getElementById('user-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

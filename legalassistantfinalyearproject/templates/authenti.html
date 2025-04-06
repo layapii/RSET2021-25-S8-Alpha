@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Legal Assistant - Authentication</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            width: 800px;
+            height: 500px;
+            background-color: #111;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+        }
+
+        .left-panel {
+            width: 50%;
+            padding: 40px;
+            background: linear-gradient(135deg, #333, #222);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .left-panel h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0 0 10px;
+            color: #fff;
+        }
+
+        .left-panel p {
+            font-size: 1em;
+            font-weight: 300;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .form-panel {
+            width: 50%;
+            padding: 40px;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-panel h2 {
+            font-size: 1.5em;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 0.9em;
+            color: #bbb;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #666;
+        }
+
+        .button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            font-weight: 500;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        .toggle-link {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>Welcome to AI Legal Assistant</h1>
+            <p>Empowering your legal journey with intelligent, seamless, and efficient solutions. Sign up or sign in to
+                get personalized assistance for all your legal needs.</p>
+        </div>
+
+        <div class="form-panel">
+            <h2 id="auth-title">Sign In</h2>
+            <form id="signin-form">
+                <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="button" id="signIna" class="button">Sign In</button>
+            </form>
+            <form id="signup-form" style="display: none;">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input type="text" id="pincode" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email ID</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <button type="button" class="button" id="signUpa">Sign Up</button>
+            </form>
+            <a class="toggle-link" onclick="toggleAuth()">Don't have an account? Sign Up</a>
+        </div>
+    </div>
+    <script>
+        function toggleAuth() {
+          const signinForm = document.getElementById('signin-form');
+          const signupForm = document.getElementById('signup-form');
+          const authTitle = document.getElementById('auth-title');
+          const toggleLink = document.querySelector('.toggle-link');
+      
+          if (signinForm.style.display === "none") {
+            signinForm.style.display = "block";
+            signupForm.style.display = "none";
+            authTitle.textContent = "Sign In";
+            toggleLink.textContent = "Don't have an account? Sign Up";
+          } else {
+            signinForm.style.display = "none";
+            signupForm.style.display = "block";
+            authTitle.textContent = "Sign Up";
+            toggleLink.textContent = "Already have an account? Sign In";
+          }
+        }
+      </script>
+    <script type="module">
+
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCcmVWGbaTeC2y7bRWOpaYywkO4x1YxQW8",
+  authDomain: "ailegalassistant-f48f5.firebaseapp.com",
+  databaseURL: "https://ailegalassistant-f48f5-default-rtdb.firebaseio.com",
+  projectId: "ailegalassistant-f48f5",
+  storageBucket: "ailegalassistant-f48f5.firebasestorage.app",
+  messagingSenderId: "275330427067",
+  appId: "1:275330427067:web:0e4106c186f2d6bb69e19e",
+  measurementId: "G-3LXKMYE3T2"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
+const auth = getAuth(app); 
+function validatePassword(password) {
+  const minLength = 8;
+  const hasUpperCase = /[A-Z]/.test(password);
+  const hasLowerCase = /[a-z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+  if (
+    password.length < minLength ||
+    !hasUpperCase ||
+    !hasLowerCase ||
+    !hasNumber ||
+    !hasSymbol
+  ) {
+    return false;
+  }
+  return true;
+}
+document.getElementById("signUpa").addEventListener("click", async function () {
+  const username = document.getElementById("username").value;
+  const address = document.getElementById("address").value;
+  const pincode = document.getElementById("pincode").value;
+  const email = document.getElementById("signup-email").value;
+  const password = document.getElementById("signup-password").value;
+
+  if (!username || !address || !pincode || !email || !password) {
+    alert("Please fill out all fields.");
+    return;
+  }
+
+  if (!validatePassword(password)) {
+    alert("Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character.");
+    return;
+  }
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    await sendEmailVerification(user);
+alert("Verification email sent. Please check your inbox and verify before signing in.");
+
+
+    await setDoc(doc(db, "users", user.uid), {
+      name: username,
+      email: email,
+      address: address,
+      uid: user.uid
+    });
+
+    alert("User registered successfully!");
+    location.reload();
+
+    console.log("User data stored in Firestore.");
+  } catch (error) {
+    console.error("Error:", error);
+    alert(`Error: ${error.message}`);
+  }
+});
+
+
+function sendAuthRequest(endpoint, data) {
+    console.log("xkvsd")
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+        
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+    console.error('Server Response:', data.message); // Log the server response
+    if (data) {
+        // If login is successful, redirect to the main page
+        console.log("Login successful:", data.message);
+        window.location.href = '/main'; // Example redirection
+    } else {
+        // If the backend indicates failure, show an alert with the message
+        console.error("Login failed:", data.message);
+        alert(data.message);  // Display error message from backend
+    }
+})
+    .catch(error => {
+        console.error("Error during authentication request:", error);
+        alert("An error occurred. Please try again.");
+    });
+}
+
+        
+
+        document.getElementById('signIna').addEventListener('click', (event) => {
+            event.preventDefault();
+            const data = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+            sendAuthRequest('/login', data);
+        });
+    </script>
+</body>
+
+</html>

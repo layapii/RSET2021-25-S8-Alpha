@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Lease Agreement</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+body {
+    font-family: 'Times New Roman', serif; /* Classic document font */
+    margin: 60px; /* Increased margin for a more spacious layout */
+    background-color: #ffffff; /* Pure white background */
+    color: #000000; /* True black text for contrast */
+    line-height: 2; /* Increased for better readability */
+    font-size: 20px; /* Larger default text size */
+}
+
+/* Document-style headings */
+h1 {
+    font-size: 36px; /* Larger, bold heading */
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Paragraph text */
+p {
+    font-size: 20px; /* Bigger text for readability */
+    text-align: justify; /* Justified text for a professional layout */
+    margin-bottom: 20px;
+}
+   .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        .edit-button {
+    float: right; /* Moves the button to the right */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Styling for the editor container */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modern textarea */
+.styled-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+    resize: none;
+}
+
+.styled-textarea:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/* Modern Save button */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #4A90E2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #357ABD;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button-container button:active {
+    transform: translateY(1px); /* Click effect */
+}
+
+.button-container button:nth-child(5) { background-color: #25D366; } /* WhatsApp Green */
+.button-container button:nth-child(6) { background-color: #FF5722; } /* Email Orange */
+.button-container button:nth-child(7) { background-color: #6c757d; } /* Gray for TXT Download */
+
+.button-container button:nth-child(5):hover { background-color: #1EBE5D; } /* WhatsApp */
+.button-container button:nth-child(6):hover { background-color: #E64A19; } /* Email */
+.button-container button:nth-child(7):hover { background-color: #5a6268; } /* TXT Download */
+
+    </style>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+ 
+     <!-- jsPDF Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <h1>வாடகை ஒப்பந்தம்    </h1>
+    <button class="edit-button" onclick="makeEditable('lease-agreement')">Edit</button>
+    <div class="section" id="lease-agreement">
+        <div class="editable-content">
+            <h2>இந்த வர்த்தக வாடகை ஒப்பந்தம் {{ data["Effective_Date"] }} அன்று செய்யப்பட்டதாகும்</h2>
+
+    </div>
+    
+
+</div>
+
+<div class="section" id="terms-of-lease">
+    <h2 >BY AND BETWEEN </h2><button class="edit-button" onclick="makeEditable('terms-of-lease')">Edit</button>
+    
+    <p class="editable-content">
+        {{ data["Lessor_Information"]["Name"] }}, {{ data["Lessor_Information"]["Parents_Name"] }} அவர்களின் மகன்,  
+        வயது {{ data["Lessor_Information"]["Age"] }}, தற்போது {{ data["Lessor_Information"]["Address"] }} இல் வசிப்பவர்  
+        (இதனிலிருந்து "வாடகையாளர்" என குறிப்பிடப்படுவார்; சூழ்நிலைக்கு எதிராக இல்லாவிட்டால்,  
+        இவர் மற்றும் அவரின் சட்ட வாரிசுகள், எழுத்தாளர்கள், வாரிசுகள், நிர்வாகிகள், சட்ட பிரதிநிதிகள் மற்றும்  
+        ஒப்பந்தத்தின்படி நியமிக்கப்படும் அனைவரையும் இதில் உள்ளடக்கியதாகக் கொள்ளப்படும்)  
+        முதலாவது பக்கம் என்பவராக செயலில் உள்ளார்.
+        
+    </p>
+</div>
+
+
+
+<div class="section" id="lessee-info">
+    <h2>மற்றொரு பக்கம்</h2>
+    <button class="edit-button" onclick="makeEditable('lessee-info')">திருத்து</button>
+    <div class="editable-content">
+        <p>
+            {{ data["Lessee_Information"]["Name"] }}, திரு. {{ data["Lessee_Information"]["Parents_Name"] }} அவர்களின் மகன், வயது {{ data["Lessee_Information"]["Age"] }}, இருப்பிடம் {{ data["Lessee_Information"]["Address"] }} (இத்துடன் “குத்தகையாளர்” என குறிப்பிடப்படுகிறார், இந்தச் சூழ்நிலைக்கு மாறாக இல்லாவிட்டால், அவரது சட்ட வாரிசுகள், செயற்பாட்டாளர்கள், பரம்பரை உரிமையாளர்கள், நிர்வாகிகள் மற்றும் சட்ட பிரதிநிதிகள் ஆகியவர்களை உள்ளடக்கும்), இரண்டாவது பக்கம்.
+        </p>
+
+        <p>
+            மேற்படி குத்தகையளிக்கையாளர் {{ data['Property_Details']["Property_Number"] }}, {{ data['Property_Details']["Country"] }}, {{ data['Property_Details']["Property_Location"] }}, {{ data['Property_Details']["Property_Location"]["City"] }} என்ற முகவரியில் உள்ள சிறப்பு இடத்தைச் சட்டப்படி சொந்தமாக வைத்துள்ளார், அத்துடன் அதன் அஞ்சல் குறியீடு {{ data['Property_Details']["Pin_Code"] }} (இனி "குத்தகைக்குட்பட்ட சொத்து" என அழைக்கப்படும்).
+        </p>
+
+        <p>
+            மேலும், மேலே குறிப்பிடப்பட்ட சொத்துகளை, அதற்குள் உள்ள அனைத்து பொருத்தல்கள், அமைப்புகள் மற்றும் மரபணு பொருட்கள் உட்பட, இந்த ஒப்பந்தத்தில் குறிப்பிடப்பட்ட விதிமுறைகள் மற்றும் நிபந்தனைகளுக்கு ஏற்ப, குத்தகையளிக்கையாளர் குத்தகையாளர் மீது குத்தகைக்கு வழங்க ஒப்புக்கொண்டுள்ளார். இவை அனைத்தும் Annexure-I-ல் விரிவாக குறிப்பிடப்பட்டுள்ளன மற்றும் இந்த ஒப்பந்தத்தின் ஒரு பகுதியாகக் கருதப்படும்.
+        </p>
+
+        <p>
+            மேலே கூறப்பட்ட விதிமுறைகள், நிபந்தனைகள் மற்றும் உடன்பாடுகளுக்கு உட்பட்டு, குத்தகையாளர் மேற்கண்ட சொத்துகளை குத்தகைக்கு எடுக்க ஒப்புக்கொண்டுள்ளார்.
+        </p>
+    </div>
+</div>
+
+<div class="section" id="lessee-infor">
+    <h2>குத்தகை விதிமுறைகள்</h2>
+    <button class="edit-button" onclick="makeEditable('lessee-infor')">திருத்து</button>
+    <p>இப்போது இரு தரப்பும் கீழ்க்கண்ட விதிமுறைகளுக்கு இணங்க ஒப்புக்கொள்கின்றனர்:</p>
+    <div class="editable-content">
+        <ol>
+            <li>இந்த குத்தகை ஒப்பந்தத்தின் கால அளவு {{ data["Lease_Terms"]["Term_Duration"] }} ஆகும், இது {{ data["Effective_Date"] }} முதல் தொடங்கும்.</li>
+            <li>இந்த ஒப்பந்தம் ஆங்கில நாட்காட்டியைப் பயன்படுத்தி கணக்கிடப்படும் மற்றும் மேலே குறிப்பிடப்பட்ட மாதாந்திர குத்தகை தொகையான {{ data["Lease_Terms"]["Monthly_Lease_Amount"] }} ஒவ்வொரு மாதமும் முன்பாக, ஒவ்வொரு மாதத்திற்கும் {{ data["Lease_Terms"]["Payment_Due_Date"] }} தேதிக்குள், பணமாகவோ / காசோலைவழியாகவோ / ECS-வழியாகவோ / வங்கிப் பரிமாற்றமாகவோ, சொத்து உரிமையாளருக்கு செலுத்த வேண்டும்.</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="section" id="lease-section">
+    <h2>பாதுகாப்பு வைப்பு (செக்யூரிட்டி டெப்பாசிட்)</h2>
+    <button class="edit-button" onclick="makeEditable('lease-section')">திருத்து</button>
+    <div class="editable-content">
+        <p>இந்த ஒப்பந்தம் நிறைவேற்றப்படும் போது, குத்தகையாளர், இந்த ஒப்பந்தத்தில் உள்ள அனைத்து கடமைகளை சரியாக பின்பற்றி குத்தகை தொகையை செலுத்துவதற்காக பாதுகாப்பாக வைத்திருக்க, குத்தகையளிக்கையாளருக்கு ரூ. 
+            <span data-key="Lease_Terms.Security_Deposit">{{ data["Lease_Terms"]["Security_Deposit"] }}</span>/-
+            (எழுத்தில் <span data-key="Lease_Terms.Security_Deposit_in_words">{{ data["Lease_Terms"]["Security_Deposit_in_words"] }}</span> மட்டும்) செலுத்த வேண்டும்.
+        </p>
+
+        <p>இந்த ஒப்பந்தத்தின் விதிமுறைகள் மற்றும் நிபந்தனைகளை பின்பற்றும் படி, முழு பாதுகாப்பு தொகையும், சொத்து முழுமையாக காலியாக்கப்பட்ட பிறகு, {{ data["Other_Clauses"]["Conditions_for_Security_Deposit"] }} இன் اندرுள் குத்தகையாளருக்கு திருப்பி வழங்கப்படும். தேவையானதாக இருப்பின், கீழ்காணும் விஷயங்களில் ஏதேனும் தவறுகள் ஏற்படின், பாதுகாப்பு தொகையிலிருந்து தேவையான தொகையை கழித்துப் பெறவும், தேவையை மீறினால் கூடுதல் தொகையை குத்தகையாளர் வழங்க வேண்டியிருக்கும்:</p>
+
+        <ul>
+            <li>செலுத்தப்படாத குத்தகை தொகை</li>
+            <li>சுத்தம் செய்யும் செலவுகள்</li>
+            <li>சாவி மாற்றும் செலவுகள்</li>
+            <li>சொத்து அல்லது பொதுப் பகுதிகளின் சேதங்களை சரிசெய்யும் செலவுகள், இயல்பான kulir wear and tear தவிர</li>
+            <li>இந்த ஒப்பந்தத்தின் அடிப்படையில் சட்டப்படி அனுமதிக்கப்படும் பிற எந்தவொரு செலவுகளும்</li>
+        </ul>
+
+        <p>மேலே குறிப்பிடப்பட்ட கட்டணங்களின் எழுத்துப்பூர்வ கணக்கீடு, இடம் காலியாக்கப்பட்ட 10 நாட்களுக்குள் குத்தகையாளருக்கு வழங்கப்படும். செலவுகள் வைப்பு தொகையை மீறினால், குத்தகையாளர் உடனடியாக அந்த கூடுதல் தொகையை குத்தகையளிக்கையாளருக்கு செலுத்த வேண்டும்.</p>
+
+        <h2>சொத்தினை கைப்பற்றும் உரிமை</h2>
+        <p>எந்தவொரு கட்டுப்பாட்டுக்கு அப்பாற்பட்ட காரணங்களால், குத்தகையளிக்கையாளர் சொத்தினை குத்தகையாளரிடம் வழங்க இயலவில்லை என்றால், அவர் பொறுப்பாளராக இருக்க மாட்டார். ஒப்பந்தம் தவறானதாகவோ, செல்லாததாகவோ கருதப்படாது, மேலும் குத்தகையாளர் குத்தகை தொகையை செலுத்த வேண்டிய கட்டாயமும் இல்லை, சொத்து உண்மையாக வழங்கப்படும் வரை.</p>
+
+        <p>ஒப்பந்தத்தில் குறிப்பிடப்பட்ட தொடக்க தேதிக்குப் பின் 5 நாட்களுக்குள் சொத்து வழங்கப்படவில்லை என்றால், குத்தகையாளர் எழுத்துப்பூர்வமாக அறிவித்து ஒப்பந்தத்தை ரத்து செய்யலாம். இந்த நிலையில், குத்தகையளிக்கையாளர் செலுத்தப்பட்ட அனைத்து தொகைகளையும் மற்றும் பாதுகாப்பு வைப்பினையும் திருப்பி வழங்க வேண்டும். இருப்பினும், குறிப்பிடப்பட்ட தேதியில் சொத்தினை குத்தகையாளர் ஏற்க முடியாமையால், அவர் குத்தகை தொகையை செலுத்த வேண்டிய கட்டாயத்திலிருந்து விடுவிக்கப்படமாட்டார்.</p>
+    </div>
+</div>
+
+<div class="section" id="duties-obligations">
+    <h2>வேலைகள் மற்றும் கடமைகள்</h2>
+    <button class="edit-button" onclick="makeEditable('duties-obligations')">திருத்து</button>
+    <ol class="editable-content">
+        <li>குத்தகையாளர், குத்தகைக்குட்பட்ட சொத்தினை முழுமையாகவோ அல்லது பகுதியளவாகவோ எந்தவொரு மூன்றாம் நபருக்கும் எழுத்துப்பூர்வ அனுமதி இல்லாமல் உபகுத்தகம், ஒப்படைப்பு அல்லது பரிமாற்றம் செய்யக்கூடாது என்பதை ஒப்புக்கொள்கிறார்.</li>
+        <li>குத்தகைக்குட்பட்ட சொத்தானது நிறுவனத்தின் பதிவுசெய்யப்பட்ட அலுவலகமாக பயன்படுத்தப்படும்.</li>
+        <li>குத்தகையாளர், எழுத்துப்பூர்வ அனுமதி இல்லாமல், குத்தகைக்குட்பட்ட சொத்திலோ அதனில் எந்தவொரு மாற்றங்களையோ மேற்கொள்ளக்கூடாது.</li>
+        <li>குத்தகையாளர், சொத்திற்குள் உள்ள இடத்தில் எவரும் இடையூறு அல்லது சஞ்சலத்தை ஏற்படுத்தக்கூடிய செயல்களில் ஈடுபடவோ அனுமதிக்கவோ கூடாது.</li>
+        <li>குத்தகையாளர் தனது வணிக நடவடிக்கைகளுக்காக (பொதுவாகவும், குறிப்பாகவும்) ஏற்படும் சட்டப்பூர்வக் கட்டணங்கள், மாநகராட்சித் தொகைகள் மற்றும் பிற கட்டணங்களுக்காக குத்தகையளிக்கையாளரை பாதுகாத்து நிலைநாட்ட ஒப்புக்கொள்கிறார்.</li>
+        <li>தீபத்தன்மை உள்ள பொருட்கள் அல்லது தீப்பிடிக்கும் பொருட்களை சட்டப்படி அனுமதிக்கப்படும் அளவுக்கு மிஞ்சாமல் மட்டுமே கொண்டு வரவேண்டும்; அதனைக் கடந்து கொண்டுவரக்கூடாது.</li>
+        <li>குத்தகையாளர் சொத்தினை நல்ல நிலையில் பராமரிக்க வேண்டும் மற்றும் சிறிய பழுதுகளை சரிசெய்யும் செலவுகளைத் தாம் மேற்கொள்ள வேண்டும்.</li>
+    </ol>
+</div>
+
+<div class="section" id="miscellaneous">
+    <h2>இதர விதிமுறைகள்</h2>
+    <button class="edit-button" onclick="makeEditable('miscellaneous')">திருத்து</button>
+    <ol class="editable-content">
+        <li>இந்த ஒப்பந்தத்தில் உள்ள பிற எந்தவொரு விதிமுறையையும் பொருட்படுத்தாமல், குத்தகையளிக்கையாளர், குத்தகை காலத்தின்போது எந்த நேரத்திலும் இந்த ஒப்பந்தத்தை முடிவுக்கு கொண்டு வர அதிகாரம் கொண்டிருப்பார்.</li>
+        <li>இந்த ஒப்பந்தத்தில் உள்ள விதிமுறைகள் இந்திய ஒன்றியத்தில் அமல்படுத்தப்படும் சட்டங்களின்படி நிர்வகிக்கப்படும்.</li>
+        <li>இந்த ஒப்பந்தத்தினால் எழும் விவாதங்களை தீர்க்க, [இடம்] இல் உள்ள நீதிமன்றங்களுக்கே தனிப்பட்ட அதிகாரம் உண்டு.</li>
+        <li>இந்த ஒப்பந்தம் [இடம்] இல் பதிவு செய்யப்படும் என இருபக்கமும் ஒப்புக்கொள்கின்றனர்.</li>
+        <li>குத்தகையாளர், உரிய அரசு மற்றும் மாநகராட்சிக்கான சொத்து வரிகளை, குறித்த சொத்திற்காக செலுத்த வேண்டும்.</li>
+    </ol>
+</div>
+
+<div class="section" id="termination">
+    <h2>ஒப்பந்த முடிவு</h2>
+    <button class="edit-button" onclick="makeEditable('termination')">திருத்து</button>
+    <div class="editable-content">
+        <p>இந்த ஒப்பந்தம், ஒப்பந்தத்தில் குறிப்பிடப்பட்டுள்ள குத்தகை கால அவகாசம் முடிவதற்கு முன், இரு தரப்பினரும் குறைந்தபட்சம் {{ data["Other_Clauses"]["Termination_Notice_Period"] }} முன்பாக எழுத்துப்பூர்வமாக அறிவிப்பதன் மூலம் முடிக்க முடியும்.</p>
+        <p>குத்தகையாளர், அனைத்து பகுதிகளையும் (சேமிப்பிடம் உட்பட) காலியாக்கி, சொத்துடன் வழங்கப்பட்ட சாவிகளையும் குத்தகையளிக்கையாளரிடம் திருப்பி வழங்கிய பிறகே, அந்த இடம் காலியாக்கப்பட்டதாக கருதப்படும்.</p>
+    </div>
+</div>
+
+<div class="section" id="extension">
+    <h2>குத்தகை நீட்டிப்பு</h2>
+    <button class="edit-button" onclick="makeEditable('extension')">திருத்து</button>
+    <div class="editable-content">
+        <p>இந்த ஒப்பந்தத்தில் குறிப்பிடப்பட்ட காலம் முடிந்ததும், குத்தகை ஒப்பந்தம் தானாகவே மாதந்தோறும் புதுப்பிக்கப்படும் வகையில் மாறும்.</p>
+        <p>ஒப்பந்த முடிவின் சந்தர்ப்பத்தில், இருவரும் (குத்தகையாளர் அல்லது குத்தகையளிக்கையாளர்) ஒப்பந்தத்தின் முடிவிற்கு குறைந்தபட்சம் {{ data["Other_Clauses"]["Termination_Notice_Period"] }} முன்பாக எழுத்துப்பூர்வமாக அறிவிக்க வேண்டும்.</p>
+    </div>
+</div>
+
+<div class="signatures">
+    <h2>கையொப்பங்கள்</h2>
+    <p>குத்தகையளிக்கையாளர் (LESSOR)</p>
+    <canvas id="lessor-signature-pad" class="signature-pad"></canvas>
+    <button onclick="clearSignature('lessor')">அழிக்கவும்</button>
+    <p>___________________________</p>
+    <p>பெயர்: {{ data["Lessor_Information"]["Name"] }}</p>
+
+    <p>குத்தகையாளர் (LESSEE)</p>
+    <canvas id="lessee-signature-pad" class="signature-pad"></canvas>
+    <button onclick="clearSignature('lessee')">அழிக்கவும்</button>
+    <p>___________________________</p>
+    <p>பெயர்: {{ data["Lessee_Information"]["Name"] }}</p>
+
+    <p>சாட்சியாளர்களின் முன்னிலையில்:</p>
+    <p>1) __________________________</p>
+    <p>2) _____________________________</p>
+</div>
+
+<div class="button-container">
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="window.print()">Print</button>
+    <button onclick="generatePDF()">Download PDF</button>
+    <button onclick="sendToWhatsApp()">Send to WhatsApp</button>
+    <button onclick="sendToEmail()">Send to Email</button>
+    <button onclick="downloadTextFile()">Download TXT</button>
+</div>
+
+
+<script>
+    // Firebase initialization
+
+</script>
+<script>
+     function setupSignaturePad(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext("2d");
+        let drawing = false;
+
+        canvas.addEventListener("mousedown", () => drawing = true);
+        canvas.addEventListener("mouseup", () => drawing = false);
+        canvas.addEventListener("mousemove", draw);
+
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "black";
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+
+        return {
+            clear: function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            },
+            getImage: function() {
+                return canvas.toDataURL("image/png");
+            }
+        };
+    }
+
+    // Initialize signature pads
+    const lessorPad = setupSignaturePad("lessor-signature-pad");
+    const lesseePad = setupSignaturePad("lessee-signature-pad");
+
+    function clearSignature(role) {
+        if (role === "lessor") lessorPad.clear();
+        if (role === "lessee") lesseePad.clear();
+    }
+    // Function to save data to localStorage
+    // Function to download the content as a PDF
+    function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    const content = document.body.innerHTML;  // Capture the full content
+    doc.html(content, {
+        callback: function (doc) {
+            doc.save('Lease_Agreement.pdf');
+        },
+        margin: [10, 10, 10, 10],  // You can adjust the margins
+    });
+}
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 2, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+function makeEditable(sectionId) {
+    let section = document.getElementById(sectionId);
+    let contentElement = section.querySelector(".editable-content");
+
+    if (!contentElement) return; // Ensure the element exists
+
+    let content = contentElement.innerText.trim(); // Preserve original text
+
+    // Apply modern styling to textarea and button
+    contentElement.innerHTML = `
+        <div class="editor-container">
+            <textarea class="styled-textarea">${content}</textarea>
+            <button class="save-button" onclick="saveEdit('${sectionId}')">✔ Save</button>
+        </div>
+    `;
+
+    // Auto-focus on the textarea
+    contentElement.querySelector("textarea").focus();
+}
+
+
+function saveEdit(sectionId) {
+    let section = document.getElementById(sectionId);
+    let textarea = section.querySelector(".editable-content textarea");
+
+    if (textarea) {
+        let contentElement = section.querySelector(".editable-content");
+        let text = textarea.value.trim();
+
+        // Clear content before reapplying the typing effect
+        contentElement.innerHTML = ""; 
+
+        // Restart typing effect with the updated text
+        setTimeout(() => {
+            typeEffect(contentElement, text, 10);
+        }, 100);
+    }
+}
+
+function typeEffect(element, text, speed = 20, callback) { // Reduced default speed
+    element.innerHTML = ""; // Clear existing content
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < text.length) {
+            element.innerHTML = text.substring(0, index + 1); // Add next character
+            
+            // Highlight occurrences of "Not provided"
+            element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                '<span style="color: red; font-weight: bold;">Not provided</span>'
+            );
+
+            index++;
+            setTimeout(typeCharacter, speed); // Faster animation
+        } else if (callback) {
+            callback(); // Execute callback when typing is done
+        }
+    }
+
+    typeCharacter();
+}
+
+function sendToWhatsApp() {
+    let text = getContentText(); // Get the document content
+    let encodedText = encodeURIComponent(text);
+    let whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, '_blank'); // Opens WhatsApp in a new tab
+}
+
+function sendToEmail() {
+    let text = getContentText(); // Get the document content
+    let subject = encodeURIComponent("Important Document");
+    let body = encodeURIComponent(text);
+    let mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL; // Opens default email client
+}
+
+function downloadTextFile() {
+    let text = getContentText(); // Get the document content
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "document.txt";
+    link.click();
+}
+
+function getContentText() {
+    // Modify this function to extract the correct text from your document
+    let content = document.querySelector(".editable-content");
+    return content ? content.innerText.trim() : "No content available.";
+}
+
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyright License Agreement</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+body {
+    font-family: 'Times New Roman', serif; /* Classic document font */
+    margin: 60px; /* Increased margin for a more spacious layout */
+    background-color: #ffffff; /* Pure white background */
+    color: #000000; /* True black text for contrast */
+    line-height: 2; /* Increased for better readability */
+    font-size: 20px; /* Larger default text size */
+}
+
+/* Document-style headings */
+h1 {
+    font-size: 36px; /* Larger, bold heading */
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Paragraph text */
+p {
+    font-size: 20px; /* Bigger text for readability */
+    text-align: justify; /* Justified text for a professional layout */
+    margin-bottom: 20px;
+}
+   .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        .edit-button {
+    float: right; /* Moves the button to the right */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Styling for the editor container */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modern textarea */
+.styled-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+    resize: none;
+}
+
+.styled-textarea:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/* Modern Save button */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #4A90E2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #357ABD;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button-container button:active {
+    transform: translateY(1px); /* Click effect */
+}
+
+.button-container button:nth-child(5) { background-color: #25D366; } /* WhatsApp Green */
+.button-container button:nth-child(6) { background-color: #FF5722; } /* Email Orange */
+.button-container button:nth-child(7) { background-color: #6c757d; } /* Gray for TXT Download */
+
+.button-container button:nth-child(5):hover { background-color: #1EBE5D; } /* WhatsApp */
+.button-container button:nth-child(6):hover { background-color: #E64A19; } /* Email */
+.button-container button:nth-child(7):hover { background-color: #5a6268; } /* TXT Download */
+
+    </style>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+ 
+     <!-- jsPDF Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <h1>अनुबंध समझौता</h1>
+
+    <div class="section" id="agreementSection">
+        <button class="edit-button" onclick="makeEditable('agreementSection')">संपादित करें</button>
+        <p class="editable-content" contenteditable="false">
+            यह समझौता {{ data.get("Effective Date", "कोई प्रभावी तिथि उपलब्ध नहीं") }} दिनांक को {{ data["Parties_Involved"]["First_Party"]["Name"] }} और {{ data["Parties_Involved"]["Second_Party"]["Name"] }} के बीच किया गया है, 
+            जो कि कंपनी अधिनियम के अनुसार गठित और अस्तित्व में है तथा जिसका पंजीकृत कार्यालय है, 
+            श्रीमान {{ data["Parties_Involved"]["First_Party"]["Name"] }} के माध्यम से (जिसे आगे “प्रथम पक्ष” कहा जाएगा) 
+            जो कि इसके उत्तराधिकारी और प्रतिनिधियों को शामिल करता है, प्रथम पक्ष के रूप में।
+            तथा एक कंपनी जो कंपनी अधिनियम के अनुसार गठित और अस्तित्व में है, और जिसका पंजीकृत कार्यालय है, कंपनी के श्रीमान के माध्यम से (जिसे आगे “द्वितीय पक्ष” कहा जाएगा) जो कि इसके उत्तराधिकारी और प्रतिनिधियों को शामिल करता है, द्वितीय पक्ष के रूप में।  
+            जबकि  
+            प्रारंभ में ही यह स्पष्ट रूप से समझा और सहमति दी जाती है कि निम्नलिखित सिद्धांत लागू होंगे जब तक कि संदर्भ अन्यथा आवश्यक न हो: 
+            <ul>
+                <li>एकवचन बहुवचन को और इसके विपरीत शामिल करता है।</li>
+                <li>एक लिंग सभी लिंगों को शामिल करता है।</li>
+                <li>जहां किसी शब्द या वाक्यांश को कोई विशेष अर्थ दिया गया है, उस शब्द या वाक्यांश के अन्य व्याकरणिक रूपों का वही अर्थ होगा।</li>
+                <li>यदि इस समझौते द्वारा किसी राशि के भुगतान के लिए कोई दिन रविवार या अन्य आधिकारिक बैंक अवकाश पड़ता है, तो वह अगला कार्य दिवस माना जाएगा।</li>
+            </ul>
+        </p>
+    </div>
+    
+    <div class="section" id="rightsObligations">
+        <h2>दोनों पक्षों के अधिकार और दायित्व</h2>
+        <button class="edit-button" onclick="makeEditable('rightsObligations')">संपादित करें</button>
+        <ol class="editable-content" contenteditable="false">
+            <li>{{ data["Parties_Involved"]["Second_Party"]["Name"] }} सहमत है कि वह {{ data["Parties_Involved"]["Second_Party"]["Name"] }} द्वारा सौंपी गई जिम्मेदारियों को संतोषजनक रूप से पूरा करेगा।</li>
+            <li>कार्मिक आवश्यकता में सात दिन की सूचना पर वृद्धि या कमी की जा सकती है और {{ data["Parties_Involved"]["Second_Party"]["Name"] }} को उसके अनुसार जनशक्ति प्रदान करनी होगी।</li>
+            <li>{{ data["Parties_Involved"]["Second_Party"]["Name"] }} प्रथम पक्ष के परिसर में एक पंजी, जिसमें कर्मियों की जानकारी, तस्वीरें, नाम और पते होंगे, बनाए रखेगा।</li>
+            <li>प्रथम पक्ष भारत में किसी अन्य स्थान पर {{ data["Parties_Involved"]["Second_Party"]["Name"] }} की सेवाएं मांग सकता है, पूर्व सूचना के साथ।</li>
+            <li>यदि {{ data["Parties_Involved"]["Second_Party"]["Name"] }} की कार्यबल की कोई जानकारी झूठी या भ्रामक पाई जाती है, तो इसके सभी परिणामों के लिए द्वितीय पक्ष जिम्मेदार होगा।</li>
+            <li>प्रथम पक्ष द्वारा अधिकृत कर्मचारियों द्वारा द्वितीय पक्ष के सभी स्टाफ की सुरक्षा जांच की जा सकती है।</li>
+            <li>{{ data["Parties_Involved"]["Second_Party"]["Name"] }} अपने कर्मचारियों को प्रथम पक्ष के परिसर तक लाने की जिम्मेदारी लेगा।</li>
+            <li>{{ data["Parties_Involved"]["Second_Party"]["Name"] }} अपने नाम, पता, व्यवसाय, स्वामित्व या स्थिति में किसी भी बदलाव की सूचना प्रथम पक्ष को लिखित में देगा।</li>
+            <li>पक्षों के बीच संबंध एक प्रमुख-से-प्रमुख आधार पर है और यह नियोक्ता-कर्मचारी संबंध नहीं है।</li>
+            <li>{{ data["Parties_Involved"]["Second_Party"]["Name"] }} द्वारा लापरवाही या कदाचार के कारण प्रथम पक्ष को हुई किसी भी क्षति के लिए द्वितीय पक्ष उत्तरदायी होगा।</li>
+            <li>दोनों पक्ष पुष्टि करते हैं कि वे इस समझौते में प्रवेश करने के लिए अधिकृत हैं और उनके हस्ताक्षरकर्ता वैध रूप से अधिकृत हैं।</li>
+            <li>{{ data["Parties_Involved"]["Second_Party"]["Name"] }} इस समझौते की अवधि के दौरान और बाद में प्रथम पक्ष से प्राप्त किसी भी जानकारी की गोपनीयता बनाए रखेगा, जब तक कि कानून द्वारा आवश्यक न हो।</li>
+        </ol>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>पर्यवेक्षण</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <ul>
+                <li>द्वितीय पक्ष अपने कर्मचारियों के समुचित नियंत्रण और कार्य निष्पादन हेतु पर्यवेक्षण की व्यवस्था करेगा।</li>
+                <li>द्वितीय पक्ष प्रथम पक्ष को एक या अधिक उत्तरदायी पर्यवेक्षकों/प्रतिनिधियों के नाम, पते और संपर्क नंबर सूचित करेगा।</li>
+                <li>द्वितीय पक्ष यह सुनिश्चित करेगा कि उसका कम से कम एक प्रतिनिधि प्रतिदिन प्रथम पक्ष के अधिकारियों से मिले, नियमित संवाद बनाए रखे और आवश्यक जानकारी प्राप्त/प्रदान करे।</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>नियोक्ता-कर्मचारी संबंध</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <p><strong>i.</strong> द्वितीय पक्ष, अपने कर्मचारियों का नियोक्ता होने के नाते, उन्हें नियुक्त करने या हटाने का एकमात्र अधिकार रखता है। प्रथम पक्ष को किसी भी परिस्थिति में इन कर्मचारियों का नियोक्ता नहीं माना जाएगा और वह किसी भी दावे के लिए जिम्मेदार नहीं होगा।</p>
+            <p><strong>ii.</strong> द्वितीय पक्ष को अपने कर्मचारियों के खिलाफ अनुशासनात्मक कार्रवाई करने का अधिकार होगा, जबकि इन कर्मचारियों को प्रथम पक्ष के खिलाफ कोई विवाद या दावा उठाने का अधिकार नहीं होगा।</p>
+            <p><strong>iii.</strong> यदि द्वितीय पक्ष के कर्मचारी कोई विवाद, मांग या दावा करते हैं, तो वह केवल द्वितीय पक्ष के खिलाफ होगा। यदि प्रथम पक्ष को किसी कानूनी या विधिक कारणों से भुगतान करना पड़ा, तो द्वितीय पक्ष उसे पूरी तरह से प्रतिपूर्ति करेगा और यदि कोई मुकदमा होता है तो वह स्वयं उपस्थित होकर उसे निपटाएगा।</p>
+        </div>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>दुर्घटना या अप्रत्याशित घटना</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <p><strong>i.</strong> यदि किसी कर्मचारी को कोई दुर्घटना, विकलांगता या मृत्यु होती है, तो द्वितीय पक्ष तुरंत और निःशुल्क चिकित्सीय सहायता सुनिश्चित करेगा। यदि प्रथम पक्ष द्वारा कोई खर्च वहन किया गया, तो वह इसे द्वितीय पक्ष से वसूल सकता है।</p>
+            <p><strong>ii.</strong> किसी अप्रत्याशित घटना की स्थिति में जो प्रथम पक्ष के हितों को प्रभावित कर सकती है, प्रथम पक्ष को यह अधिकार होगा कि वह द्वितीय पक्ष के कर्मचारियों से पूछताछ कर सके।</p>
+            <p><strong>iii.</strong> यदि यह पाया जाता है कि कोई कर्मचारी किसी चोरी, तोड़फोड़, आगजनी, हिंसा या अन्य घटनाओं में शामिल है, तो प्रथम पक्ष उसके खिलाफ और द्वितीय पक्ष के खिलाफ भी कानूनी कार्रवाई कर सकता है।</p>
+        </div>
+    </div>
+    <div class="section" id="supervision">
+        <h2>प्रदर्शन</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> दूसरा पक्ष पहले पक्ष की संतुष्टि के अनुसार कार्य निष्पादन करेगा। यदि प्रदर्शन असंतोषजनक पाया जाता है, तो पहले पक्ष को अनुबंध को तुरंत समाप्त करने का अधिकार होगा और दूसरा पक्ष इसके लिए कोई दावा/आपत्ति/विरोध नहीं करेगा। ऐसे मामले में, दूसरे पक्ष के कार्यबल को किए गए कानूनी भुगतान, यदि कोई हो, को पूरी तरह से दूसरे पक्ष से वसूला जाएगा।
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="licensesCompliance">
+        <h2>लाइसेंस और वैधानिक अनुपालन</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> दूसरा पक्ष ही श्रम कानूनों (समय-समय पर संशोधित) का पूरी तरह से अनुपालन सुनिश्चित करने के लिए जिम्मेदार होगा, जो उसके द्वारा या उसके माध्यम से नियुक्त व्यक्तियों पर लागू होंगे। न्यूनतम वेतन संबंधित राज्य सरकार की अधिसूचनाओं के अनुसार लागू होगा।
+            </p>
+            <p>
+                <strong>ii.</strong> दूसरा पक्ष सभी आवश्यक रिकॉर्ड, दस्तावेज़, रिटर्न, रजिस्टर, नोटिस आदि को समय पर और प्रासंगिक श्रम कानूनों के अनुसार तैयार, बनाए और संबंधित प्राधिकारी को जमा करेगा और पहले पक्ष या किसी भी निरीक्षण प्राधिकारी की मांग पर प्रस्तुत करेगा। किसी भी उल्लंघन की स्थिति में, दूसरा पक्ष ही पूरी तरह से जिम्मेदार होगा।
+            </p>
+            <p>
+                <strong>iii.</strong> दूसरा पक्ष न्यूनतम वेतन अधिनियम के अनुसार संपूर्ण वेतन का भुगतान करेगा और PF और ESI का योगदान भी समय पर जमा करेगा तथा उसकी रसीद पहले पक्ष को सौंपेगा। यदि ऐसा नहीं किया गया, तो पहले पक्ष उसका भुगतान रोक सकता है और बिना किसी सूचना के समझौता समाप्त कर सकता है।
+            </p>
+            <p>
+                <strong>iv.</strong> दूसरा पक्ष इस समझौते की अवधि के दौरान सभी आवश्यक अनुमति, स्वीकृति, लाइसेंस प्राप्त करेगा और सभी आवश्यक करों का भुगतान करेगा।
+            </p>
+            <p>
+                <strong>v.</strong> दूसरा पक्ष अपने कर्मचारियों की नियुक्ति, सेवा की शर्तें, कल्याण योजनाएं, अनुशासनात्मक कार्रवाई, शिकायत निवारण, स्थानांतरण, पदोन्नति, वेतन, भत्ते, छुट्टियां, लाभ आदि को नियंत्रित करेगा। पहले पक्ष का इनमें कोई हस्तक्षेप नहीं होगा।
+            </p>
+            <p>
+                <strong>vi.</strong> दूसरा पक्ष अपने कर्मचारियों के वेतन/वेतन का भुगतान हर महीने की 7 तारीख तक करेगा। पहला पक्ष वेतन वितरण की निगरानी करेगा। सेवानिवृत्ति लाभ, नोटिस वेतन, ग्रेच्युटी या बोनस के लिए दूसरा पक्ष जिम्मेदार होगा।
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="submissionDocuments">
+        <h2>दस्तावेजों का प्रस्तुतिकरण</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> दूसरा पक्ष ………………………. की प्रमाणित प्रतियाँ प्रस्तुत करेगा।
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="performance">
+        <h2>प्रदर्शन</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> किसी दुर्घटना, चोट या मृत्यु की स्थिति में, जो दूसरे पक्ष के कर्मचारियों के साथ हो, पहले पक्ष की कोई जिम्मेदारी नहीं होगी और सभी दायित्व दूसरे पक्ष के होंगे।
+            </p>
+            <p>
+                <strong>i.</strong> समझौते की अवधि या उसके नवीनीकरण के दौरान, दूसरा पक्ष सभी लागू नियमों और कानूनों का पालन करेगा। किसी भी उल्लंघन की स्थिति में, यदि पहले पक्ष को जिम्मेदार ठहराया जाता है, तो दूसरा पक्ष उसे सभी खर्चों और हानि से मुक्त रखेगा।
+            </p>
+            <p>
+                <strong>ii.</strong> दूसरा पक्ष पहले पक्ष और उसके अधिकारियों को किसी भी प्रकार के दावे, कार्यवाही, हानि आदि से सुरक्षित रखेगा यदि वे उसके व्यवसाय संचालन या किसी उल्लंघन के कारण उत्पन्न हुए हों।
+            </p>
+            <p>
+                <strong>iii.</strong> दूसरा पक्ष ही दुर्घटनाओं, चोटों और उससे उत्पन्न किसी भी प्रकार के दावे के लिए जिम्मेदार होगा।
+            </p>
+            <p>
+                <strong>iv.</strong> यदि पहले पक्ष की संपत्ति को क्षति होती है या किसी व्यक्ति को चोट या मृत्यु होती है, तो इसकी पूर्ण जिम्मेदारी दूसरे पक्ष की होगी और वह पहले पक्ष को पूर्ण क्षतिपूर्ति करेगा।
+            </p>
+            <p>
+                <strong>iii.</strong> यदि समझौते की किसी भी शर्त का पालन नहीं होता है या दूसरा पक्ष कोई गलत कार्य करता है, तो इसके कारण होने वाले सभी नुकसान, लागत, कानूनी कार्यवाही आदि के लिए वह जिम्मेदार होगा।
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>देयता</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> यदि दूसरे पक्ष के कर्मचारियों की किसी भी गलती/लापरवाही के कारण पहले पक्ष को कोई नुकसान होता है, तो दूसरा पक्ष या तो वस्तु की भरपाई करेगा या नुकसान की क्षतिपूर्ति करेगा।
+            </p>
+            <p>
+                <strong>ii.</strong> किसी भी तृतीय पक्ष को हुई क्षति या चोट के लिए केवल दूसरा पक्ष ही जिम्मेदार होगा।
+            </p>
+            <p>
+                <strong>iii.</strong> यदि दूसरे पक्ष के कर्मचारियों के संबंध में कोई देयता उत्पन्न होती है, तो दूसरा पक्ष उस पूरी हानि की भरपाई पहले पक्ष को करेगा और यदि आवश्यक हो तो उसके बिलों से राशि समायोजित की जा सकती है।
+            </p>
+        </div>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>वैधता</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">संपादित करें</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">सहेजें</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> यह समझौता प्रारंभ में …………….. से ………………. तक वैध रहेगा जिसे दोनों पक्षों की सहमति से आगे बढ़ाया जा सकता है।
+            </p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>प्रतिस्थापन</h2>
+        <p>
+            दूसरा पक्ष यह सुनिश्चित करेगा कि उसके कर्मचारियों का आचरण, व्यवहार, चरित्र ठीक हो। पहले पक्ष के कहने पर वह किसी भी कर्मचारी को 24 घंटे के भीतर बदलने को बाध्य होगा।
+        </p>
+    </div>
+    
+    <div class="section">
+        <p>निम्नलिखित हस्ताक्षरों से यह समझौता प्रभावी होता है जैसा कि ऊपर दिनांकित है।</p>
+    </div>
+    
+    <div class="signatures">
+        <h2>हस्ताक्षर</h2>
+        <p>गवाहों की उपस्थिति में:</p>
+        <p>1) __________________________</p>
+        <p>2) _____________________________</p>
+    </div>
+    
+<div class="button-container">
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="window.print()">Print</button>
+    <button onclick="generatePDF()">Download PDF</button>
+</div>
+
+<script>
+    // Firebase initialization
+
+</script>
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 2, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+function makeEditable(sectionId) {
+    let section = document.getElementById(sectionId);
+    let contentElement = section.querySelector(".editable-content");
+
+    if (!contentElement) return; // Ensure the element exists
+
+    let content = contentElement.innerText.trim(); // Preserve original text
+
+    // Apply modern styling to textarea and button
+    contentElement.innerHTML = `
+        <div class="editor-container">
+            <textarea class="styled-textarea">${content}</textarea>
+            <button class="save-button" onclick="saveEdit('${sectionId}')">✔ Save</button>
+        </div>
+    `;
+
+    // Auto-focus on the textarea
+    contentElement.querySelector("textarea").focus();
+}
+
+
+function saveEdit(sectionId) {
+    let section = document.getElementById(sectionId);
+    let textarea = section.querySelector(".editable-content textarea");
+
+    if (textarea) {
+        let contentElement = section.querySelector(".editable-content");
+        let text = textarea.value.trim();
+
+        // Clear content before reapplying the typing effect
+        contentElement.innerHTML = ""; 
+
+        // Restart typing effect with the updated text
+        setTimeout(() => {
+            typeEffect(contentElement, text, 10);
+        }, 100);
+    }
+}
+
+function typeEffect(element, text, speed = 20, callback) { // Reduced default speed
+    element.innerHTML = ""; // Clear existing content
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < text.length) {
+            element.innerHTML = text.substring(0, index + 1); // Add next character
+            
+            // Highlight occurrences of "Not provided"
+            element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                '<span style="color: red; font-weight: bold;">Not provided</span>'
+            );
+
+            index++;
+            setTimeout(typeCharacter, speed); // Faster animation
+        } else if (callback) {
+            callback(); // Execute callback when typing is done
+        }
+    }
+
+    typeCharacter();
+}
+
+function sendToWhatsApp() {
+    let text = getContentText(); // Get the document content
+    let encodedText = encodeURIComponent(text);
+    let whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, '_blank'); // Opens WhatsApp in a new tab
+}
+
+function sendToEmail() {
+    let text = getContentText(); // Get the document content
+    let subject = encodeURIComponent("Important Document");
+    let body = encodeURIComponent(text);
+    let mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL; // Opens default email client
+}
+
+function downloadTextFile() {
+    let text = getContentText(); // Get the document content
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "document.txt";
+    link.click();
+}
+
+function getContentText() {
+    // Modify this function to extract the correct text from your document
+    let content = document.querySelector(".editable-content");
+    return content ? content.innerText.trim() : "No content available.";
+}
+
+
+</script>
+</body>
+</html>

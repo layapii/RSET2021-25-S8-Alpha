@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyright License Agreement</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+body {
+    font-family: 'Times New Roman', serif; /* Classic document font */
+    margin: 60px; /* Increased margin for a more spacious layout */
+    background-color: #ffffff; /* Pure white background */
+    color: #000000; /* True black text for contrast */
+    line-height: 2; /* Increased for better readability */
+    font-size: 20px; /* Larger default text size */
+}
+
+/* Document-style headings */
+h1 {
+    font-size: 36px; /* Larger, bold heading */
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Paragraph text */
+p {
+    font-size: 20px; /* Bigger text for readability */
+    text-align: justify; /* Justified text for a professional layout */
+    margin-bottom: 20px;
+}
+   .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        .edit-button {
+    float: right; /* Moves the button to the right */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Styling for the editor container */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modern textarea */
+.styled-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+    resize: none;
+}
+
+.styled-textarea:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/* Modern Save button */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #4A90E2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #357ABD;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button-container button:active {
+    transform: translateY(1px); /* Click effect */
+}
+
+.button-container button:nth-child(5) { background-color: #25D366; } /* WhatsApp Green */
+.button-container button:nth-child(6) { background-color: #FF5722; } /* Email Orange */
+.button-container button:nth-child(7) { background-color: #6c757d; } /* Gray for TXT Download */
+
+.button-container button:nth-child(5):hover { background-color: #1EBE5D; } /* WhatsApp */
+.button-container button:nth-child(6):hover { background-color: #E64A19; } /* Email */
+.button-container button:nth-child(7):hover { background-color: #5a6268; } /* TXT Download */
+
+    </style>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+ 
+     <!-- jsPDF Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<h1>Copyright License Agreement</h1>
+
+<div class="section" id="copyrightSection">
+    <button class="edit-button" onclick="makeEditable('copyrightSection')">Edit</button>
+    <p class="editable-content" contenteditable="false">
+        This Copyright License Agreement (this “Agreement”) is made effective as of 
+        {{ data.get("Effective_Date", "No effective date available") }} between 
+        {{ data["Author_Information"]["Name"] }}, {{ data["Author_Information"]["Address"] }} and 
+        {{ data["Publisher_Information"]["Name"] }}, {{ data["Author_Information"]["Address"] }}.<br><br>
+
+        This Agreement shall be governed by the laws of Kerala. This Agreement will commence on 
+        the {{ data.get("Effective_Date", "No effective date available") }} and continue until the 
+        {{ data["Copyright_Details"]["Copyright_Duration"] }} or until either party provides written 
+        notice of termination to the other party with a 30 days’ notice.<br><br>
+
+        In this Agreement, the party granting the right to use the licensed property, 
+        {{ data["Author_Information"]["Name"] }}, will be referred to as the “Owner” and the party 
+        who is receiving the right to use the licensed property, 
+        {{ data["Publisher_Information"]["Name"] }}, will be referred to as the “User.”
+    </p>
+</div>
+
+<div class="section" id="editableAgreementSection">
+    <button class="edit-button" onclick="makeEditable('editableAgreementSection')">Edit</button>
+    <div class="editable-content" contenteditable="false">
+        <p>
+            Owner owns all proprietary rights in and to the copyrightable and/or
+            copyrighted works described in this Agreement. The copyrighted works will
+            collectively be referred to as “Work.”
+        </p>
+
+        <p>
+            Owner owns all rights in and to the Work and retains all rights to
+            the Work, which are not transferred herein, and retains all common law
+            copyrights and all federal copyrights which have been, or which may be,
+            granted by the Library of Congress.
+        </p>
+
+        <p>
+            Owner desires to obtain, and Licensor has agreed to grant, a license
+            authorizing the use of the Work by Licensee in accordance with the terms
+            and conditions of this Agreement.
+        </p>
+
+        <p>
+            Cost for repair of damages to premises and/or common areas exclusive of expected ordinary wear and tear
+        </p>
+
+        <p>
+            Any other amount legally allowable under the terms of this agreement.
+        </p>
+
+        <p>
+            A written accounting of said charges shall be presented to Lessee within 10 days of move-out.
+            If the costs are over and above the deposits the Lessee shall immediately pay said additional costs for damages to the Lessor.
+        </p>
+
+        <p>
+            If Lessor is unable to deliver possession of the premises for any reason not within Lessor’s control, 
+            the Lessor will not be held liable for the same. The agreement is not void or voidable. 
+            The Lessee does not have to pay any Lease amount until actual possession of the premises.
+        </p>
+
+        <p>
+            If Lessor is unable to deliver possession within 5 days after the agreed commencement date, 
+            the Lessee may terminate this Agreement by giving written notice to Lessor. 
+            The Lessor must refund all money and security deposits paid. 
+            The failure of Lessee to take possession of the premises on the said date 
+            shall not relieve them of their obligation to pay Lease amount on the agreed date.
+        </p>
+    </div>
+</div>
+
+<div class="section" id="editableLicenseTermsSection">
+    <button class="edit-button" onclick="makeEditable('editableLicenseTermsSection')">Edit</button>
+    <div class="editable-content" contenteditable="false">
+        <h2>The parties agree to abide by the terms as follows:</h2>
+
+            <li>
+                GRANT OF LICENSE. Owner owns [PROPERTY TO BE LICENSED]
+                (“Property”). In accordance with this Agreement, Owner grants User a non-
+                exclusive license to Use or Sell {{ data["License_Terms"]["Payment_Schedule"] }} the
+                Property. Owner retains title and ownership of the Property. User will own
+                all rights to materials, products, or other works (the Work) created by User
+                in connection with this license. This grant of license applies only to the
+                following described geographical area: {{ data["Other_Clauses"]["Territory"] }}
+            </li>
+            <li>
+                RIGHTS AND OBLIGATIONS. User shall be the sole owner of the
+                Work and all proprietary rights in and to the Work; however, such
+                ownership shall not include ownership of the copyright in and to the
+                Property or any other rights to the Property not specifically granted in this
+                Agreement.
+            </li>
+            <li>
+                PAYMENT. User agrees to pay Owner a royalty which shall be
+                calculated as follows: {{ data["License_Terms"]["Royalty_Percentage"] }}
+                The royalty will be paid by {{ data["License_Terms"]["Payment_Schedule"] }}
+            </li>
+            <li>
+                MODIFICATIONS. Unless the prior written approval of Owner is
+                obtained, User may not modify or change the Property in any manner.
+                Licensee shall not use Licensed property for any purpose that is unlawful or
+                prohibited by these Terms of the Agreement.
+            </li>
+            <li>
+                DEFAULTS ON AGREEMENT. If User fails to abide by the obligations of
+                this Agreement, including the obligation to make a royalty payment when
+                due, Owner shall have the option to cancel this Agreement by providing 30
+                days written notice to User. User shall have the option of taking corrective
+                action to cure the default to prevent the termination of this Agreement if
+                said corrective action is enacted prior to the end of the time period stated in
+                the previous sentence. There must be no other defaults during such time
+                period or Owner will have the option to cancel this Agreement, despite
+                previous corrective action.
+            </li>
+            <li>
+                WARRANTIES. Neither party makes any warranties with respect to
+                the use, sale, or other transfer of the Property by the other party or by any
+                third party, and User accepts the product “AS IS.” In no event will Owner be
+                liable for direct, indirect, special, incidental, or consequential damages, that
+                are in any way related to the Property.
+            </li>
+            <li>
+                TRANSFER OF RIGHTS. Neither party shall have the right to
+                assign its interests in this Agreement to any other party unless the prior
+                written consent of the other party is obtained.
+            </li>
+            <li>
+                INDEMNIFICATION. Each party shall indemnify and hold the
+                other harmless for any losses, claims, damages, awards, penalties, or
+                injuries incurred by any third party, including reasonable attorney’s fees,
+                which arise from any alleged breach of such indemnifying party’s
+                representations and warranties made under this Agreement, provided that
+                the indemnifying party is promptly notified of any such claims. The
+                indemnifying party shall have the sole right to defend such claims at its own
+                expense. The other party shall provide, at the indemnifying party’s expense,
+                such assistance in investigating and defending such claims as the
+                indemnifying party may reasonably request. This indemnity will survive the
+                termination of this Agreement.
+            </li>
+            <li>
+                AMENDMENT. This Agreement may be modified or amended, only if
+                the amendment is made in writing and is signed by both parties.
+
+        </ol>
+    </div>
+</div>
+
+<div class="section">
+
+    <p>The following signatures make this Agreement effective as of the date first
+        written above.</p>
+</div>
+
+
+<div class="signatures">
+    <h2>Signatures</h2>
+    <p>OWNER</p>
+    <p>___________________________</p>
+    <p>Name: {{ data["Author_Information"]["Name"] }}</p>
+
+    <p>LICENSEE/USER</p>
+    <p>___________________________</p>
+    <p>Name: {{ data["Publisher_Information"]["Name"] }}</p>
+
+    <p>In the presence of Witnesses:</p>
+    <p>1) __________________________</p>
+    <p>2) _____________________________</p>
+</div>
+<div class="button-container">
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+    <button onclick="window.print()">Print</button>
+    <button onclick="generatePDF()">Download PDF</button>
+</div>
+
+<script>
+    // Firebase initialization
+
+</script>
+<script>
+    
+    // Function to save data to localStorage
+    // Function to download the content as a PDF
+    document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 2, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+function makeEditable(sectionId) {
+    let section = document.getElementById(sectionId);
+    let contentElement = section.querySelector(".editable-content");
+
+    if (!contentElement) return; // Ensure the element exists
+
+    let content = contentElement.innerText.trim(); // Preserve original text
+
+    // Apply modern styling to textarea and button
+    contentElement.innerHTML = `
+        <div class="editor-container">
+            <textarea class="styled-textarea">${content}</textarea>
+            <button class="save-button" onclick="saveEdit('${sectionId}')">✔ Save</button>
+        </div>
+    `;
+
+    // Auto-focus on the textarea
+    contentElement.querySelector("textarea").focus();
+}
+
+
+function saveEdit(sectionId) {
+    let section = document.getElementById(sectionId);
+    let textarea = section.querySelector(".editable-content textarea");
+
+    if (textarea) {
+        let contentElement = section.querySelector(".editable-content");
+        let text = textarea.value.trim();
+
+        // Clear content before reapplying the typing effect
+        contentElement.innerHTML = ""; 
+
+        // Restart typing effect with the updated text
+        setTimeout(() => {
+            typeEffect(contentElement, text, 10);
+        }, 100);
+    }
+}
+
+function typeEffect(element, text, speed = 20, callback) { // Reduced default speed
+    element.innerHTML = ""; // Clear existing content
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < text.length) {
+            element.innerHTML = text.substring(0, index + 1); // Add next character
+            
+            // Highlight occurrences of "Not provided"
+            element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                '<span style="color: red; font-weight: bold;">Not provided</span>'
+            );
+
+            index++;
+            setTimeout(typeCharacter, speed); // Faster animation
+        } else if (callback) {
+            callback(); // Execute callback when typing is done
+        }
+    }
+
+    typeCharacter();
+}
+
+function sendToWhatsApp() {
+    let text = getContentText(); // Get the document content
+    let encodedText = encodeURIComponent(text);
+    let whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, '_blank'); // Opens WhatsApp in a new tab
+}
+
+function sendToEmail() {
+    let text = getContentText(); // Get the document content
+    let subject = encodeURIComponent("Important Document");
+    let body = encodeURIComponent(text);
+    let mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL; // Opens default email client
+}
+
+function downloadTextFile() {
+    let text = getContentText(); // Get the document content
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "document.txt";
+    link.click();
+}
+
+function getContentText() {
+    // Modify this function to extract the correct text from your document
+    let content = document.querySelector(".editable-content");
+    return content ? content.innerText.trim() : "No content available.";
+}
+
+
+
+</script>
+</body>
+</html>

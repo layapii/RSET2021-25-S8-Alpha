@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Legal Assistant</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Reset */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1c1c1c;
+    color: #333;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+:root {
+    --primary-color: #1C3D5A;
+    --secondary-color: #D4AF37;
+    --text-color: #FFFFFF;
+    --background-gradient: linear-gradient(to right, #1C3D5A, #2A4F6E);
+}
+
+/* Header */
+header {
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dcffd1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+.call-back-btn {
+    border: 2px solid #007bff;
+    color: #007bff;
+    background: transparent;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 1em;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.call-back-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--background-gradient);
+    color: var(--text-color);
+    padding: 60px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    width: 100%;
+    gap: 40px;
+}
+
+.cta-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.cta-text h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.cta-text p {
+    font-size: 18px;
+    color: #d3d3d3;
+    line-height: 1.6;
+}
+
+.cta-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.cta-btn {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn:hover {
+    background: #b99830;
+    transform: translateY(-3px);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.secondary-btn:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.cta-image img {
+    max-width: 380px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-content h4 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+    display: block;
+    color: #555;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.submit-btn {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+.modal-close {
+    background: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #b02a37;
+}
+
+@media (max-width: 768px) {
+    .cta-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cta-buttons {
+        justify-content: center;
+    }
+}
+/* How It Works Section */
+.how-it-works {
+    text-align: center;
+    padding: 90px 14%;
+    background: #f9f9f9;
+}
+
+.how-it-works h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #1C3D5A;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+/* Steps Container */
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+/* Individual Steps */
+.step {
+    flex: 1 1 250px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    max-width: 300px;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Step Icons */
+.step img {
+    width: 70px;
+    margin-bottom: 15px;
+}
+
+/* Step Headings */
+.step h3 {
+    font-size: 1.4rem;
+    color: #D4AF37;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Step Text */
+.step p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .steps-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.about-section {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>AI Legal Assistant</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+        </nav>
+        <button class="call-back-btn" id="logoutBtn">Logout</button>
+
+    </header>
+
+    <!-- Main Content Section -->
+
+    <!-- Features Section -->
+
+    <!-- Chatbot & Document Generation Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <div class="cta-text">
+                <h2>AI-Powered Legal Assistant</h2>
+                <p>Get instant legal guidance, generate professional legal documents, and connect with experienced advocates seamlessly.</p>
+                <div class="cta-buttons">
+                    <button class="cta-btn" id="startChatBtn">💬 Start Chat</button>
+                    <button class="cta-btn" id="generateDocumentBtn">📄 Generate Document</button>
+                    <button class="cta-btn" id="advocateSelectionBtn">⚖️ Select Advocate</button>
+                </div>
+            </div>
+            <div class="cta-image">
+                <img src="templates/wmremove-transformed.jpeg" alt="AI Legal Assistant">
+            </div>
+        </div>
+    </section>
+    
+    
+
+    
+
+    
+    <!-- Modal Structure -->
+    <!-- Modal Form HTML -->
+<!-- Modal Form HTML -->
+<!-- Modal Form HTML -->
+
+
+    <!-- How It Works Section -->
+<section id="how-it-works" class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps-container">
+        <div class="step">
+            <img src="https://cdn-icons-png.flaticon.com/512/3649/3649442.png" alt="Chat Icon">
+            <h3>1. Chat with AI</h3>
+            <p>Ask legal questions to our AI-powered chatbot and get instant responses.</p>
+        </div>
+        <div class="step">
+            <img src="https://cdn-icons-png.flaticon.com/512/4303/4303464.png" alt="Document Icon">
+            <h3>2. Generate Documents</h3>
+            <p>Automatically generate legal documents tailored to your needs.</p>
+        </div>
+        <div class="step">
+            <img src="https://cdn-icons-png.flaticon.com/512/2965/2965879.png" alt="Advocate Icon">
+            <h3>3. Select an Advocate</h3>
+            <p>Choose from a list of experienced advocates for legal assistance.</p>
+        </div>
+        <div class="step">
+            <img src="https://cdn-icons-png.flaticon.com/512/4202/4202834.png" alt="Secure Icon">
+            <h3>4. Get Secure Assistance</h3>
+            <p>Your data is encrypted, ensuring complete privacy and security.</p>
+        </div>
+    </div>
+</section>
+
+    <section id="faqs" style="margin-top: 60px; padding: 50px; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 1px; width: 100%; max-width: 2900px;">
+        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 2.5em; color: #333; margin-bottom: 20px; text-align: center;">Frequently Asked Questions</h2>
+        <div style="text-align: left;">
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #007bff; font-size: 1.2em; margin-bottom: 10px;">1. What services does the AI Legal Assistant provide?</h3>
+                <p style="color: #666; font-size: 1em;">The AI Legal Assistant provides chatbot-powered legal advice, document generation, and assistance in selecting advocates tailored to your legal needs.</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #007bff; font-size: 1.2em; margin-bottom: 10px;">2. Can I rely on the legal advice provided by the AI?</h3>
+                <p style="color: #666; font-size: 1em;">The AI is designed to offer general legal guidance. For specific and binding legal advice, we recommend consulting a licensed attorney.</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #007bff; font-size: 1.2em; margin-bottom: 10px;">3. How do I generate a legal document?</h3>
+                <p style="color: #666; font-size: 1em;">Click the 'Generate Document' button in the section above to start creating customized legal documents based on your requirements.</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #007bff; font-size: 1.2em; margin-bottom: 10px;">4. Are my details secure on this platform?</h3>
+                <p style="color: #666; font-size: 1em;">Yes, we prioritize your privacy and security. Your information is encrypted and protected as per industry standards.</p>
+            </div>
+        </div>
+    </section>
+    <section id="latest-news" style="margin-top: 60px; padding: 50px; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 15px; width: 100%; max-width: 2800px;">
+        <h2 style="font-family: 'Montserrat', sans-serif; font-size: 2.5em; color: #333; margin-bottom: 20px; text-align: center;">Latest Legal News & Blogs</h2>
+        <div id="news-container" style="display: flex; flex-direction: column; gap: 20px;"></div>
+    </section>
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <h2>About Our Website</h2>
+            <p>
+                AI Legal Assistant is your smart legal companion built to help individuals and businesses
+                connect with trusted advocates based on their location. Whether you're drafting legal documents,
+                reviewing contracts, or seeking legal advice — our platform uses advanced AI to assist you quickly and reliably.
+            </p>
+            <p>
+                We aim to simplify access to legal services and empower users with AI-powered tools 
+                that save time, reduce costs, and ensure legal clarity.
+            </p>
+        </div>
+    </section>
+</body>
+</html>
+
+<script>
+    async function fetchLatestNews() {
+        try {
+            const response = await fetch('https://newsapi.org/v2/everything?q=legal&sortBy=publishedAt&apiKey=fb4232dc870640ec9f0ff482da77c2af');
+            const data = await response.json();
+            
+            if (data.articles) {
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = ''; // Clear previous content
+
+                data.articles.slice(0, 5).forEach(article => {
+                    const newsItem = document.createElement('div');
+                    newsItem.style.display = 'flex';
+                    newsItem.style.alignItems = 'center';
+                    newsItem.style.background = '#f4f4f4';
+                    newsItem.style.padding = '15px';
+                    newsItem.style.borderRadius = '10px';
+                    newsItem.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+
+                    newsItem.innerHTML = `
+                        <img src="${article.urlToImage || 'https://via.placeholder.com/100'}" alt="News Image" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; margin-right: 15px;">
+                        <div>
+                            <h3 style="font-size: 1.2em; color: #007bff; margin-bottom: 5px;">
+                                <a href="${article.url}" target="_blank" style="text-decoration: none; color: #007bff;">${article.title}</a>
+                            </h3>
+                            <p style="color: #666; font-size: 0.9em;">${article.description || 'No description available.'}</p>
+                        </div>
+                    `;
+                    newsContainer.appendChild(newsItem);
+                });
+            }
+        } catch (error) {
+            console.error('Error fetching news:', error);
+        }
+    }
+
+    fetchLatestNews();
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+    // Redirect to the logout route
+    window.location.href = '/logout'; // Ensure your backend handles this logout route
+});
+    document.getElementById('startChatBtn').addEventListener('click', function() {
+        // Set the route you want to redirect to
+        window.location.href = '/bot'; // Change '/chat' to your desired route
+    });
+    document.getElementById('generateDocumentBtn').addEventListener('click', function() {
+        // Set the route you want to redirect to
+        window.location.href = '/case'; // Change '/chat' to your desired route
+    });
+    document.getElementById('advocateSelectionBtn').addEventListener('click', function() {
+        // Set the route you want to redirect to
+        window.location.href = '/advocates'; // Change '/advocates' to your desired route
+    });
+// Open Modal
+// Get modal element
+
+
+</script>

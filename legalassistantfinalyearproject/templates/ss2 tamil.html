@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyright License Agreement</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+body {
+    font-family: 'Times New Roman', serif; /* Classic document font */
+    margin: 60px; /* Increased margin for a more spacious layout */
+    background-color: #ffffff; /* Pure white background */
+    color: #000000; /* True black text for contrast */
+    line-height: 2; /* Increased for better readability */
+    font-size: 20px; /* Larger default text size */
+}
+
+/* Document-style headings */
+h1 {
+    font-size: 36px; /* Larger, bold heading */
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Paragraph text */
+p {
+    font-size: 20px; /* Bigger text for readability */
+    text-align: justify; /* Justified text for a professional layout */
+    margin-bottom: 20px;
+}
+   .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        .edit-button {
+    float: right; /* Moves the button to the right */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+/* Styling for the editor container */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modern textarea */
+.styled-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+    resize: none;
+}
+
+.styled-textarea:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+/* Modern Save button */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #4A90E2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: #357ABD;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button-container button:active {
+    transform: translateY(1px); /* Click effect */
+}
+
+.button-container button:nth-child(5) { background-color: #25D366; } /* WhatsApp Green */
+.button-container button:nth-child(6) { background-color: #FF5722; } /* Email Orange */
+.button-container button:nth-child(7) { background-color: #6c757d; } /* Gray for TXT Download */
+
+.button-container button:nth-child(5):hover { background-color: #1EBE5D; } /* WhatsApp */
+.button-container button:nth-child(6):hover { background-color: #E64A19; } /* Email */
+.button-container button:nth-child(7):hover { background-color: #5a6268; } /* TXT Download */
+
+    </style>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+ 
+     <!-- jsPDF Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <h1>ஒப்பந்தக் காந்தம்</h1>
+
+    <div class="section" id="agreementSection">
+        <button class="edit-button" onclick="makeEditable('agreementSection')">தொகு</button>
+        <p class="editable-content" contenteditable="false">
+            இந்த ஒப்பந்தம் {{ data.get("Effective Date", "தொடக்க தேதி குறிப்பிடப்படவில்லை") }} அன்று செய்யப்பட்டதாகும், இதில் {{ data["Parties Involved"]["First Party"]["Name"] }} மற்றும் {{ data["Parties Involved"]["Second Party"]["Name"] }} ஆகிய இரு தரப்புகளும் சேர்ந்துள்ளனர். 
+            இவை இரண்டும் நிறுவனச் சட்டத்தின் கீழ் நிறுவப்பட்டு நடப்பில் உள்ள நிறுவனங்களாகும், அதன் பதிவு செய்யப்பட்ட அலுவலகம் 
+            நிறுவனத்தின் சார்பில் திரு. {{ data["Parties Involved"]["First Party"]["Name"] }} மூலமாக (இதைத் தொடர்ந்து "முதல் தரப்பு" என குறிப்பிடப்படும்) 
+            என்பதையும், இத்தரப்பு அதன் வாரிசுகள் மற்றும் பதிலீடுகளையும் உள்ளடக்கியதாக கருதப்படும் என்பதையும் குறிப்பிடுகிறது.
+            
+            மேலும், நிறுவனச் சட்டத்தின் கீழ் நிறுவப்பட்டு நடப்பில் உள்ள மற்றொரு நிறுவனமான (இரண்டாவது தரப்பாக குறிப்பிடப்படும்) நிறுவனமும் அதன் பதிவு செய்யப்பட்ட அலுவலகத்திலிருந்து, அதன் சார்பில் திரு ____________ மூலமாக இந்த ஒப்பந்தத்தில் சேருகின்றது. 
+            இது "இரண்டாவது தரப்பு" என குறிப்பிடப்பட்டு, அதன் வாரிசுகள் மற்றும் பதிலீடுகளையும் உள்ளடக்கியதாக கருதப்படும்.
+    
+            **எனவே**, இங்கே பின்வரும் விதிகள் வெளிப்படையாகவும் தெளிவாகவும் இருவராலும் ஒப்புக்கொள்ளப்படுகின்றன, மற்றும் வேறுவிதமாக கூறப்படாவிட்டால் இவை இயல்பாகவே பொருந்தும்:
+    
+            <ul>
+                <li>ஒரே எண்ணை குறிப்பிடும் சொல், பல எண்ணையும் உள்ளடக்கும்.</li>
+                <li>ஒரு பாலினம் குறிப்பிடும் சொல், எல்லா பாலினங்களையும் உள்ளடக்கும்.</li>
+                <li>ஓர் சொல் அல்லது வாக்கியத்திற்கு ஒரு குறிப்பிட்ட பொருள் வழங்கப்பட்டால், அந்த சொல் அல்லது வாக்கியத்தின் பிற இலக்கண வடிவங்களுக்கும் அதே பொருள் பொருந்தும்.</li>
+                <li>இந்த ஒப்பந்தத்தின் கீழ் பணம் செலுத்துவதற்காக குறிப்பிடப்படும் நாள் ஞாயிறு அல்லது பிற வங்கிக் கிழக்கு நாளாக இருந்தால், அந்நாள் அடுத்த வேலை நாளாக மாற்றப்படும்.</li>
+            </ul>
+        </p>
+    </div>
+    <div class="section" id="rightsObligations">
+        <h2>இருப்பினரின் உரிமைகள் மற்றும் கடமைகள்</h2>
+        <button class="edit-button" onclick="makeEditable('rightsObligations')">தொகு</button>
+        <ol class="editable-content" contenteditable="false">
+            <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} இக்கோட்பாட்டின் காலத்தில் முதல் தரப்பால் ஒதுக்கப்பட்ட பணிகளை நிறைவேற்ற, பூர்த்தி செய்ய மற்றும் முழுமையாக நிறைவேற்ற ஒப்புக்கொள்கிறது.</li>
+            <li>முன்னறிவிப்புடன் ஏழு நாட்கள் இடைவெளியில் பணியாளர்களின் எண்ணிக்கை அதிகரிக்கவோ குறைக்கவோ செய்யலாம், மேலும் {{ data["Parties Involved"]["Second Party"]["Name"] }} அதற்கேற்ப பணியாளர்களை வழங்க வேண்டும்.</li>
+            <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} முதல் தரப்பின் வளாகத்தில் பணியாளர்கள் விபரங்கள், புகைப்படங்கள், பெயர்கள் மற்றும் முகவரிகள் அடங்கிய சரியான பதிவேட்டை பராமரிக்க வேண்டும்.</li>
+            <li>முதல் தரப்பின் தேவையின்படி, {{ data["Parties Involved"]["Second Party"]["Name"] }} இன் சேவைகளை இந்தியாவில் வேறு இடத்தில் வழங்கலாம்.</li>
+            <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} இன் பணியாளர்கள் தொடர்பான தகவல் தவறாகவோ தவிர்க்கப்படுவதாகவோ இருந்தால், ஏற்படும் பாதிப்புகளுக்கும் ஒட்டுமொத்த பொறுப்பும் இரண்டாம் தரப்புக்கு உண்டு.</li>
+            <li>இரண்டாம் தரப்பால் நியமிக்கப்பட்ட அனைத்து பணியாளர்களும் முதல் தரப்பின் அதிகாரப்பூர்வ பாதுகாப்பு சோதனைகளுக்குப் புடப்படுவார்கள்.</li>
+            <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} தனது பணியாளர்களை முதல் தரப்பின் வளாகத்திற்கு கொண்டு செல்லும் போக்குவரத்து ஏற்பாட்டுக்கு பொறுப்பாக இருக்க வேண்டும்.</li>
+            <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} தனது பெயர், முகவரி, வணிகம், உரிமை அல்லது நிலைமையில் எந்தவொரு மாற்றத்தையும் எழுத்து மூலம் முதல் தரப்புக்கு தெரியப்படுத்த வேண்டும்.</li>
+            <li>இருப்பினருக்கும் இடையே உள்ள உறவு முதன்மை-முதன்மை அடிப்படையிலேயே அமையவுள்ளது; இது ஒரு வேலைவாய்ப்பு உறவாக இருக்காது.</li>
+            <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} இன் பணியாளர்களின் தவறுகள் காரணமாக ஏற்பட்ட சேதங்களுக்கு இரண்டாம் தரப்பே பொறுப்பாக இருக்கும்.</li>
+            <li>இருப்பினரும் இந்த ஒப்பந்தத்தில் நுழைய அதிகாரம் உள்ளவர்களாக இருக்கிறார்கள், அவர்களது கையொப்பமிட்டவர்கள் முறையாக அங்கீகாரம் பெற்றவர்கள் ஆவார்கள்.</li>
+            <li>{{ data["Parties Involved"]["Second Party"]["Name"] }} முதல் தரப்பிடம் பெற்ற எந்தவொரு தகவலையும் ஒப்பந்த காலம் மற்றும் அதன் பிந்தைய காலத்திலும் இரகசியமாக வைக்க வேண்டும், சட்டத்தின் கீழ் தேவைப்பட்டால் மட்டுமே வெளியிடலாம்.</li>
+        </ol>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>மேலாண்மை</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமிக்க</button>
+        <div class="editable-content" contenteditable="false">
+            <ul>
+                <li>இரண்டாம் தரப்பின் பணியாளர்கள் மீது சரியான கட்டுப்பாடு மற்றும் வேலை திறம்பட நடைபெற மேலாண்மையை ஏற்பாடு செய்ய வேண்டும்.</li>
+                <li>தினசரி செயல்பாடுகளுக்காக தன்னுடைய பிரதிநிதிகளின் பெயர்கள், முகவரிகள் மற்றும் தொடர்பு எண்களை முதல் தரப்பிடம் தெரிவிக்க வேண்டும்.</li>
+                <li>அதற்குப் பொறுப்பான குறைந்தது ஒரு பிரதிநிதி தினசரி முதல் தரப்பின் அதிகாரிகளுடன் சந்தித்து தகவல்களை பெற்றுத் தர வேண்டும் மற்றும் பணியின் வழிகாட்டல்களை பெற வேண்டும்.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>வேலைவாய்ப்பு உறவு</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமிக்க</button>
+        <div class="editable-content" contenteditable="false">
+            <p><strong>i.</strong> இரண்டாம் தரப்பு தான் தன்னால் நியமிக்கப்பட்ட பணியாளர்களின் தனிப்பட்ட நியமிப்புகளுக்கு மட்டுமே பொறுப்பாக இருக்க வேண்டும்; எந்தவொரு சந்தர்ப்பத்திலும் முதல் தரப்பு தன்னுடைய பணியாளர்களாக கருதப்படக்கூடாது.</p>
+            <p><strong>ii.</strong> தன்னால் நியமிக்கப்பட்ட பணியாளர்களுக்கு எதிராக தண்டனை நடவடிக்கை எடுப்பதற்கான முழு அதிகாரமும் இரண்டாம் தரப்புக்கு உண்டு; அவர்கள் எந்தவொரு உரிமையோ முதல் தரப்புக்கு எதிராக புகார் அளிப்பதற்கோ இல்லை.</p>
+            <p><strong>iii.</strong> இரண்டாம் தரப்பால் நியமிக்கப்பட்ட பணியாளர்களால் எழுப்பப்படும் எந்தவொரு வாதம், கோரிக்கை அல்லது இழப்பீடு முதல் தரப்புக்கு எதிராக இருக்காது; அவை அனைத்தும் இரண்டாம் தரப்பின் பொறுப்பு. சட்டப்படி அல்லது விதிகளின் அடிப்படையில் முதல்தரப்பு செலுத்த வேண்டியதாயின், இரண்டாம் தரப்பு அந்த தொகையை முழுமையாக இழப்பீடு செய்ய வேண்டும். தவிர, எந்தவொரு வழக்கிலோ விசாரணையிலோ முதல் தரப்பு சிக்கினால், இரண்டாம் தரப்பே அதனை எதிர்க்க வேண்டும்.</p>
+        </div>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>விபத்து அல்லது எதிர்பாராத சம்பவம்</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமிக்க</button>
+        <div class="editable-content" contenteditable="false">
+            <p><strong>i.</strong> இரண்டாம் தரப்பின் பணியாளருக்கு விபத்து, மாற்றத்தக்க/முழுமையான ஊனமுற்றல் அல்லது மரணம் போன்ற நிகழ்வுகள் நேர்ந்தால், அவனுக்குத் தேவையான மருத்துவ உதவி உடனடியாக இலவசமாக வழங்கப்பட வேண்டும். இந்தச் செலவுகளை முதல் தரப்பு ஏற்க வேண்டிய நிலை ஏற்பட்டால், அதனை இரண்டாம் தரப்பிடமிருந்து மீட்டெடுக்க முழு உரிமை உண்டு.</p>
+            <p><strong>ii.</strong> முதல் தரப்பின் நலன்களுக்கு பாதிப்பை ஏற்படுத்தக்கூடிய சம்பவங்கள் நேர்ந்தால், இரண்டாம் தரப்பின் பணியாளர்களிடம் விசாரணை நடத்த முதல் தரப்புக்கு முழு உரிமை உண்டு.</p>
+            <p><strong>iii.</strong> திருட்டு, சேதம், தீ விபத்து, தாக்குதல் போன்ற சம்பவங்களில் இரண்டாம் தரப்பின் பணியாளர் ஈடுபட்டிருப்பது நிரூபிக்கப்பட்டால், அந்தப் பணியாளருக்கும் இரண்டாம் தரப்புக்கும் எதிராக உரிய நடவடிக்கைகள் எடுக்கலாம்.</p>
+        </div>
+    </div>
+    
+    <div class="section" id="supervision">
+        <h2>செயல்திறன்</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமிக்க</button>
+        <div class="editable-content" contenteditable="false">
+            <p><strong>i.</strong> இரண்டாம் தரப்பு தனது பணிகளை முதல் தரப்பின் திருப்திக்கு ஏற்ப செய்ய வேண்டும். வேலைத் திறன் குறைவாக இருப்பின், முதல் தரப்பு ஒப்பந்தத்தை உடனடியாக ரத்து செய்யலாம்; இதில் இரண்டாம் தரப்புக்கு எந்தவொரு எதிர்ப்பும் செல்லாது. மேலும் பணியாளர்களுக்குச் செலுத்தப்பட்ட சட்டபூர்வ கட்டணங்களை இரண்டாம் தரப்பிடம் இருந்து முழுமையாக வசூலிக்கலாம்.</p>
+        </div>
+    </div>
+    <div class="section" id="licensesCompliance">
+        <h2>உரிமங்கள் மற்றும் சட்டக்கழிப்புகள்</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமி</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> இரண்டாவது தரப்பினர் அவர்களால் அல்லது அவர்களால் நியமிக்கப்பட்ட பணியாளர்களுக்கு பொருந்தக்கூடிய அனைத்து தொழிலாளர் சட்டங்களுக்கான (காலானுகாலமாக திருத்தப்பட்டபடி) இணக்கத்திற்கு முழுமையாக பொறுப்பாக இருப்பார்கள். எனினும், குறைந்தபட்ச ஊதியம் சம்பந்தமான மாநில அரசின் அறிவிப்புகளின் படி மட்டுமே வழங்கப்பட வேண்டும்.
+            </p>
+            <p>
+                <strong>ii.</strong> இரண்டாவது தரப்பினர் தொழிலாளர் சட்டங்களின் கீழ் தேவையான அனைத்து பதிவுகள், ஆவணங்கள், அறிக்கைகள், குறிப்புகள் மற்றும் அறிவிப்புகளை காலத்துக்கேற்ப தயாரித்து, பராமரித்து, சமர்ப்பித்து, தேவையானபோது முதல் தரப்பினர் அல்லது அதிகாரப்பூர்வ ஆய்வாளருக்கு சமர்ப்பிக்க வேண்டும். சட்டங்களை காலத்துக்கேற்ப புதுப்பித்து அறிந்து கொள்ள வேண்டும் மற்றும் அதற்கேற்ப விரைவான நடவடிக்கைகள் எடுக்க வேண்டும். எந்த சட்ட மீறலுக்கும் இரண்டாவது தரப்பினர் மட்டும் பொறுப்பாளியாக இருப்பார்கள்.
+            </p>
+            <p>
+                <strong>iii.</strong> இரண்டாவது தரப்பினர் குறைந்தபட்ச ஊதியம் சட்டத்தின் கீழ் தேவையான முழு ஊதியத்தையும் பணியாளர்களுக்கு வழங்குவதை உறுதி செய்ய வேண்டும் மற்றும் அந்த முழு ஊதியத்தில் PF மற்றும் ESI பங்களிப்புகள் நேரத்தில் செலுத்தப்பட வேண்டும். தொடர்புடைய சான்றுகளும் முதல் தரப்பினருக்கு வழங்கப்பட வேண்டும். தவறினால், பில்லுக்கான கட்டணங்கள் நிறுத்தப்படலாம் மற்றும் ஒப்பந்தம் உடனடியாக முடிக்கப்படும்.
+            </p>
+            <p>
+                <strong>iv.</strong> ஒப்பந்தத்தின் காலநிலை முழுவதிலும் தேவையான அனைத்து அனுமதிகள், ஒப்புதல்கள், உரிமங்கள் பெறப்பட்டு பராமரிக்கப்பட வேண்டும்.
+            </p>
+            <p>
+                <strong>v.</strong> இரண்டாவது தரப்பினர் பணியாளர்களின் நியமனம், ஊதியம், நலத்திட்டங்கள், தண்டனை நடவடிக்கைகள், பதவி உயர்வு, விடுப்பு உள்ளிட்ட அனைத்து விஷயங்களையும் ஒழுங்குபடுத்த வேண்டும். பணியாளர்கள் பாதுகாப்பு விதிமுறைகளை கடைப்பிடிக்க வேண்டும். முதல் தரப்பினர் எந்த சூழ்நிலையிலும் இதில் தலையிடமாட்டார்கள்.
+            </p>
+            <p>
+                <strong>vi.</strong> மாதந்தோறும் 7 ஆம் தேதிக்குள் ஊதியம் வழங்கப்பட வேண்டும். சம்பள பதிவு நகல் முதல் தரப்பினருக்கு வழங்கப்பட வேண்டும். பணி நிறைவு, நோட்டீஸ் சம்பளம், கிராசுட்டி மற்றும் போனஸ் ஆகியவை இரண்டாவது தரப்பினரால் வழங்கப்பட வேண்டும்.
+            </p>
+        </div>
+        <div class="section" id="submissionDocuments">
+            <h2>ஆவணங்கள் சமர்ப்பித்தல்</h2>
+            <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+            <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமி</button>
+            <div class="editable-content" contenteditable="false">
+                <p>
+                    <strong>i.</strong> இரண்டாவது தரப்பினர் சான்றான நகல்களை சமர்ப்பிக்க வேண்டும் ……………………….
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section" id="performance">
+        <h2>செயல்திறன்</h2>
+        <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+        <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமி</button>
+        <div class="editable-content" contenteditable="false">
+            <p>
+                <strong>i.</strong> முதல் தரப்பினர் எந்தவொரு விபத்து, காயம் அல்லது மூன்றாம் தரப்பினர் கோரிக்கைகள் மீதான எந்தவொரு பொறுப்பையும் ஏற்க மாட்டார்கள். இந்த விபத்துகளுக்கான அனைத்து விளைவுகளுக்கும் இரண்டாவது தரப்பினர் மட்டுமே பொறுப்பாக இருப்பார்கள்.
+            </p>
+            <p>
+                <strong>i.</strong> ஒப்பந்தத்தின் காலத்தில் இரண்டாவது தரப்பினர் அரசு விதிமுறைகள் மற்றும் சட்டங்களை பின்பற்ற வேண்டும். தவறுகள் ஏற்பட்டால், அனைத்து இழப்புகளுக்கும் இரண்டாவது தரப்பினர் பொறுப்பேற்க வேண்டும்.
+            </p>
+            <p>
+                <strong>ii.</strong> இரண்டாவது தரப்பினர் முதல் தரப்பினர் மற்றும் அதனுடன் தொடர்புடையவர்களை எந்தவொரு சட்ட நடவடிக்கைகளிலிருந்தும் பாதுகாத்து விட வேண்டும். சட்ட மீறல், ஒப்பந்த விதிகள் மீறல், அல்லது பணியாளர்களின் செயல்களால் ஏற்பட்ட எந்தவொரு பிரச்சனையையும் சந்திக்க இரண்டாவது தரப்பினர் பொறுப்பேற்க வேண்டும்.
+            </p>
+            <p>
+                <strong>iii.</strong> மீண்டும், விபத்துகளுக்கு முழுப்பொறுப்பு இரண்டாவது தரப்பினருக்கே உரியது.
+            </p>
+            <p>
+                <strong>iv.</strong> முதல் தரப்பின் வளாகத்தில் அல்லது வெளியில் ஏற்பட்ட எந்தவொரு சேதத்திற்கும், காயம் அல்லது உயிரிழப்பிற்கும் இரண்டாவது தரப்பினர் மட்டும் பொறுப்பாக இருப்பார்கள்.
+            </p>
+            <p>
+                <strong>iii.</strong> ஒப்பந்தத்தின் விதிகளை மீறுவதால் ஏற்படும் எந்தவொரு இழப்புகளுக்கும் இரண்டாவது தரப்பினர் பூரண பொறுப்பேற்க வேண்டும்.
+            </p>
+        </div>
+        <div class="section" id="supervision">
+            <h2>பொறுப்புகள்</h2>
+            <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+            <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமி</button>
+            <div class="editable-content" contenteditable="false">
+                <p>
+                    <strong>i.</strong> இரண்டாவது தரப்பினரால் நியமிக்கப்பட்ட பணியாளர்களின் தவறுகள் காரணமாக முதல் தரப்பினருக்கு ஏற்படும் இழப்புக்கு இரண்டாவது தரப்பினர் பொறுப்பேற்க வேண்டும்.
+                </p>
+                <p>
+                    <strong>ii.</strong> மூன்றாம் தரப்புக்கு ஏற்பட்ட சேதங்களுக்கு இரண்டாவது தரப்பினர் மட்டும் பொறுப்பாவார்கள்.
+                </p>
+                <p>
+                    <strong>iii.</strong> பணியாளர்களுடன் தொடர்புடைய எந்தவொரு இழப்புக்கும் இரண்டாவது தரப்பினர் பொறுப்பேற்க வேண்டும். தேவையான தொகையை முதல்நிலை பில்லிலிருந்து கழிக்கப்படும்.
+                </p>
+            </div>
+        </div>
+        <div class="section" id="supervision">
+            <h2>செல்லுபடித் தன்மை</h2>
+            <button class="edit-button" onclick="makeEditable('supervision')">தொகு</button>
+            <button class="save-button" onclick="saveEdit('supervision')" style="display:none;">சேமி</button>
+            <div class="editable-content" contenteditable="false">
+                <p>
+                    <strong>i.</strong> இந்த ஒப்பந்தம் ஆரம்பத்தில் …………….. முதல் ………………. வரை செல்லுபடியாகும். இருபக்கம் விருப்பப்பட்டால் இதை நீட்டிக்கலாம்.
+                </p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>மாற்றம்</h2>
+            <p>
+                இரண்டாவது தரப்பினர் நியமிக்கப்பட்ட பணியாளர்களின் ஒழுக்கம், நடத்தை மற்றும் செயல்திறனை உறுதி செய்ய வேண்டும். எந்தவொரு பணியாளரையும் 24 மணி நேரத்திற்குள் மாற்ற ஒப்புக் கொள்ள வேண்டும்.
+            </p>
+        </div>
+        <div class="section">
+            <p>மேற்கண்ட ஒப்பந்தம் இங்கு கையெழுத்திட்ட நாள் முதல் அமலில் வருகிறது.</p>
+        </div>
+        <div class="signatures">
+            <h2>கையெழுத்துகள்</h2>
+            <p>சாட்சிகளின் முன்னிலையில்:</p>
+            <p>1) __________________________</p>
+            <p>2) _____________________________</p>
+        </div>
+        <div class="button-container">
+            <button onclick="saveData()">தரவை சேமிக்க</button>
+            <button onclick="loadData()">தரவை ஏற்று</button>
+            <button onclick="window.print()">அச்சிடு</button>
+            <button onclick="generatePDF()">PDF பதிவிறக்கு</button>
+        </div>
+    
+<script>
+    // Firebase initialization
+
+</script>
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    function typeEffect(element, speed, callback) {
+        const text = element.textContent; // Extract plain text
+        element.innerHTML = ""; // Clear existing text
+        let index = 0;
+
+        function typeCharacter() {
+            if (index < text.length) {
+                element.innerHTML = text.substring(0, index + 1); // Add next character
+                
+                // Highlight every occurrence of "Not provided"
+                element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                    '<span style="color: red; font-weight: bold;">Not provided</span>'
+                );
+
+                index++;
+                setTimeout(typeCharacter, speed);
+            } else if (callback) {
+                callback(); // Move to next element after typing completes
+            }
+        }
+
+        typeCharacter();
+    }
+
+    // Select all elements that should have the typing effect
+    let textElements = document.querySelectorAll("h1, h2, p, li, button");
+
+    // Initially hide all elements smoothly
+    textElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden"; // Prevent layout shift
+    });
+
+    function revealText(index) {
+        if (index < textElements.length) {
+            let element = textElements[index];
+
+            // Make the current element visible
+            element.style.visibility = "visible";
+            element.style.opacity = "1";
+
+            // Apply typing effect with **10ms delay** (faster)
+            typeEffect(element, 2, () => {
+                revealText(index + 1); // Move to the next element
+            });
+        }
+    }
+
+    // Start the typing effect sequence
+    revealText(0);
+});
+
+function makeEditable(sectionId) {
+    let section = document.getElementById(sectionId);
+    let contentElement = section.querySelector(".editable-content");
+
+    if (!contentElement) return; // Ensure the element exists
+
+    let content = contentElement.innerText.trim(); // Preserve original text
+
+    // Apply modern styling to textarea and button
+    contentElement.innerHTML = `
+        <div class="editor-container">
+            <textarea class="styled-textarea">${content}</textarea>
+            <button class="save-button" onclick="saveEdit('${sectionId}')">✔ Save</button>
+        </div>
+    `;
+
+    // Auto-focus on the textarea
+    contentElement.querySelector("textarea").focus();
+}
+
+
+function saveEdit(sectionId) {
+    let section = document.getElementById(sectionId);
+    let textarea = section.querySelector(".editable-content textarea");
+
+    if (textarea) {
+        let contentElement = section.querySelector(".editable-content");
+        let text = textarea.value.trim();
+
+        // Clear content before reapplying the typing effect
+        contentElement.innerHTML = ""; 
+
+        // Restart typing effect with the updated text
+        setTimeout(() => {
+            typeEffect(contentElement, text, 10);
+        }, 100);
+    }
+}
+
+function typeEffect(element, text, speed = 20, callback) { // Reduced default speed
+    element.innerHTML = ""; // Clear existing content
+    let index = 0;
+
+    function typeCharacter() {
+        if (index < text.length) {
+            element.innerHTML = text.substring(0, index + 1); // Add next character
+            
+            // Highlight occurrences of "Not provided"
+            element.innerHTML = element.innerHTML.replace(/Not provided/g, 
+                '<span style="color: red; font-weight: bold;">Not provided</span>'
+            );
+
+            index++;
+            setTimeout(typeCharacter, speed); // Faster animation
+        } else if (callback) {
+            callback(); // Execute callback when typing is done
+        }
+    }
+
+    typeCharacter();
+}
+
+function sendToWhatsApp() {
+    let text = getContentText(); // Get the document content
+    let encodedText = encodeURIComponent(text);
+    let whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, '_blank'); // Opens WhatsApp in a new tab
+}
+
+function sendToEmail() {
+    let text = getContentText(); // Get the document content
+    let subject = encodeURIComponent("Important Document");
+    let body = encodeURIComponent(text);
+    let mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL; // Opens default email client
+}
+
+function downloadTextFile() {
+    let text = getContentText(); // Get the document content
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "document.txt";
+    link.click();
+}
+
+function getContentText() {
+    // Modify this function to extract the correct text from your document
+    let content = document.querySelector(".editable-content");
+    return content ? content.innerText.trim() : "No content available.";
+}
+
+
+</script>
+</body>
+</html>

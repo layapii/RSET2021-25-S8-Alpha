@@ -1,0 +1,1679 @@
+[
+    {
+        "Effective_Date": "Jan 10, 2011, between Namashivayam, Plat No-182, Door No 16 New",
+        "Lessor_Information": {
+            "Name": "Namashivayam",
+            "Address": "Unit 4652 Box 2306\nDPO AP 50490"
+        },
+        "Lessee_Information": {
+            "Name": "Mrs.Thenmalar, W/O Xavier, Kottaikadu (PO), Vadakadu (Via), Pudukkottai (Dt)",
+            "Spouse_Name": "Gwendolyn Chapman",
+            "Address": "20375 Makayla Inlet Apt. 303\nTammyburgh, VT 34460"
+        },
+        "Property_Details": {
+            "Property_Number": "02171",
+            "Total_Area": "2139 sq. ft.",
+            "Property_Location": "Anthonymouth, North Dakota",
+            "Pin_Code": "00969",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 14500",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Donald Grant",
+            "Roberta Gates"
+        ]
+    },
+    {
+        "Effective_Date": "14-05-2024",
+        "Lessor_Information": {
+            "Name": "Rebecca Brown",
+            "Address": "677 Ellen Junctions\nSouth Katelyn, MD 98760"
+        },
+        "Lessee_Information": {
+            "Name": "Louis Smith",
+            "Spouse_Name": "Patrick Hansen",
+            "Address": "11434 Maria Harbor\nLake Roger, VA 22664"
+        },
+        "Property_Details": {
+            "Property_Number": "41593",
+            "Total_Area": "1318 sq. ft.",
+            "Property_Location": "Lake Robert, Minnesota",
+            "Pin_Code": "92539",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 14500",
+            "Security_Deposit": "Rs. 200000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "200000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Jeffrey Cox",
+            "Joshua Macias"
+        ]
+    },
+    {
+        "Effective_Date": "02-07-2023",
+        "Lessor_Information": {
+            "Name": "Victoria Jarvis",
+            "Address": "958 Perez Ford\nNew Nicole, KS 32649"
+        },
+        "Lessee_Information": {
+            "Name": "Monica Barnes",
+            "Spouse_Name": "Kevin Aguilar",
+            "Address": "4500 Greer Grove\nMarkbury, NV 37593"
+        },
+        "Property_Details": {
+            "Property_Number": "038",
+            "Total_Area": "1301 sq. ft.",
+            "Property_Location": "Stoneton, New Hampshire",
+            "Pin_Code": "22755",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 15,000",
+            "Security_Deposit": "Rs. 100000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "100000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Ashley Wallace",
+            "Mark Andrews"
+        ]
+    },
+    {
+        "Effective_Date": "07-01-2025",
+        "Lessor_Information": {
+            "Name": "k.Sarguneswaran",
+            "Address": "7006 Stephen Trace Suite 505\nDavisshire, SC 63192"
+        },
+        "Lessee_Information": {
+            "Name": "Kyle James",
+            "Spouse_Name": "Justin Martinez",
+            "Address": "0126 Cooper Tunnel Apt. 946\nLarsonfort, MI 10922"
+        },
+        "Property_Details": {
+            "Property_Number": "7498",
+            "Total_Area": "2056 sq. ft.",
+            "Property_Location": "Emilytown, Washington",
+            "Pin_Code": "13233",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 7200",
+            "Security_Deposit": "Rs. 100000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "100000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Patricia Sloan",
+            "Gary Perez"
+        ]
+    },
+    {
+        "Effective_Date": "26-12-2023",
+        "Lessor_Information": {
+            "Name": "Mrs",
+            "Address": "9053 Aaron Track\nSouth Douglas, AZ 62355"
+        },
+        "Lessee_Information": {
+            "Name": "Ariel Foster",
+            "Spouse_Name": "Jeffrey Roman",
+            "Address": "798 Hamilton Station Apt. 201\nNew Randy, FL 13104"
+        },
+        "Property_Details": {
+            "Property_Number": "201",
+            "Total_Area": "2326 sq. ft.",
+            "Property_Location": "East Edward, Oklahoma",
+            "Pin_Code": "45968",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 8000",
+            "Security_Deposit": "Rs. 75000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "75000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Cody Smith",
+            "Cynthia Roberts"
+        ]
+    },
+    {
+        "Effective_Date": "18-07-2024",
+        "Lessor_Information": {
+            "Name": "ROHANI BINTI ISMAIL",
+            "Address": "Unit 2426 Box 9101\nDPO AP 25497"
+        },
+        "Lessee_Information": {
+            "Name": "Samantha White",
+            "Spouse_Name": "Anthony Underwood",
+            "Address": "170 Robbins Drive\nJessicaton, IN 66547"
+        },
+        "Property_Details": {
+            "Property_Number": "400",
+            "Total_Area": "2051 sq. ft.",
+            "Property_Location": "Mccannfurt, New York",
+            "Pin_Code": "47318",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 200000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "200000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Amy Rangel",
+            "Katherine Perry"
+        ]
+    },
+    {
+        "Effective_Date": "29-04-2022",
+        "Lessor_Information": {
+            "Name": "MR.K.Kuttan S/o Kelu Aehari (Late) residing at site No 152 Geethalayam OMH colong S.M. Road 1st main",
+            "Address": "28231 Bennett Ports\nEast Tiffany, AZ 16871"
+        },
+        "Lessee_Information": {
+            "Name": "Tina Newman",
+            "Spouse_Name": "Kelly Martinez",
+            "Address": "61294 Kelly Mission\nAliciaborough, AL 18000"
+        },
+        "Property_Details": {
+            "Property_Number": "7900",
+            "Total_Area": "2488 sq. ft.",
+            "Property_Location": "West Catherinemouth, Florida",
+            "Pin_Code": "48418",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "6 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 35,000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "Fifty thousand rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Jeffrey Stewart",
+            "Devin Ward"
+        ]
+    },
+    {
+        "Effective_Date": "13-07-2022",
+        "Lessor_Information": {
+            "Name": "Smt C.BHAGYAMMA",
+            "Address": "928 Edwards Fork Apt. 482\nNew Josemouth, AZ 02965"
+        },
+        "Lessee_Information": {
+            "Name": "Amy Huang",
+            "Spouse_Name": "Tina Mckay",
+            "Address": "5361 Richard Fields Suite 111\nLake Victoria, MD 69239"
+        },
+        "Property_Details": {
+            "Property_Number": "31985",
+            "Total_Area": "1308 sq. ft.",
+            "Property_Location": "Seanbury, New Mexico",
+            "Pin_Code": "59004",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "6 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 100000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "100000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Adam Harvey",
+            "Rodney Powell"
+        ]
+    },
+    {
+        "Effective_Date": "06-07-2023",
+        "Lessor_Information": {
+            "Name": "Mrs. Carly Burke",
+            "Address": "73199 Jesse Turnpike Apt. 884\nSouth Jodiport, IN 78868"
+        },
+        "Lessee_Information": {
+            "Name": "Jeffrey Smith",
+            "Spouse_Name": "Angela Ramirez",
+            "Address": "55389 Carolyn Manors\nNew Wendy, NV 78949"
+        },
+        "Property_Details": {
+            "Property_Number": "8277",
+            "Total_Area": "2281 sq. ft.",
+            "Property_Location": "Port Jaredburgh, Florida",
+            "Pin_Code": "56783",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 3,500",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Timothy Morris",
+            "Jasmine Hayden"
+        ]
+    },
+    {
+        "Effective_Date": "27-11-2023",
+        "Lessor_Information": {
+            "Name": "Mr.Kamal",
+            "Address": "USS Allen\nFPO AP 24024"
+        },
+        "Lessee_Information": {
+            "Name": "Holly Brown",
+            "Spouse_Name": "Jacob Wong",
+            "Address": "334 Bonnie Groves\nPort Joshuaville, IL 38150"
+        },
+        "Property_Details": {
+            "Property_Number": "192",
+            "Total_Area": "2447 sq. ft.",
+            "Property_Location": "Dannyside, Kentucky",
+            "Pin_Code": "62089",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Samantha Hernandez",
+            "Lori Walter"
+        ]
+    },
+    {
+        "Effective_Date": "04-11-2024",
+        "Lessor_Information": {
+            "Name": "Robert Ellison",
+            "Address": "PSC 9544, Box 8182\nAPO AA 05084"
+        },
+        "Lessee_Information": {
+            "Name": "Miranda White",
+            "Spouse_Name": "Russell Vega",
+            "Address": "PSC 9127, Box 1331\nAPO AE 18544"
+        },
+        "Property_Details": {
+            "Property_Number": "04996",
+            "Total_Area": "2303 sq. ft.",
+            "Property_Location": "North Elizabeth, Nevada",
+            "Pin_Code": "90614",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 2500",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Kimberly Wilson",
+            "Victoria Jones"
+        ]
+    },
+    {
+        "Effective_Date": "31-03-2023",
+        "Lessor_Information": {
+            "Name": "OWNER and RESIDENT. No oral agreements have been entered into",
+            "Address": "54899 Tiffany Loop\nJeffreybury, MN 76213"
+        },
+        "Lessee_Information": {
+            "Name": "Tracy Rodriguez",
+            "Spouse_Name": "Dr. James Cannon",
+            "Address": "Unit 8117 Box 3934\nDPO AE 14282"
+        },
+        "Property_Details": {
+            "Property_Number": "491",
+            "Total_Area": "2205 sq. ft.",
+            "Property_Location": "Amyland, South Dakota",
+            "Pin_Code": "69982",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 30000",
+            "Security_Deposit": "Rs. 75000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "75000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Jamie Butler",
+            "Robin Logan"
+        ]
+    },
+    {
+        "Effective_Date": "21-01-2025",
+        "Lessor_Information": {
+            "Name": "Jamie Thompson",
+            "Address": "92471 Samantha Views Apt. 955\nBrandttown, MA 61579"
+        },
+        "Lessee_Information": {
+            "Name": "Michael Holland",
+            "Spouse_Name": "Jennifer Ramsey",
+            "Address": "338 Murphy Mount Apt. 748\nLake Jesse, OR 18692"
+        },
+        "Property_Details": {
+            "Property_Number": "725",
+            "Total_Area": "754 sq. ft.",
+            "Property_Location": "Branchport, Maine",
+            "Pin_Code": "75289",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 200000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "200000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Johnny Patel",
+            "James Chen"
+        ]
+    },
+    {
+        "Effective_Date": "03-03-2023",
+        "Lessor_Information": {
+            "Name": "NEOH GUATWAH the Landlord ( and the assistant CLEMENT NG. CONTACT NO 0126030570)",
+            "Address": "345 Todd Haven Apt. 857\nHowardport, VA 36743"
+        },
+        "Lessee_Information": {
+            "Name": "Kevin Miller",
+            "Spouse_Name": "Victoria Smith",
+            "Address": "5606 Michelle Locks Apt. 102\nSimmonsview, NM 22344"
+        },
+        "Property_Details": {
+            "Property_Number": "6228",
+            "Total_Area": "1412 sq. ft.",
+            "Property_Location": "Lake Christopher, Maine",
+            "Pin_Code": "36670",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "6 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Cynthia Hinton",
+            "Tony Duran MD"
+        ]
+    },
+    {
+        "Effective_Date": "21-04-2023",
+        "Lessor_Information": {
+            "Name": "Haley Phillips",
+            "Address": "Unit 8023 Box 5793\nDPO AP 93792"
+        },
+        "Lessee_Information": {
+            "Name": "Mark Smith",
+            "Spouse_Name": "Carla Scott",
+            "Address": "9704 Martin Meadow Apt. 876\nJohnsonbury, MI 18973"
+        },
+        "Property_Details": {
+            "Property_Number": "12796",
+            "Total_Area": "1307 sq. ft.",
+            "Property_Location": "Schaeferborough, Washington",
+            "Pin_Code": "41631",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 30000",
+            "Security_Deposit": "Rs. 40,000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "Fifty thousand rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Robert Lopez",
+            "Andrea Figueroa"
+        ]
+    },
+    {
+        "Effective_Date": "16-03-2025",
+        "Lessor_Information": {
+            "Name": "Jesse Kim",
+            "Address": "392 Ortega Spring Suite 952\nNew Lawrence, MN 85834"
+        },
+        "Lessee_Information": {
+            "Name": "Denise Flores",
+            "Spouse_Name": "Brad Miller",
+            "Address": "886 Miguel Villages Apt. 188\nWest Williamport, OR 17436"
+        },
+        "Property_Details": {
+            "Property_Number": "69565",
+            "Total_Area": "2475 sq. ft.",
+            "Property_Location": "Dawsonside, West Virginia",
+            "Pin_Code": "96889",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 40,000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "Fifty thousand rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Debra Russell",
+            "Jermaine Alexander"
+        ]
+    },
+    {
+        "Effective_Date": "12-04-2024",
+        "Lessor_Information": {
+            "Name": "Joyce Young",
+            "Address": "USNV Allison\nFPO AE 57629"
+        },
+        "Lessee_Information": {
+            "Name": "Amanda Stein",
+            "Spouse_Name": "Laura Nguyen",
+            "Address": "66441 Hailey Heights Suite 244\nNew Gina, ND 59208"
+        },
+        "Property_Details": {
+            "Property_Number": "5520",
+            "Total_Area": "2059 sq. ft.",
+            "Property_Location": "Anthonyton, West Virginia",
+            "Pin_Code": "67385",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 30000",
+            "Security_Deposit": "Rs. 100000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "100000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Alexander Ruiz",
+            "James Ferguson"
+        ]
+    },
+    {
+        "Effective_Date": "10-03-2025",
+        "Lessor_Information": {
+            "Name": "S T Nagaveni (owner) C/o Narayan H V Resident of Vanasuma nilaya Tumkur District SS puram ",
+            "Address": "USS Carr\nFPO AE 99934"
+        },
+        "Lessee_Information": {
+            "Name": "Ronald Woods",
+            "Spouse_Name": "Richard Choi",
+            "Address": "9644 Byrd Common\nNew Roger, NY 18996"
+        },
+        "Property_Details": {
+            "Property_Number": "124",
+            "Total_Area": "2341 sq. ft.",
+            "Property_Location": "Chadton, Missouri",
+            "Pin_Code": "83505",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Lori Dennis",
+            "Ashley Delacruz"
+        ]
+    },
+    {
+        "Effective_Date": "17-11-2023",
+        "Lessor_Information": {
+            "Name": "Hannah Jenkins",
+            "Address": "9535 Weaver Divide\nNorth Veronica, OH 18814"
+        },
+        "Lessee_Information": {
+            "Name": "Jordan Cross",
+            "Spouse_Name": "Jennifer Alexander",
+            "Address": "408 English Place\nWest Leahhaven, FL 70167"
+        },
+        "Property_Details": {
+            "Property_Number": "5575",
+            "Total_Area": "1298 sq. ft.",
+            "Property_Location": "South Russellshire, Montana",
+            "Pin_Code": "69379",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Kevin Chambers",
+            "Randy Torres"
+        ]
+    },
+    {
+        "Effective_Date": "the day, month and year first written at Bangalore",
+        "Lessor_Information": {
+            "Name": "Greg Davis",
+            "Address": "Unit 4545 Box 0482\nDPO AE 34213"
+        },
+        "Lessee_Information": {
+            "Name": "Rachel Nelson",
+            "Spouse_Name": "Jason Potts",
+            "Address": "Unit 9737 Box 7365\nDPO AE 21371"
+        },
+        "Property_Details": {
+            "Property_Number": "649",
+            "Total_Area": "2152 sq. ft.",
+            "Property_Location": "East Lisamouth, Alaska",
+            "Pin_Code": "07833",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "6 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Kenneth Kennedy",
+            "Kevin Cohen"
+        ]
+    },
+    {
+        "Effective_Date": "24-03-2023",
+        "Lessor_Information": {
+            "Name": "Erica Parker",
+            "Address": "275 Dale Locks\nPhillipsview, FL 40048"
+        },
+        "Lessee_Information": {
+            "Name": "Francisco Flynn",
+            "Spouse_Name": "Catherine Odonnell",
+            "Address": "217 Carney Grove Suite 733\nLake Elaineside, AZ 25743"
+        },
+        "Property_Details": {
+            "Property_Number": "23689",
+            "Total_Area": "740 sq. ft.",
+            "Property_Location": "Whiteland, Massachusetts",
+            "Pin_Code": "23218",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "6 months",
+            "Monthly_Lease_Amount": "Rs. 30000",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Thomas Mckenzie",
+            "Rachel Garcia"
+        ]
+    },
+    {
+        "Effective_Date": "18-07-2024",
+        "Lessor_Information": {
+            "Name": "the parties and supersedes any oral or written representations or agreements that may have been made by either party. Further",
+            "Address": "66420 Debbie Place\nMccallfurt, WV 43052"
+        },
+        "Lessee_Information": {
+            "Name": "Brittany Fletcher",
+            "Spouse_Name": "Cameron Scott",
+            "Address": "USCGC Nielsen\nFPO AP 22461"
+        },
+        "Property_Details": {
+            "Property_Number": "5591",
+            "Total_Area": "693 sq. ft.",
+            "Property_Location": "Debraberg, Illinois",
+            "Pin_Code": "59884",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 200000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "200000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Melissa Henry",
+            "Jordan Frank"
+        ]
+    },
+    {
+        "Effective_Date": "01-07-2024",
+        "Lessor_Information": {
+            "Name": "ANAND RAJ",
+            "Address": "6995 Daniel Lane Apt. 914\nJessicafort, OH 32254"
+        },
+        "Lessee_Information": {
+            "Name": "Darrell Lewis",
+            "Spouse_Name": "Melissa Macias",
+            "Address": "34177 Logan Key\nPort Shanemouth, NC 57668"
+        },
+        "Property_Details": {
+            "Property_Number": "120",
+            "Total_Area": "1589 sq. ft.",
+            "Property_Location": "Cindyville, Wyoming",
+            "Pin_Code": "04407",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 11500",
+            "Security_Deposit": "Rs. 100000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "100000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Ashley Miller",
+            "Charles Roberts"
+        ]
+    },
+    {
+        "Effective_Date": "20-08-2023",
+        "Lessor_Information": {
+            "Name": "Eric Swanson",
+            "Address": "014 Diaz Mission\nBarberfurt, OH 10142"
+        },
+        "Lessee_Information": {
+            "Name": "Mario Wright",
+            "Spouse_Name": "Anthony Reyes",
+            "Address": "250 Olson Cove Suite 257\nBriannaborough, HI 17568"
+        },
+        "Property_Details": {
+            "Property_Number": "757",
+            "Total_Area": "1051 sq. ft.",
+            "Property_Location": "New Kimhaven, Maine",
+            "Pin_Code": "87528",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Jeremiah Davis",
+            "Michael Johnson"
+        ]
+    },
+    {
+        "Effective_Date": "06-10-2023",
+        "Lessor_Information": {
+            "Name": "SMT PARMESHWARI DEVI JOSHI (PAN No. ACWPJ1537D)",
+            "Address": "63257 Reed Mission Apt. 463\nPort Cynthia, SC 36683"
+        },
+        "Lessee_Information": {
+            "Name": "Adam Pratt",
+            "Spouse_Name": "Sara Ortiz",
+            "Address": "49928 Weeks Passage Apt. 231\nMillermouth, MS 01089"
+        },
+        "Property_Details": {
+            "Property_Number": "94745",
+            "Total_Area": "1098 sq. ft.",
+            "Property_Location": "Lake Daniel, Alaska",
+            "Pin_Code": "10264",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 200000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "200000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Michael Patterson Jr.",
+            "Vanessa Barron"
+        ]
+    },
+    {
+        "Effective_Date": "15-09-2024",
+        "Lessor_Information": {
+            "Name": "Amy Henderson",
+            "Address": "58322 Sarah Points Apt. 946\nSloanmouth, NJ 68493"
+        },
+        "Lessee_Information": {
+            "Name": "Megan Johnson",
+            "Spouse_Name": "Kimberly Wilson",
+            "Address": "442 Renee Mountain\nPort Tiffanyberg, PA 52027"
+        },
+        "Property_Details": {
+            "Property_Number": "923",
+            "Total_Area": "801 sq. ft.",
+            "Property_Location": "Joshuashire, Georgia",
+            "Pin_Code": "29728",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Hunter Weaver",
+            "Eric Dixon"
+        ]
+    },
+    {
+        "Effective_Date": "14-06-2024",
+        "Lessor_Information": {
+            "Name": "PROSPER 4 LESS",
+            "Address": "67707 Melanie Neck\nSilvamouth, LA 75247"
+        },
+        "Lessee_Information": {
+            "Name": "Brianna Floyd",
+            "Spouse_Name": "Stephen Cook",
+            "Address": "231 Adam Trail Apt. 384\nWest Laura, NC 01822"
+        },
+        "Property_Details": {
+            "Property_Number": "41698",
+            "Total_Area": "1556 sq. ft.",
+            "Property_Location": "Josephland, Georgia",
+            "Pin_Code": "94426",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "6 months",
+            "Monthly_Lease_Amount": "Rs. 14500",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Erin Jones",
+            "Jessica Murillo"
+        ]
+    },
+    {
+        "Effective_Date": "17-12-2024",
+        "Lessor_Information": {
+            "Name": "Mr. P C MATHEW",
+            "Address": "8945 Schultz Track Suite 097\nEast Barbara, CA 75956"
+        },
+        "Lessee_Information": {
+            "Name": "Vickie Jacobson",
+            "Spouse_Name": "Brent Rush",
+            "Address": "89245 Steven Tunnel Suite 116\nPort Donaldbury, AZ 33770"
+        },
+        "Property_Details": {
+            "Property_Number": "6490",
+            "Total_Area": "947 sq. ft.",
+            "Property_Location": "South Bradleyside, South Dakota",
+            "Pin_Code": "44474",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 9000",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Kristine Ramirez",
+            "Corey Gomez"
+        ]
+    },
+    {
+        "Effective_Date": "29-03-2022",
+        "Lessor_Information": {
+            "Name": "Mr. P. JohnsonRavikumar",
+            "Address": "1090 Steven Bypass\nFergusonside, SD 09644"
+        },
+        "Lessee_Information": {
+            "Name": "Michael Fleming",
+            "Spouse_Name": "William Collier",
+            "Address": "306 Wendy Burg\nWhitneybury, CO 51516"
+        },
+        "Property_Details": {
+            "Property_Number": "8584",
+            "Total_Area": "901 sq. ft.",
+            "Property_Location": "Wattsberg, Idaho",
+            "Pin_Code": "78515",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 12000",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Michaela Price",
+            "Jay Johnson"
+        ]
+    },
+    {
+        "Effective_Date": "24-06-2024",
+        "Lessor_Information": {
+            "Name": "Prof. K. Parthasarathy",
+            "Address": "USNS Mcmahon\nFPO AE 01719"
+        },
+        "Lessee_Information": {
+            "Name": "Ronald Morgan",
+            "Spouse_Name": "Abigail Martinez",
+            "Address": "69015 Christopher Road\nPort Timberg, AK 37020"
+        },
+        "Property_Details": {
+            "Property_Number": "32728",
+            "Total_Area": "2461 sq. ft.",
+            "Property_Location": "Loriberg, Kansas",
+            "Pin_Code": "88044",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 8,000",
+            "Security_Deposit": "Rs. 75000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "75000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Leah Schmitt",
+            "James Aguirre"
+        ]
+    },
+    {
+        "Effective_Date": "26-11-2024",
+        "Lessor_Information": {
+            "Name": "Katherine Boyer",
+            "Address": "638 David Avenue Apt. 805\nLake Scottborough, WV 32450"
+        },
+        "Lessee_Information": {
+            "Name": "Ronald Greer",
+            "Spouse_Name": "Thomas Brown",
+            "Address": "3472 Daniel Wall Apt. 230\nRalphview, NY 88186"
+        },
+        "Property_Details": {
+            "Property_Number": "40601",
+            "Total_Area": "2397 sq. ft.",
+            "Property_Location": "New Kathryn, West Virginia",
+            "Pin_Code": "68801",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "6 months",
+            "Monthly_Lease_Amount": "Rs. 5500",
+            "Security_Deposit": "Rs. 75000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "75000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Daniel Martinez",
+            "Lisa Marshall"
+        ]
+    },
+    {
+        "Effective_Date": "19-10-2024",
+        "Lessor_Information": {
+            "Name": "B. Boobalan aged about 40 years",
+            "Address": "PSC 7237, Box 3039\nAPO AE 34863"
+        },
+        "Lessee_Information": {
+            "Name": "Brandon Lindsey",
+            "Spouse_Name": "Joshua Cruz",
+            "Address": "914 Shepherd Oval Apt. 703\nWilliamton, NY 81242"
+        },
+        "Property_Details": {
+            "Property_Number": "4884",
+            "Total_Area": "1009 sq. ft.",
+            "Property_Location": "Castrochester, Arkansas",
+            "Pin_Code": "28781",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 6500",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Rachel Griffin",
+            "Michael Lee"
+        ]
+    },
+    {
+        "Effective_Date": "16-03-2023",
+        "Lessor_Information": {
+            "Name": "Jean Smith",
+            "Address": "57853 Thomas Springs Apt. 237\nEast Marie, WI 21626"
+        },
+        "Lessee_Information": {
+            "Name": "Jennifer Williams",
+            "Spouse_Name": "Joshua Norris",
+            "Address": "009 Arellano Crossing Apt. 970\nNew Davidfurt, CO 83670"
+        },
+        "Property_Details": {
+            "Property_Number": "8247",
+            "Total_Area": "2312 sq. ft.",
+            "Property_Location": "Chadshire, West Virginia",
+            "Pin_Code": "82046",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 4,200",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Allison Cunningham",
+            "David Dawson"
+        ]
+    },
+    {
+        "Effective_Date": "17-05-2022",
+        "Lessor_Information": {
+            "Name": "the parties hereto the same shall first be sought to be settled by arbitration governed by the Arbitration and Conciliation Act",
+            "Address": "8120 Jessica Roads Apt. 278\nHarrisonfurt, OH 75207"
+        },
+        "Lessee_Information": {
+            "Name": "Tony Carey",
+            "Spouse_Name": "Karen Hayes",
+            "Address": "743 Ian Island\nNorth Elizabethtown, AL 12978"
+        },
+        "Property_Details": {
+            "Property_Number": "997",
+            "Total_Area": "1290 sq. ft.",
+            "Property_Location": "Collinsborough, Minnesota",
+            "Pin_Code": "02492",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Deanna Smith",
+            "Kelsey Bailey"
+        ]
+    },
+    {
+        "Effective_Date": "31-12-2024",
+        "Lessor_Information": {
+            "Name": "John Public of 1234 Any street",
+            "Address": "4965 Victoria Groves Suite 058\nGarciaton, WA 26912"
+        },
+        "Lessee_Information": {
+            "Name": "James Gordon",
+            "Spouse_Name": "April Rios",
+            "Address": "16718 Franklin Inlet Suite 007\nLake Thomasstad, NY 84335"
+        },
+        "Property_Details": {
+            "Property_Number": "8276",
+            "Total_Area": "1942 sq. ft.",
+            "Property_Location": "Danielview, Oklahoma",
+            "Pin_Code": "23405",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 200000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "200000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Anna Morgan",
+            "Lori Haas"
+        ]
+    },
+    {
+        "Effective_Date": "07-12-2024",
+        "Lessor_Information": {
+            "Name": "Mr. S Parthasarathy",
+            "Address": "64340 Williamson Tunnel Apt. 989\nNorth Lisatown, AK 34723"
+        },
+        "Lessee_Information": {
+            "Name": "Suzanne Torres",
+            "Spouse_Name": "Max Foster",
+            "Address": "2671 Nicholas Streets Apt. 332\nSamanthatown, OK 10547"
+        },
+        "Property_Details": {
+            "Property_Number": "3263",
+            "Total_Area": "1410 sq. ft.",
+            "Property_Location": "South Joemouth, Alabama",
+            "Pin_Code": "19903",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 9,000",
+            "Security_Deposit": "Rs. 100000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "100000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Kurt Wells",
+            "John Robinson"
+        ]
+    },
+    {
+        "Effective_Date": "29-06-2024",
+        "Lessor_Information": {
+            "Name": "Pamela Wallace",
+            "Address": "25943 Madison Centers Apt. 021\nPort Michaelborough, MN 50431"
+        },
+        "Lessee_Information": {
+            "Name": "Lisa Spencer",
+            "Spouse_Name": "Michael Mosley",
+            "Address": "90913 Aguilar Mountains\nJacobville, OH 80225"
+        },
+        "Property_Details": {
+            "Property_Number": "1431",
+            "Total_Area": "1259 sq. ft.",
+            "Property_Location": "Port Kyle, Arizona",
+            "Pin_Code": "47869",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 12000",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Kimberly Chandler",
+            "Jennifer Edwards"
+        ]
+    },
+    {
+        "Effective_Date": "15-12-2023",
+        "Lessor_Information": {
+            "Name": "Daniel Schwartz",
+            "Address": "632 Silva Loop Suite 721\nShannonhaven, OR 87009"
+        },
+        "Lessee_Information": {
+            "Name": "Matthew Morales",
+            "Spouse_Name": "Lindsey Miles",
+            "Address": "65729 Antonio Gateway Apt. 090\nSouth Travisburgh, MI 33202"
+        },
+        "Property_Details": {
+            "Property_Number": "602",
+            "Total_Area": "2044 sq. ft.",
+            "Property_Location": "Rileyland, Kansas",
+            "Pin_Code": "12021",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Joyce Evans",
+            "Kristina Hill"
+        ]
+    },
+    {
+        "Effective_Date": "the day,month and year first written at Bangalore",
+        "Lessor_Information": {
+            "Name": "Allison Smith",
+            "Address": "PSC 9358, Box 2243\nAPO AA 09011"
+        },
+        "Lessee_Information": {
+            "Name": "Michael Jones",
+            "Spouse_Name": "Michael Phillips",
+            "Address": "290 Phillips Shores Apt. 937\nLake Susanport, WY 46627"
+        },
+        "Property_Details": {
+            "Property_Number": "5212",
+            "Total_Area": "760 sq. ft.",
+            "Property_Location": "Starkland, Alabama",
+            "Pin_Code": "76115",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "18 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 200000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "200000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Mrs. Margaret Hogan",
+            "Connie Carter"
+        ]
+    },
+    {
+        "Effective_Date": "30-07-2022",
+        "Lessor_Information": {
+            "Name": "landlord and tenant which gives rise to any action in court",
+            "Address": "4673 King Crescent Suite 607\nNew Julie, ME 94301"
+        },
+        "Lessee_Information": {
+            "Name": "Jennifer Williams",
+            "Spouse_Name": "Hailey Hensley",
+            "Address": "230 Anna Rapid\nHayesstad, LA 26401"
+        },
+        "Property_Details": {
+            "Property_Number": "533",
+            "Total_Area": "2490 sq. ft.",
+            "Property_Location": "Mooreberg, Alabama",
+            "Pin_Code": "23471",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "6 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Trevor Rasmussen",
+            "Mr. Ethan Bishop DVM"
+        ]
+    },
+    {
+        "Effective_Date": "19-09-2024",
+        "Lessor_Information": {
+            "Name": "Mr M.SANTOSH S/O.M.DATTATREYA SASTRY",
+            "Address": "PSC 8776, Box 7134\nAPO AE 43659"
+        },
+        "Lessee_Information": {
+            "Name": "Steven Bright",
+            "Spouse_Name": "Julie Stephenson",
+            "Address": "PSC 4864, Box 7509\nAPO AE 71112"
+        },
+        "Property_Details": {
+            "Property_Number": "46269",
+            "Total_Area": "843 sq. ft.",
+            "Property_Location": "South Jeanette, Wyoming",
+            "Pin_Code": "39394",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 25000",
+            "Security_Deposit": "Rs. 150000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "150000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Michael Chavez",
+            "Ricky Morales"
+        ]
+    },
+    {
+        "Effective_Date": "03-08-2023",
+        "Lessor_Information": {
+            "Name": "Kristi Davis",
+            "Address": "160 Taylor Cape Apt. 676\nJonesmouth, KY 15551"
+        },
+        "Lessee_Information": {
+            "Name": "April Fischer",
+            "Spouse_Name": "Jodi Joseph",
+            "Address": "6929 Arellano Bridge\nKellerland, TX 32986"
+        },
+        "Property_Details": {
+            "Property_Number": "5429",
+            "Total_Area": "1289 sq. ft.",
+            "Property_Location": "Barneschester, New Hampshire",
+            "Pin_Code": "76565",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "12 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 50000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "50000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Roger Snyder",
+            "Nicole Patrick"
+        ]
+    },
+    {
+        "Effective_Date": "05-03-2025",
+        "Lessor_Information": {
+            "Name": ": Mr.AR. SUBBIAH",
+            "Address": "672 Justin Route\nWatkinston, NH 01680"
+        },
+        "Lessee_Information": {
+            "Name": "Nicole Jackson",
+            "Spouse_Name": "Keith Cuevas",
+            "Address": "463 Laura Hills Suite 475\nNorth Christina, SC 04430"
+        },
+        "Property_Details": {
+            "Property_Number": "281",
+            "Total_Area": "1383 sq. ft.",
+            "Property_Location": "Lake Daniel, Louisiana",
+            "Pin_Code": "05088",
+            "Country": "India"
+        },
+        "Lease_Terms": {
+            "Term_Duration": "24 months",
+            "Monthly_Lease_Amount": "Rs. 18000",
+            "Security_Deposit": "Rs. 200000",
+            "Payment_Due_Date": "On or before 5th of every month",
+            "Security_Deposit_in_words": "200000 rupees"
+        },
+        "Other_Clauses": {
+            "Termination_Notice_Period": "Three months notice on either side",
+            "Taxes_Paid_By": "Landlord",
+            "Utility_Charges_Paid_By": "Tenant",
+            "Maintenance_Clause": "Tenant responsible for maintenance, adjusted against rent",
+            "Subletting_Allowed": "No",
+            "Waste_Restriction": "Tenant shall not commit any act of waste",
+            "Possession_Condition": "Premises should be left in good condition, subject to reasonable wear and tear"
+        },
+        "Witnesses": [
+            "Bill Johnson",
+            "Cynthia Rodriguez"
+        ]
+    }
+]
