@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+    .alert { background-color: #F8D7DA; padding: 20px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <div class="alert">
+    <h2>🚫 Website Blocked</h2>
+    <p>For your security, <strong id="url"></strong> has been blocked.</p>
+    <p>This page was identified as potentially dangerous.</p>
+  </div>
+
+  <script>
+    document.getElementById('url').textContent = 
+      new URLSearchParams(window.location.search).get('url');
+  </script>
+</body>
+</html>
