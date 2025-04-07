@@ -1,0 +1,296 @@
+{% include 'user_header.html' %}
+
+<style>
+    .rc-book {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background-color: #f9f9f9;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                          url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50 L60 40 L50 30 L40 40 Z' fill='%23f0f0f0' /%3E%3C/svg%3E");
+        border: 2px solid #333;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        position: relative;
+        font-family: 'Arial', sans-serif;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .rc-header {
+        text-align: center;
+        margin-bottom: 35px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 20px;
+        position: relative;
+    }
+    
+    .rc-header:before {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 25%;
+        right: 25%;
+        height: 2px;
+        background-color: #4CAF50;
+    }
+    
+    .rc-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #222;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    
+    .rc-subtitle {
+        font-size: 18px;
+        color: #444;
+        font-style: italic;
+    }
+    
+    .rc-watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        font-size: 120px;
+        color: rgba(0,0,0,0.03);
+        pointer-events: none;
+        z-index: 0;
+        font-weight: bold;
+        letter-spacing: 5px;
+    }
+    
+    .rc-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-bottom: 35px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .rc-field {
+        margin-bottom: 20px;
+    }
+    
+    .rc-label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+        color: #444;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+    
+    .rc-value {
+        padding: 12px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        font-size: 16px;
+    }
+    
+    .rc-official-seal {
+        position: absolute;
+        bottom: 100px;
+        right: 50px;
+        width: 120px;
+        height: 120px;
+        background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='58' fill='none' stroke='%23333' stroke-width='2'/%3E%3Ccircle cx='60' cy='60' r='52' fill='none' stroke='%23333' stroke-width='1'/%3E%3Ctext x='60' y='45' text-anchor='middle' font-family='Arial' font-size='10' fill='%23333'%3EOFFICIAL%3C/text%3E%3Ctext x='60' y='65' text-anchor='middle' font-family='Arial' font-size='10' fill='%23333'%3EMOTOR VEHICLE%3C/text%3E%3Ctext x='60' y='80' text-anchor='middle' font-family='Arial' font-size='10' fill='%23333'%3EAUTHORITY%3C/text%3E%3C/svg%3E");
+        opacity: 0.7;
+        pointer-events: none;
+    }
+    
+    .rc-footer {
+        margin-top: 40px;
+        text-align: center;
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+        font-size: 12px;
+        color: #555;
+        position: relative;
+    }
+    
+    .rc-barcode {
+        margin: 15px 0;
+        text-align: center;
+        background-image: url("data:image/svg+xml,%3Csvg width='300' height='50' viewBox='0 0 300 50' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='5' width='2' height='40' fill='%23000'/%3E%3Crect x='14' y='5' width='1' height='40' fill='%23000'/%3E%3Crect x='17' y='5' width='3' height='40' fill='%23000'/%3E%3Crect x='22' y='5' width='2' height='40' fill='%23000'/%3E%3Crect x='26' y='5' width='4' height='40' fill='%23000'/%3E%3Crect x='32' y='5' width='1' height='40' fill='%23000'/%3E%3Crect x='35' y='5' width='3' height='40' fill='%23000'/%3E%3Crect x='40' y='5' width='2' height='40' fill='%23000'/%3E%3Crect x='44' y='5' width='1' height='40' fill='%23000'/%3E%3Crect x='47' y='5' width='4' height='40' fill='%23000'/%3E%3Crect x='53' y='5' width='2' height='40' fill='%23000'/%3E%3Crect x='57' y='5' width='3' height='40' fill='%23000'/%3E%3Crect x='62' y='5' width='1' height='40' fill='%23000'/%3E%3Crect x='65' y='5' width='4' height='40' fill='%23000'/%3E%3Crect x='71' y='5' width='2' height='40' fill='%23000'/%3E%3Crect x='75' y='5' width='1' height='40' fill='%23000'/%3E%3Crect x='78' y='5' width='3' height='40' fill='%23000'/%3E%3Crect x='83' y='5' width='2' height='40' fill='%23000'/%3E%3Crect x='87' y='5' width='4' height='40' fill='%23000'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 50px;
+    }
+    
+    .rc-id {
+        font-family: monospace;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+    
+    .rc-actions {
+        margin-top: 30px;
+        text-align: center;
+    }
+    
+    .rc-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0 8px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .rc-button:hover {
+        background-color: #45a049;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .rc-stamp {
+        position: absolute;
+        bottom: 70px;
+        right: 70px;
+        font-family: 'Courier New', monospace;
+        font-size: 16px;
+        color: rgba(76, 175, 80, 0.7);
+        border: 2px solid rgba(76, 175, 80, 0.7);
+        border-radius: 5px;
+        padding: 10px 20px;
+        transform: rotate(-5deg);
+    }
+    
+    .rc-section {
+        margin-bottom: 30px;
+    }
+    
+    .rc-section-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+        color: #333;
+    }
+    
+    .rc-disclaimer {
+        font-size: 11px;
+        color: #777;
+        line-height: 1.5;
+        margin-top: 20px;
+    }
+    
+    @media print {
+        .rc-actions, header, footer {
+            display: none;
+        }
+        
+        .rc-book {
+            box-shadow: none;
+            border: 1px solid #ddd;
+            margin: 0;
+            padding: 20px;
+        }
+    }
+</style>
+
+<div class="rc-book">
+    <div class="rc-watermark">CERTIFIED</div>
+    
+    <div class="rc-header">
+        <div class="rc-title">CERTIFICATE OF REGISTRATION</div>
+        <div class="rc-subtitle">Motor Vehicle Act</div>
+    </div>
+    
+    <div class="rc-section">
+        <div class="rc-section-title">Vehicle Information</div>
+        <div class="rc-content">
+            <div class="rc-field">
+                <div class="rc-label">Registration Number</div>
+                <div class="rc-value">{{ vehicle.regusternumber }}</div>
+            </div>
+            
+            <div class="rc-field">
+                <div class="rc-label">Date of Registration</div>
+                <div class="rc-value">{{ vehicle.date }}</div>
+            </div>
+            
+            <div class="rc-field">
+                <div class="rc-label">Vehicle Make & Model</div>
+                <div class="rc-value">{{ vehicle.vehicle_name }} ({{ vehicle.modelnumber }})</div>
+            </div>
+            
+            <div class="rc-field">
+                <div class="rc-label">Chassis Number</div>
+                <div class="rc-value">{{ vehicle.chasisnumber }}</div>
+            </div>
+            
+            <div class="rc-field">
+                <div class="rc-label">Engine Number</div>
+                <div class="rc-value">{{ vehicle.chasisnumber|reverse }}</div>
+            </div>
+            
+            <div class="rc-field">
+                <div class="rc-label">Fuel Type</div>
+                <div class="rc-value">As per manufacturer specifications</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="rc-section">
+        <div class="rc-section-title">Owner Information</div>
+        <div class="rc-content">
+            <div class="rc-field">
+                <div class="rc-label">Owner Name</div>
+                <div class="rc-value">{{ vehicle.owner_name }}</div>
+            </div>
+            
+            <div class="rc-field">
+                <div class="rc-label">Contact Number</div>
+                <div class="rc-value">{{ vehicle.phone }}</div>
+            </div>
+            
+            <div class="rc-field">
+                <div class="rc-label">Email Address</div>
+                <div class="rc-value">{{ vehicle.email }}</div>
+            </div>
+            
+            <div class="rc-field">
+                <div class="rc-label">Additional Details</div>
+                <div class="rc-value">{{ vehicle.details }}</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="rc-barcode"></div>
+    <div class="rc-id">ID: {{ vehicle.regusternumber|upper }}-{{ vehicle.chasisnumber[-6:] }}</div>
+    
+    <div class="rc-official-seal"></div>
+    <div class="rc-stamp">REGISTERED</div>
+    
+    <div class="rc-footer">
+        This is an electronically generated document and does not require physical signature.
+        This document serves as proof of vehicle registration under the Motor Vehicle Act.
+        <div class="rc-disclaimer">
+            Validity of this registration is subject to compliance with applicable laws and regulations.
+            This certificate must be presented upon request by authorized officials.
+            Any alteration to this document renders it invalid and may result in legal consequences.
+        </div>
+    </div>
+    
+    <div class="rc-actions">
+        <button class="rc-button" onclick="window.print()">Print RC Book</button>
+        <!-- <button class="rc-button" onclick="window.location.href='{{ url_for('user.user_view_alloted_vehicle') }}'">Back to Vehicles</button> -->
+    </div>
+</div>
+
+{% include 'footer.html' %}

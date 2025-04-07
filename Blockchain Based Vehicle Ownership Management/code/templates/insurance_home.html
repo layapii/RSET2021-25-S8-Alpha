@@ -1,0 +1,74 @@
+{% include 'insurance_header.html' %}
+
+<main class="main">
+
+    <!-- Slider Section -->
+    <section id="slider" class="slider section dark-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "centeredSlides": true,
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              }
+            }
+          </script>
+
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/i2.jpg');">
+              <div class="content">
+                <h2><a href="#">Comprehensive Vehicle Insurance for Your Peace of Mind</a></h2>
+                <p>Get complete coverage for your vehicle, including theft, accidents, and natural disasters, ensuring peace of mind wherever you go.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/i1.jpg');">
+              <div class="content">
+                <h2><a href="#">Affordable Vehicle Insurance Plans for Every Need</a></h2>
+                <p>Choose from a range of affordable insurance options that suit your vehicle's needs, whether it's for personal or business use.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/i3.jpg');">
+              <div class="content">
+                <h2><a href="#">Protect Your Vehicle with Reliable Insurance</a></h2>
+                <p>Ensure your vehicle is fully covered with reliable insurance policies that offer comprehensive protection and fast claim services.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/i4.jpg');">
+              <div class="content">
+                <h2><a href="#">Easy Online Vehicle Insurance Booking</a></h2>
+                <p>Book your vehicle insurance online in minutes, and drive with confidence knowing you're fully covered wherever you go.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Slider Section -->
+
+{% include 'footer.html' %}

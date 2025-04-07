@@ -1,0 +1,74 @@
+{% include 'user_header.html' %}
+
+   
+<main class="main">
+
+    <!-- Slider Section -->
+    <section id="slider" class="slider section dark-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "centeredSlides": true,
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              }
+            }
+          </script>
+
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/c7.jpg');">
+              <div class="content">
+                <h2><a href="#">Find the Perfect Vehicle showroom for Your Trip</a></h2>
+                <p>Choose from a wide range of vehicles to suit your travel needs, whether for business, family trips, or adventure getaways.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/c9.jpg');">
+              <div class="content">
+                <h2><a href="#">Affordable and Convenient Vehicle showroom Services</a></h2>
+                <p>Enjoy competitive pricing, flexible rental durations, and easy booking for a hassle-free experience.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/c3.jpg');">
+              <div class="content">
+                <h2><a href="#">Luxury and Economy Cars Available</a></h2>
+                <p>From budget-friendly options to high-end luxury vehicles, find the perfect car that fits your style and budget.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/c4.jpg');">
+              <div class="content">
+                <h2><a href="#">Book Online and Drive with Confidence</a></h2>
+                <p>Reserve your car online with ease and enjoy safe, well-maintained vehicles for a smooth journey.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Slider Section -->
+    {%include 'footer.html'%}   

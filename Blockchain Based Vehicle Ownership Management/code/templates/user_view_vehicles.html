@@ -1,0 +1,226 @@
+{% include 'user_header.html' %}    
+
+<style>     
+    /* Main container styling */ 
+    center {     
+        max-width: 1100px;     
+        margin: 2rem auto;     
+        padding: 20px;     
+        background-color: #ffffff;     
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);     
+        border-radius: 8px; 
+    }  
+    
+    /* Form styling */ 
+    form {     
+        width: 100%;     
+        padding: 20px; 
+    }  
+    
+    h1, h2 {     
+        color: #333;     
+        margin-bottom: 2rem;     
+        font-size: 2em;     
+        font-weight: 600; 
+    }  
+    
+    /* Input fields styling */ 
+    input[type="text"] {     
+        width: 100%;     
+        padding: 10px;     
+        margin: 8px 0;     
+        border: 1px solid #ddd;     
+        border-radius: 4px;     
+        font-size: 16px;     
+        transition: border-color 0.3s ease; 
+    }  
+    
+    input[type="text"]:focus {     
+        border-color: #4CAF50;     
+        outline: none;     
+        box-shadow: 0 0 5px rgba(76,175,80,0.2); 
+    }  
+    
+    /* Submit button styling */ 
+    input[type="submit"] {     
+        background-color: #4CAF50;     
+        color: white;     
+        padding: 12px 24px;     
+        border: none;     
+        border-radius: 4px;     
+        cursor: pointer;     
+        font-size: 16px;     
+        margin-top: 1rem;     
+        transition: background-color 0.3s ease; 
+    }  
+    
+    input[type="submit"]:hover {     
+        background-color: #45a049; 
+    }  
+    
+    /* Table styling */ 
+    table {     
+        width: 100%;     
+        border-collapse: collapse;     
+        margin-top: 2rem;     
+        background-color: #fff;
+        table-layout: fixed;
+    }  
+    
+    th, td {     
+        padding: 12px 15px;     
+        text-align: left;     
+        border-bottom: 1px solid #ddd; 
+    }  
+    
+    th {     
+        background-color: #f5f5f5;     
+        color: #333;     
+        font-weight: 600; 
+    }  
+    
+    tr:hover {     
+        background-color: #f9f9f9; 
+    }  
+    
+    /* Link styling */ 
+    a {     
+        color: #2196F3;     
+        text-decoration: none;     
+        margin-right: 5px;     
+        padding: 5px 8px;     
+        border-radius: 3px;     
+        transition: background-color 0.3s ease;
+        display: inline-block;
+    }  
+    
+    a:hover {     
+        background-color: #e3f2fd; 
+    }  
+    
+    a[href*="catdel"] {     
+        color: #f44336; 
+    }  
+    
+    a[href*="catdel"]:hover {     
+        background-color: #ffebee; 
+    }
+    
+    .tax-value {
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .tax-percentage {
+        font-size: 0.85em;
+        color: #666;
+        display: block;
+    }
+    
+    .action-cell {
+        white-space: nowrap;
+    }
+    
+    /* Responsive design */ 
+    @media screen and (max-width: 600px) {     
+        center {         
+            margin: 1rem;         
+            padding: 10px;     
+        }          
+        
+        table {         
+            font-size: 14px;     
+        }          
+        
+        th, td {         
+            padding: 8px 10px;     
+        }          
+        
+        input[type="text"] {         
+            font-size: 14px;     
+        }          
+        
+        input[type="submit"] {         
+            padding: 10px 20px;         
+            font-size: 14px;     
+        } 
+    } 
+</style>    
+
+<center>     
+    <h2>View Vehicles</h2>     
+    <table class="table">         
+        <thead>             
+            <tr>                 
+                <th width="15%">Vehicle Name</th>                 
+                <th width="12%">Road Tax (12%)</th>                 
+                <th width="12%">Insurance (8%)</th>                 
+                <th width="12%">Others (5%)</th>                 
+                <th width="12%">Amount</th>
+                <th width="37%" colspan="5">Actions</th>                
+            </tr>         
+        </thead>         
+        <tbody>             
+            {% for vehicle in data['vehicles'] %}             
+            <tr class="vehicle-row" data-amount="{{ vehicle['amt'] }}">                 
+                <td>{{ vehicle['vehicles'] }}</td>                 
+                <td class="road-tax">
+                    <span class="tax-value"></span>
+                    <span class="tax-percentage">(12% of price)</span>
+                </td>                 
+                <td class="insurance">
+                    <span class="tax-value"></span>
+                    <span class="tax-percentage">(8% of price)</span>
+                </td>                 
+                <td class="others">
+                    <span class="tax-value"></span>
+                    <span class="tax-percentage">(5% of price)</span>
+                </td>                 
+                <td class="amount">{{ vehicle['amt'] }}</td>                                     
+                <td class="action-cell" colspan="5">
+                    <a href="{{ url_for('user.user_view_features', vehicle_id=vehicle['vehicle_id']) }}">Features</a>
+                    <a href="{{ url_for('user.user_view_specifications', vehicle_id=vehicle['vehicle_id']) }}">Specifications</a>
+                    <a href="{{ url_for('user.user_view_company_details', vehicle_id=vehicle['vehicle_id']) }}">Company</a>
+                    <a href="{{ url_for('user.user_view_vehicles', action='book', vehicle_id=vehicle['vehicle_id']) }}">Book</a>
+                    <a href="user_send_complaint?company_id={{vehicle['company_id']}}">Complaint</a>
+                </td>                             
+            </tr>             
+            {% endfor %}         
+        </tbody>     
+    </table> 
+</center> 
+
+<script>
+    // Function to calculate and display tax amounts
+    function calculateTaxes() {
+        // Get all vehicle rows
+        const vehicleRows = document.querySelectorAll('.vehicle-row');
+        
+        // Process each row
+        vehicleRows.forEach(row => {
+            // Get the amount value
+            const amount = parseFloat(row.getAttribute('data-amount'));
+            
+            if (!isNaN(amount)) {
+                // Calculate taxes
+                const roadTax = amount * 0.12;
+                const insurance = amount * 0.08;
+                const others = amount * 0.05;
+                
+                // Update the cells with calculated values
+                row.querySelector('.road-tax .tax-value').textContent = '₹' + roadTax.toLocaleString(undefined, {maximumFractionDigits: 2});
+                row.querySelector('.insurance .tax-value').textContent = '₹' + insurance.toLocaleString(undefined, {maximumFractionDigits: 2});
+                row.querySelector('.others .tax-value').textContent = '₹' + others.toLocaleString(undefined, {maximumFractionDigits: 2});
+                
+                // Format the amount with currency symbol
+                const amountCell = row.querySelector('.amount');
+                amountCell.textContent = '₹' + amount.toLocaleString(undefined, {maximumFractionDigits: 2});
+            }
+        });
+    }
+    
+    // Run calculations when the page loads
+    document.addEventListener('DOMContentLoaded', calculateTaxes);
+</script>
+
+{% include 'footer.html' %}

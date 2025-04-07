@@ -1,0 +1,66 @@
+{% include 'public_header.html' %}
+
+<center>
+    <h1>Company Registration</h1>
+    <form action="" method="post" class="form-control" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <table class="aria-control">
+            <tr>
+                <th>Company Name</th>
+                <td><input type="text" name="sname" id="sname" required></td>
+            </tr>
+            <tr>
+                <th>Company Place</th>
+                <td><input type="text" name="place" id="place" required></td>
+            </tr>
+            <tr>
+                <th>Contact No.</th>
+                <td><input type="text" name="phone" id="phone" required></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="text" name="email" id="email" required></td>
+            </tr>
+
+            <tr>
+                <th>Certificate</th>
+                <td><input type="file" id="file" name="file" required><br></td>
+            </tr>
+
+            <tr>
+                <th>User Name</th>
+                <td><input type="text" name="uname" id="uname" required></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="text" name="pawod" id="pawod" required></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="reg" id="" value="Register" class="btn btn-success"></td>
+            </tr>
+        </table>
+    </form>
+</center>
+
+<script>
+    function validateForm() {
+        // Validate email
+        const email = document.getElementById('email').value;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+
+        // Validate phone number
+        const phone = document.getElementById('phone').value;
+        const phonePattern = /^\d{10}$/; // Assuming a 10-digit phone number
+        if (!phonePattern.test(phone)) {
+            alert("Please enter a valid 10-digit phone number.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+{% include 'footer.html' %}

@@ -1,0 +1,74 @@
+{% include 'public_header.html' %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    center {
+        margin-top: 50px;
+    }
+    h1 {
+        color: #333;
+    }
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin: auto;
+    }
+    table {
+        width: 400px;
+    }
+    th {
+        text-align: left;
+        padding-bottom: 10px;
+        color: #555;
+    }
+    td {
+        padding-bottom: 10px;
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+<center>
+    <h1>Login</h1>
+    <form action="" method="post" class="form-control">
+        <table>
+            <tr>
+                <th>User Name</th>
+                <td><input type="text" name="uname"></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" name="pwod" ></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" name="login" id="" value="login" class="btn btn-success">
+                </td>
+            </tr>
+        </table>
+    </form>
+</center>
+{% include 'footer.html' %}
