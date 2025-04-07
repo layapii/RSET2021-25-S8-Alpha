@@ -1,0 +1,162 @@
+{%include 'bank_header.html'%}
+
+
+<style>
+    /* Main container styling */
+center {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Form styling */
+form {
+    width: 100%;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+/* Input fields styling */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76,175,80,0.2);
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: #fff;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Link styling */
+a {
+    color: #2196F3;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #e3f2fd;
+}
+
+a[href*="catdel"] {
+    color: #f44336;
+}
+
+a[href*="catdel"]:hover {
+    background-color: #ffebee;
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+    center {
+        margin: 1rem;
+        padding: 10px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+    }
+    
+    input[type="text"] {
+        font-size: 14px;
+    }
+    
+    input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+</style>
+
+
+
+
+    <center>
+        <h1>User Details</h1>
+        <form action="" method="post" class="form-control">
+            <table class="btn">
+                <tr>
+                    <th>Index</th>
+                    <th>User Name</th><th></th>
+                    <th>Place</th><th></th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Certificate</th>
+                </tr>
+                 {%for i in data['value']%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{i['name']}}</td><td></td>
+                    <td>{{i['place']}}</td><td></td>
+                    <td>{{i['phone']}}</td>
+                    <td>{{i['email']}}</td>
+                    <td><img src="{{i['image']}}" width="100px" height="100px"></td>
+                </tr>
+                {%endfor%}
+            </table>
+        </form>
+    </center>
+{%include 'footer.html'%}   

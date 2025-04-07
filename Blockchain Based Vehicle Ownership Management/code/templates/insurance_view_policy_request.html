@@ -1,0 +1,42 @@
+{% include 'insurance_header.html' %}
+
+<main>
+    <h2>Policy Requests</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Policy Number</th>
+                <th>Date</th>
+                <th>Allotted Vehicle</th>
+                <th>Chassis Number</th>
+                <th>Model Number</th>
+                <th>Policy Details</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in data.requests %}
+            <tr>
+                <td>{{ request.policynumber }}</td>
+                <td>{{ request.date }}</td>
+                <td>{{ request.vehicle_details }}</td>
+                <td>{{ request.chasisnumber }}</td>
+                <td>{{ request.modelnumber }}</td>
+                <td>{{ request.policydetails }}</td>
+                <td>{{ request.status }}</td>
+                <td>
+                    {% if request.status == 'pending' %}
+                    <form method="post" style="display:inline;">
+                        <input type="hidden" name="request_id" value="{{ request.policyrequest_id }}">
+                        <button type="submit" name="action" value="accept">Accept</button>
+                        <button type="submit" name="action" value="reject">Reject</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% include 'footer.html' %}

@@ -1,0 +1,74 @@
+{% include 'mvd_header.html' %}
+
+<main class="main">
+
+    <!-- Slider Section -->
+    <section id="slider" class="slider section dark-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "centeredSlides": true,
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              }
+            }
+          </script>
+
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/mv4.jpg');">
+              <div class="content">
+                <h2><a href="#">Easy Vehicle Registration & Renewal</a></h2>
+                <p>Register your vehicle or renew your registration quickly online with our convenient and secure services.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/mv3.jpg');">
+              <div class="content">
+                <h2><a href="#">Driver's License Services</a></h2>
+                <p>Apply for, renew, or replace your driver's license with ease, and access helpful resources for drivers.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/mv2.jpg');">
+              <div class="content">
+                <h2><a href="#">Vehicle Title & Ownership Transfer</a></h2>
+                <p>Transfer vehicle titles, update ownership records, and handle all necessary paperwork with ease.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('static/assets/img/mv1.jpg');">
+              <div class="content">
+                <h2><a href="#">Access MVD Services Online</a></h2>
+                <p>Take advantage of our online services to make appointments, check requirements, and complete your transactions with ease.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Slider Section -->
+
+{% include 'footer.html' %}
